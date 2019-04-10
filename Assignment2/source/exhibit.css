@@ -1,0 +1,405 @@
+/* Flexbox CSS for exotic poultry page */
+/* sticky footer using flex-grow on items */
+/* bird layout using justify-content on container */
+
+
+body {
+    /*background-color: gray;*/
+	/*  Choose a font stack. A browser uses the first 
+	    font in the stack that it has.  */
+     /*font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;*/
+     /*min-height: 100vh;  */
+     /* needed to make sure body fills up window */
+
+	/* the whole body is a flexbox container */
+	display: flex;
+	flex-direction: column;  /* stack items inside vertically */ 
+	font-family: montserrat, sans-serif; 
+	font-weight: 500; 
+	font-style: normal;
+}
+
+/* flex item contained in body */
+/* not a flexbox container */
+header {
+	/*background-color: paleturquoise;*/
+	display: flex;
+	flex-direction: column-reverse; 
+	text-align: center;
+	font-family: helvetica;
+	/*font-weight: 500; */
+	font-style: normal;
+	/*border: 2px red solid;*/
+}
+
+	.w0 {
+		color: rgb(46,49,146);
+		/*border: 2px blue solid; */
+		padding-bottom: 3%;
+	}
+
+	.w0 span {
+		color: rgb(201,82,61);
+		font-weight: bold;
+	}
+
+	nav {
+		font-size: 1.5em;
+		/*border: 2px blue solid; */
+		padding: 5% 0;
+	}
+
+	nav a {
+		color: black;
+		text-decoration: none;
+		/*border: 2px blue solid; */
+		/*font-stretch: expanded;*/
+  		margin: auto;
+	}
+
+
+/* flex item contained in body */
+main {
+/*	flex-grow: 1; 
+	flex-shrink: 0;
+	flex-basis: auto;*/
+	/* always be large enough to contain contents, and grow if there is extra space in the body */
+	}
+
+/*first module*/
+	div.one {
+		display: flex;
+		flex-direction: column;
+		background: rgb(249,172,120);
+	}
+
+		div.w1 {
+			display: flex;
+			flex-direction: column;
+			align-content: center;
+			justify-content: center;
+			flex-grow: 1;
+			/*border: 2px red solid;*/
+			color: white;
+			padding: 5% 0;
+
+			/*margin: 1%;*/
+		}
+			p.s1 {
+				font-family: montserrat, sans-serif; 
+				font-weight: bold; 
+				font-size: 4vw;
+				margin-bottom: 1%;
+				width: 100%;
+				text-align: center;
+				/*border: 1px red solid;*/
+			}
+
+			p.s2 {
+				font-size: 2.5vw;
+				font-style: italic;
+				font-stretch: expanded;
+				text-align: center;
+			}
+
+		div.img1 {
+			flex-grow: 1;
+			overflow: auto;
+		} 
+
+/*second module*/
+	div.two {
+		display: flex;
+		flex-direction: column;
+	}
+
+		div.w2 {
+			display: flex;
+			flex-direction: column;
+			flex-grow: 1;
+			/*border: 2px red solid;*/
+			margin: 0 10%;
+		}
+
+		#more1 {
+			display: none;
+		}
+
+			.t2 {
+				display: flex;
+				flex-direction: column;
+				padding: 3% 0;
+				margin-bottom: 3%;
+				border-bottom: 1px black solid;
+				color: rgb(201,82,61);
+			}
+
+				.two .bold {
+					font-weight: bold;
+					margin-bottom: 2%;
+				}
+		button {
+			border: none;
+			background: none;
+			text-decoration:underline;
+			color: rgb(201,82,61);
+			/*font-weight: 500;*/
+			text-align: left;
+			/*border: 2px blue solid;*/
+			padding-left: 0;
+			cursor: pointer;
+			margin-top: 4%;
+		}
+
+		div.img2 {
+			flex-grow: 1;
+			margin: 4%;
+		}
+p {
+	/*text-align: justify;*/
+}
+
+/* flex item contained in body */
+footer {
+      /*text-align: center;*/
+      background-color: paleturquoise;
+      display: flex;
+      flex-direction: column;
+
+      /* note: default flex-grow is 0 */
+}
+
+div.footer {
+	display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+div {
+	/*background-color: white;*/
+ 	/*margin: 10px;*/
+}
+
+div.image {
+	/* the div is a flex item */
+	flex-basis: auto;  
+	/* resize with viewport width */ 
+}
+
+img {
+	width: 100%;  /* fill up div.image */
+}
+
+
+
+		div.w1 {
+			display: flex;
+			flex-direction: column;
+			align-content: center;
+			justify-content: center;
+		}
+
+/*third module*/
+div.three {
+	display: flex;
+	flex-direction: column-reverse;
+	margin-bottom: 2%;
+}
+
+	div.img3 {
+		float: left;
+		flex-grow: 1;
+		margin: 4%;
+		/*border: 2px red solid;*/
+	}
+
+	div.w3 {
+		margin: 0 10%;
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+		/*border: 2px red solid;*/
+/*		margin-right: 10%;
+		padding-top: 1%;
+		padding-left: 1%*/;
+	}
+
+		.p2 {
+			margin-top:5%;
+			border: 2px red solid;
+		}
+
+	#more2 {
+		display: none;
+	}
+
+/*footer*/
+footer {
+	flex-direction: column;
+	background: rgb(249,172,120);
+	color: rgb(201,82,61);
+	padding: 5% 10%;
+}
+
+	footer .bold {
+		font-weight: bold;
+	}
+
+	#f2 {
+		margin-top: 2%;
+	}
+
+	footer p {
+		margin-bottom: 1%;
+	}
+
+/* media query switches to tablet view in wide window */
+@media (min-width: 480px) {
+/*	body {
+		background: grey;
+	}*/
+
+	header {
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+		.w0 {
+			margin-left: 2%;
+			padding-bottom: 0;
+		}
+
+		nav {
+			margin-right: 2%;
+		}
+
+	div.one {
+		flex-direction: row;
+	}
+
+		div.w1 {
+			padding: 0;
+		}
+
+		div.img1 {
+			width: 60%;
+			display: block;
+			vertical-align: bottom;
+		}
+
+	div.two {
+		flex-direction: row;
+		/*margin-top: 2%;*/
+	}
+		div.w2 {
+			width: 80%;
+			margin-left: 10%;
+
+		}
+			.t2 {
+				padding-bottom: 2%;
+				border-bottom: 1px black solid;
+			}
+
+		div.img2 {
+			margin-right: 10%;
+			margin-left: 1%
+		}
+
+
+}
+
+@media (min-width: 780px) {
+	body {
+		background: pink;
+	}
+
+	header{
+		flex-direction: row;
+
+	}
+
+	.w0 {
+		margin-left: 10%;
+	}
+
+	nav {
+		margin-right: 10%;
+	}
+
+	.t2 .bold {
+		margin-bottom: 4%;
+	}
+
+	p.bold {
+		font-weight: bold;
+		margin-bottom: 10%;
+	}
+
+		div.w1 {
+			flex-direction: column;
+			width: 70%;
+			margin-right: 10%;
+		}
+
+		div.img1 {
+			margin-left: 10%;
+		}
+
+	div.two {
+		flex-direction: row;
+		margin-top: 2%;
+	}
+
+		div.w2 {
+			width: 40%;
+			margin-left: 10%;
+
+		}
+			.t2 {
+				padding-bottom: 2%;
+				border-bottom: 1px black solid;
+			}
+
+		div.img2 {
+			margin-right: 10%;
+			margin-left: 1%
+		}
+
+	div.three {
+		flex-direction: row;
+		/*flex-grow: 1;*/
+		/*overflow: auto;*/
+		margin-bottom: 2%;
+	}
+
+		div.img3 {
+			float: left;
+			flex-grow: 1;
+			/*border: 2px red solid;*/
+			margin-left: 10%;
+		}
+
+		div.w3 {
+			display: flex;
+			flex-direction: column;
+			flex-grow: 1;
+			width: 45%;
+			/*border: 2px red solid;*/
+			margin-right: 10%;
+			padding-top: 1%;
+			padding-left: 1%;
+		}
+
+	footer {
+		flex-direction: row;
+	}
+
+	#f2 {
+		margin-left: 20%;
+	}
+}
+
+
+
