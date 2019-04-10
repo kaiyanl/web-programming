@@ -36,6 +36,7 @@ header {
 		color: rgb(46,49,146);
 		/*border: 2px blue solid; */
 		padding-bottom: 3%;
+		font-size: 3.7vw;
 	}
 
 	.w0 span {
@@ -44,7 +45,8 @@ header {
 	}
 
 	nav {
-		font-size: 1.5em;
+		font-size: 5vw;
+		/*font-stretch: expanded;*/
 		/*border: 2px blue solid; */
 		padding: 5% 0;
 	}
@@ -88,7 +90,7 @@ main {
 			p.s1 {
 				font-family: montserrat, sans-serif; 
 				font-weight: bold; 
-				font-size: 4vw;
+				font-size: 9.6vw;
 				margin-bottom: 1%;
 				width: 100%;
 				text-align: center;
@@ -96,7 +98,7 @@ main {
 			}
 
 			p.s2 {
-				font-size: 2.5vw;
+				font-size: 6vw;
 				font-style: italic;
 				font-stretch: expanded;
 				text-align: center;
@@ -104,7 +106,7 @@ main {
 
 		div.img1 {
 			flex-grow: 1;
-			overflow: auto;
+			/*overflow: auto;*/
 		} 
 
 /*second module*/
@@ -155,50 +157,6 @@ main {
 			flex-grow: 1;
 			margin: 4%;
 		}
-p {
-	/*text-align: justify;*/
-}
-
-/* flex item contained in body */
-footer {
-      /*text-align: center;*/
-      background-color: paleturquoise;
-      display: flex;
-      flex-direction: column;
-
-      /* note: default flex-grow is 0 */
-}
-
-div.footer {
-	display: flex;
-    flex-direction: column;
-    margin: 20px;
-}
-
-div {
-	/*background-color: white;*/
- 	/*margin: 10px;*/
-}
-
-div.image {
-	/* the div is a flex item */
-	flex-basis: auto;  
-	/* resize with viewport width */ 
-}
-
-img {
-	width: 100%;  /* fill up div.image */
-}
-
-
-
-		div.w1 {
-			display: flex;
-			flex-direction: column;
-			align-content: center;
-			justify-content: center;
-		}
-
 /*third module*/
 div.three {
 	display: flex;
@@ -226,15 +184,22 @@ div.three {
 
 		.p2 {
 			margin-top:5%;
-			border: 2px red solid;
+			/*border: 2px red solid;*/
 		}
 
 	#more2 {
 		display: none;
 	}
 
+img {
+	width: 100%;  
+	/* fill up div.image */
+}
+
 /*footer*/
 footer {
+	/*background-color: paleturquoise;*/
+	display: flex;
 	flex-direction: column;
 	background: rgb(249,172,120);
 	color: rgb(201,82,61);
@@ -268,10 +233,12 @@ footer {
 		.w0 {
 			margin-left: 2%;
 			padding-bottom: 0;
+			font-size: 2.3vw;
 		}
 
 		nav {
 			margin-right: 2%;
+			font-size: 3vw;
 		}
 
 	div.one {
@@ -282,31 +249,98 @@ footer {
 			padding: 0;
 		}
 
+			p.s1 {
+				font-size: 6.6vw;
+				/*border: 1px red solid;*/
+			}
+
+			p.s2 {
+				font-size: 4.2vw;
+			}
+
 		div.img1 {
-			width: 60%;
-			display: block;
+			width: 20%;
 			vertical-align: bottom;
 		}
 
-	div.two {
-		flex-direction: row;
-		/*margin-top: 2%;*/
-	}
 		div.w2 {
-			width: 80%;
-			margin-left: 10%;
-
+			display: inline;
+			/*flex-direction: column;*/
+			flex-grow: 1;
+			/*border: 2px red solid;*/
+			margin: 0 10%;
 		}
+
 			.t2 {
+				display: flex;
+				flex-direction: column;
+				padding-top: 4%;
 				padding-bottom: 2%;
-				border-bottom: 1px black solid;
+				margin-bottom: 2%;
 			}
 
-		div.img2 {
-			margin-right: 10%;
-			margin-left: 1%
+				.two .bold {
+					font-weight: bold;
+					margin-bottom: 2%;
+				}
+
+		div img {
+			display: block;
 		}
 
+		div.img2 {
+			width: 40%;
+			margin: 4% 0 2% 2%;
+			float: right;
+		}
+
+/*third*/
+	div.three {
+	display: flex;
+	flex-direction: column-reverse;
+	margin-bottom: 2%;
+	}
+
+	div.img3 {
+		float: left;
+		margin: 0 2% 0 0;
+		width: 40%;
+		/*border: 2px red solid;*/
+	}
+
+	.few {
+		margin-bottom: 4%;
+	}
+
+	div.w3 {
+		display: inline;
+	}
+
+		.p2 {
+			margin-top:0;
+			/*border: 2px red solid;*/
+		}
+
+/*footer*/
+footer {
+	flex-direction: row;
+	padding: 5% 10%;
+}
+
+
+	#f2 {
+		margin-top: 0;
+		margin-left: 4%;
+	}
+
+	footer .bold {
+		font-weight: bold;
+		margin-bottom: 8%;
+	}
+
+	footer p {
+		margin-bottom: 1%;
+	}
 
 }
 
