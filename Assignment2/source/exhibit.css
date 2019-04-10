@@ -217,7 +217,10 @@ footer {
 	footer p {
 		margin-bottom: 1%;
 	}
-
+#btn3 {
+	display: none;
+	margin: 0 10% 5% 10%;
+}
 /* media query switches to tablet view in wide window */
 @media (min-width: 480px) {
 /*	body {
@@ -341,6 +344,19 @@ footer {
 	footer p {
 		margin-bottom: 1%;
 	}
+
+#btn1 {
+	display: none;
+}
+
+#btn2 {
+	display: none;
+}
+
+#btn3 {
+	display: inline-block;
+}
+
 
 }
 
