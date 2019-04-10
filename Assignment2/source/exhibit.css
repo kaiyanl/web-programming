@@ -154,6 +154,7 @@ main {
 		}
 
 		div.img2 {
+			order: 2;
 			flex-grow: 1;
 			margin: 4%;
 		}
@@ -165,6 +166,7 @@ div.three {
 }
 
 	div.img3 {
+		order: 3;
 		float: left;
 		flex-grow: 1;
 		margin: 4%;
@@ -186,6 +188,8 @@ div.three {
 			margin-top:5%;
 			/*border: 2px red solid;*/
 		}
+		
+		
 
 	#more2 {
 		display: none;
@@ -216,11 +220,30 @@ footer {
 
 	footer p {
 		margin-bottom: 1%;
+		line-height: 1.5;
 	}
 #btn3 {
 	display: none;
 	margin: 0 10% 5% 10%;
 }
+
+.moreFlexContent {
+	display: flex;
+}
+
+.moreInitialContent {
+	display: initial;
+}
+
+.moreBlockContent {
+	display: block;
+}
+
+.lessContent{
+	display: none;
+}
+
+
 /* media query switches to tablet view in wide window */
 @media (min-width: 480px) {
 /*	body {
