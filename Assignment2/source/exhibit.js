@@ -23,12 +23,13 @@ function disappear2(less, btn) {
 	if (dive[0].classList.contains("lessContent")){
 		dive[0].classList.remove("lessContent");
 		dive[0].classList.add("moreBlockContent");
-		dive[0].w3.classList.add("moreInlineBlockContent");
+		dive[0].childNodes[1].classList.add("moreInlineBlockContent");
 		mybtn.innerHTML = "Read less ->";
 	} else {
 		dive[0].classList.remove("moreBlockContent");
 		dive[0].classList.add("lessContent");
-		dive[0].w3.classList.add("lessContent");
+		dive[0].childNodes[1].classList.remove("moreInlineBlockContent");
+		dive[0].childNodes[1].classList.add("lessContent");
 		mybtn.innerHTML = "Read more ->";
 	}
 }

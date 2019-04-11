@@ -130,11 +130,6 @@ main {
 			/*border: 2px red solid;*/
 			margin: 0 10%;
 		}
-
-		#more1 {
-			display: none;
-		}
-
 			.t2 {
 				display: flex;
 				flex-direction: column;
@@ -200,13 +195,6 @@ div.three {
 			margin-top:5%;
 			/*border: 2px red solid;*/
 		}
-		
-		
-
-	#more2 {
-		display: none;
-	}
-
 img {
 	width: 100%;  
 	/* fill up div.image */
@@ -297,6 +285,7 @@ footer {
 
 		div.w1 {
 			padding: 0;
+			
 		}
 
 			p.s1 {
@@ -308,6 +297,9 @@ footer {
 				font-size: 4.2vw;
 			}
 
+			#less1 {
+				display: initial;
+			}
 		div.img1 {
 			width: 20%;
 			vertical-align: bottom;
@@ -339,7 +331,7 @@ footer {
 		}
 
 		div.img2 {
-			width: 40%;
+			width: 50%;
 			margin: 4% 0 2% 2%;
 			float: right;
 			display: block;
@@ -364,7 +356,7 @@ footer {
 	}
 
 	div.w3 {
-		/* display: inline-block; */
+		display: inline-block;
 	}
 
 		.p2 {
@@ -372,10 +364,18 @@ footer {
 			/*border: 2px red solid;*/
 		}
 
+		p.s3 {
+			font-weight: 200;
+			font-size: 12pt;
+		}
+
 /*footer*/
-footer {
+
+.bigfoot {
+	display: flex;
 	flex-direction: row;
 	padding: 5% 10%;
+	font-size: 2vw;
 }
 
 
@@ -390,6 +390,7 @@ footer {
 	}
 
 	footer p {
+		
 		margin-bottom: 1%;
 	}
 
