@@ -107,7 +107,8 @@ main {
 
 			p.s3 {
 				font-family: montserrat, sans-serif;
-				font-size: 14pt;
+				/*font-size: 14pt; */
+				font-size: 4.8vw;
 				line-height: 1.5;
 				font-weight: 200;
 			}
@@ -137,6 +138,7 @@ main {
 				margin-bottom: 3%;
 				border-bottom: 1px black solid;
 				color: rgb(201,82,61);
+				font-size: 4.5vw;
 			}
 
 				.two .bold {
@@ -189,6 +191,10 @@ div.three {
 /*		margin-right: 10%;
 		padding-top: 1%;
 		padding-left: 1%*/;
+	}
+
+	#i1 {
+		display: none;
 	}
 
 		.p2 {
@@ -319,6 +325,7 @@ footer {
 				padding-top: 4%;
 				padding-bottom: 2%;
 				margin-bottom: 2%;
+				font-size: 2.5vw;
 			}
 
 				.two .bold {
@@ -366,8 +373,17 @@ footer {
 
 		p.s3 {
 			font-weight: 200;
-			font-size: 12pt;
+			/*font-size: 12pt;*/
+			font-size: 3vw;
 		}
+
+	#i1 {
+		display: none;
+	}
+
+	#i2 {
+		display: inline-block;
+	}
 
 /*footer*/
 
@@ -404,15 +420,13 @@ footer {
 
 #btn3 {
 	display: inline-block;
+	font-size: 3vw;
 }
 
 
 }
 
 @media (min-width: 780px) {
-	body {
-		background: pink;
-	}
 
 	header{
 		flex-direction: row;
@@ -421,10 +435,12 @@ footer {
 
 	.w0 {
 		margin-left: 10%;
+		font-size: 2vw;
 	}
 
 	nav {
 		margin-right: 10%;
+		font-size: 2.2vw;
 	}
 
 	.t2 .bold {
@@ -462,7 +478,7 @@ footer {
 			}
 
 		div.img2 {
-			margin-right: 10%;
+			margin-right: 0;
 			margin-left: 1%
 		}
 
@@ -472,32 +488,63 @@ footer {
 		/*overflow: auto;*/
 		margin-bottom: 2%;
 	}
+		.few {
+			margin-bottom: 2%;
+			order: 2;
+		}
+
+		p.p2 {
+			order: 3;
+		}
+
+		p.s3 {
+			font-size: 1.5vw;
+		}
 
 		div.img3 {
 			float: left;
 			flex-grow: 1;
 			/*border: 2px red solid;*/
-			margin-left: 10%;
+			margin-left: 0;
+			order: 1;
 		}
 
+		#i1 {
+			display: inline-block;
+		}
+
+		#i2 {
+			display: none;
+		}
+
+
 		div.w3 {
-			display: flex;
 			flex-direction: column;
 			flex-grow: 1;
-			width: 45%;
 			/*border: 2px red solid;*/
 			margin-right: 10%;
 			padding-top: 1%;
-			padding-left: 1%;
+			/*padding-left: 1%;*/
 		}
+
+	#btn3 {
+		margin-top: 2%;
+		font-size: 2vw;
+	}
 
 	footer {
 		flex-direction: row;
 	}
 
-	#f2 {
-		margin-left: 20%;
+	.foot {
+		font-size: 2vw;
 	}
+
+	.foot .bold {
+
+	}
+
+
 }
 
 

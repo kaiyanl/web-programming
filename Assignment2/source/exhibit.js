@@ -14,24 +14,41 @@ function disappear(less, btn) {
 	}
 }
 
-function disappear2(less, btn) {
+function disappear2(less, img2, btn) {
 
 	let dive = document.getElementsByClassName(less);
-
+	// let imag1 = document.getElementById(img1);
+	let imag2 = document.getElementById(img2);
 	let mybtn = document.getElementById(btn);
+	let x=window.matchMedia("(min-width: 780px)");
 
 	if (dive[0].classList.contains("lessContent")){
 		dive[0].classList.remove("lessContent");
 		dive[0].classList.add("moreBlockContent");
+		// imag1.classList.remove("lessContent");
+		// imag1.classList.add("moreBlockContent");
+		if (x.matches){
+			imag2.classList.remove("moreBlockContent");
+			imag2.classList.add("lessContent");
+		}
+		dive[0].childNodes[1].classList.remove("lessContent");
 		dive[0].childNodes[1].classList.add("moreInlineBlockContent");
 		mybtn.innerHTML = "Read less ->";
 	} else {
 		dive[0].classList.remove("moreBlockContent");
 		dive[0].classList.add("lessContent");
-		dive[0].childNodes[1].classList.remove("moreInlineBlockContent");
+		// imag1.classList.remove("moreBlockContent");
+		// imag1.classList.add("lessContent");
+		if(x.matches){
+			imag2.classList.remove("lessContent");
+			imag2.classList.add("moreBlockContent");
+		}
+		dive[0].childNodes[1].classList.remove("moreInlineBlockContent");		
 		dive[0].childNodes[1].classList.add("lessContent");
 		mybtn.innerHTML = "Read more ->";
 	}
+
+	
 }
 
 function disappear3(less, img, ft, div, btn, btn2) {
