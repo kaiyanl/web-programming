@@ -1,25 +1,26 @@
 
-function disappear(less, btn) {
+// function disappear(less, btn, ft) {
 
-	let words = document.getElementById(less);
-	let mybtn = document.getElementById(btn);
+// 	let words = document.getElementById(less);
+// 	let mybtn = document.getElementById(btn);
 
 
-	if (words.style.display==="none"){
-		words.style.display = "inline";
-		mybtn.innerHTML = "Read less ->";
-	} else {
-		words.style.display = "none";
-		mybtn.innerHTML = "Read more ->";
-	}
-}
+// 	if (words.style.display==="none"){
+// 		words.style.display = "inline";
+// 		mybtn.innerHTML = "Read less ->";
+// 	} else {
+// 		words.style.display = "none";
+// 		mybtn.innerHTML = "Read more ->";
+// 	}
+// }
 
-function disappear2(less, img2, btn) {
+function disappear2(less, img2, ft, btn) {
 
 	let dive = document.getElementsByClassName(less);
 	// let imag1 = document.getElementById(img1);
 	let imag2 = document.getElementById(img2);
 	let mybtn = document.getElementById(btn);
+	let ftr = document.getElementsByClassName(ft);
 	let x=window.matchMedia("(min-width: 780px)");
 
 	if (dive[0].classList.contains("lessContent")){
@@ -30,6 +31,8 @@ function disappear2(less, img2, btn) {
 		if (x.matches){
 			imag2.classList.remove("moreBlockContent");
 			imag2.classList.add("lessContent");
+			// ftr[0].classList.remove("lessContent");
+			// ftr[0].classList.add("moreFlexContent");
 		}
 		dive[0].childNodes[1].classList.remove("lessContent");
 		dive[0].childNodes[1].classList.add("moreInlineBlockContent");
@@ -42,6 +45,8 @@ function disappear2(less, img2, btn) {
 		if(x.matches){
 			imag2.classList.remove("lessContent");
 			imag2.classList.add("moreBlockContent");
+			// ftr[0].classList.remove("moreFlexContent");
+			// ftr[0].classList.add("lessContent");
 		}
 		dive[0].childNodes[1].classList.remove("moreInlineBlockContent");		
 		dive[0].childNodes[1].classList.add("lessContent");
@@ -66,7 +71,7 @@ function disappear3(less, img, ft, div, btn, btn2) {
 		imag[0].classList.remove("lessContent");
 		imag[0].classList.add("moreBlockContent");
 		ftr[0].classList.remove("lessContent");
-		ftr[0].classList.add("moreBlockContent");
+		ftr[0].classList.add("moreFlexContent");
 		dive[0].classList.remove("lessContent");
 		dive[0].classList.add("moreBlockContent");
 		// ftr[1].classList.remove("lessContent");
@@ -79,7 +84,7 @@ function disappear3(less, img, ft, div, btn, btn2) {
 		a.classList.add("lessContent");
 		imag[0].classList.remove("moreBlockContent");
 		imag[0].classList.add("lessContent");
-		ftr[0].classList.remove("moreBlockContent");
+		ftr[0].classList.remove("moreFlexContent");
 		ftr[0].classList.add("lessContent");
 		dive[0].classList.remove("moreBlockContent");
 		dive[0].classList.add("lessContent");

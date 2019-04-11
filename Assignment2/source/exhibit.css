@@ -64,9 +64,9 @@ header {
 
 /* flex item contained in body */
 main {
-/*	flex-grow: 1; 
+	flex-grow: 1; 
 	flex-shrink: 0;
-	flex-basis: auto;*/
+	flex-basis: auto;
 	/* always be large enough to contain contents, and grow if there is extra space in the body */
 	}
 
@@ -110,7 +110,7 @@ main {
 			p.s3 {
 				font-family: montserrat, sans-serif;
 				/*font-size: 14pt; */
-				font-size: 4.8vw;
+				font-size: normal;
 				line-height: 1.5;
 				font-weight: 200;
 			}
@@ -140,7 +140,7 @@ main {
 				margin-bottom: 3%;
 				border-bottom: 1px black solid;
 				color: rgb(201,82,61);
-				font-size: 4.5vw;
+				font-size: 4.8vw;
 			}
 
 				.two .bold {
@@ -159,7 +159,7 @@ main {
 			padding-bottom: 4%;
 			cursor: pointer;
 			margin-top: 4%;
-			font-size: 4vw;
+			font-size: 1.2em;
 
 		}
 
@@ -216,6 +216,10 @@ footer {
 	background: rgb(249,172,120);
 	color: rgb(201,82,61);
 	padding: 5% 10%;
+
+	flex-grow: 1; 
+	flex-shrink: 0;
+	flex-basis: auto;
 }
 
 	footer .bold {
@@ -230,6 +234,7 @@ footer {
 		margin-bottom: 1%;
 		line-height: 1.5;
 	}
+
 #btn3 {
 	display: none;
 	margin: 0 10% 5% 10%;
@@ -265,7 +270,7 @@ footer {
 
 
 /* media query switches to tablet view in wide window */
-@media (min-width: 480px) {
+@media screen and (min-width: 480px) {
 /*	body {
 		background: grey;
 	}*/
@@ -327,7 +332,7 @@ footer {
 				padding-top: 4%;
 				padding-bottom: 2%;
 				margin-bottom: 2%;
-				font-size: 2.5vw;
+				font-size: 2.4vw;
 			}
 
 				.two .bold {
@@ -376,7 +381,7 @@ footer {
 		p.s3 {
 			font-weight: 200;
 			/*font-size: 12pt;*/
-			font-size: 3vw;
+			font-size: normal;
 		}
 
 	#i1 {
@@ -389,12 +394,7 @@ footer {
 
 /*footer*/
 
-.bigfoot {
-	display: flex;
-	flex-direction: row;
-	padding: 5% 10%;
-	font-size: 2vw;
-}
+
 
 
 	#f2 {
@@ -412,23 +412,34 @@ footer {
 		margin-bottom: 1%;
 	}
 
-#btn1 {
-	display: none;
-}
-
-#btn2 {
-	display: none;
-}
 
 #btn3 {
 	display: inline-block;
-	font-size: 3vw;
+	margin: 1% 10% 0 10%;
+	/*font-size: normal;*/
 }
 
+}
+
+@media screen and (min-width: 480px) and (max-width: 780px) {
+	.bigfoot {
+		display: flex;
+		flex-direction: row;
+		padding: 5% 10%;
+		font-size: 2vw;
+	}
+
+	#btn1 {
+		display: none;
+	}
+
+	#btn2 {
+		display: none;
+	}
 
 }
 
-@media (min-width: 780px) {
+@media screen and (min-width: 780px) {
 
 	header{
 		flex-direction: row;
@@ -500,7 +511,7 @@ footer {
 		}
 
 		p.s3 {
-			font-size: 1.5vw;
+			/*font-size: 1.5vw;*/
 		}
 
 		div.img3 {
@@ -529,9 +540,20 @@ footer {
 			/*padding-left: 1%;*/
 		}
 
+	#btn1 {
+		margin-top: 1.5%;
+		/*font-size: 1.5vw;*/
+	}
+
+	#btn2 {
+		margin-top: 1.5%;
+		/*font-size: 1.5vw;*/
+	}
+
 	#btn3 {
-		margin-top: 2%;
-		font-size: 2vw;
+		/*margin-top: 2%;*/
+		/*font-size: 2vw;*/
+		display: none;
 	}
 
 	footer {
@@ -545,6 +567,10 @@ footer {
 	.foot .bold {
 
 	}
+
+/*	.bigfoot {
+		display: none;
+	}*/
 
 
 }
