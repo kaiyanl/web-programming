@@ -45,6 +45,8 @@ header {
 	}
 
 	nav {
+		display: flex;
+		justify-content: space-around;
 		font-size: 5vw;
 		/*font-stretch: expanded;*/
 		/*border: 2px blue solid; */
