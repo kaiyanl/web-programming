@@ -16,40 +16,83 @@ function disappear(less, btn) {
 
 function disappear2(less, btn) {
 
-	let words = document.getElementsByClassName(less);
+	let dive = document.getElementsByClassName(less);
 
 	let mybtn = document.getElementById(btn);
 
-	if (words[0].style.display==="none"){
-		words[0].style.display = "block";
+	if (dive[0].classList.contains("lessContent")){
+		dive[0].classList.remove("lessContent");
+		dive[0].classList.add("moreBlockContent");
+		dive[0].w3.classList.add("moreInlineBlockContent");
 		mybtn.innerHTML = "Read less ->";
 	} else {
-		words[0].style.display = "none";
+		dive[0].classList.remove("moreBlockContent");
+		dive[0].classList.add("lessContent");
+		dive[0].w3.classList.add("lessContent");
 		mybtn.innerHTML = "Read more ->";
 	}
 }
 
-
-function dissapear3(less, img, btn) {
+function disappear3(less, img, ft, div, btn, btn2) {
 	
-	let words = document.getElementByID(less);
-	let img = document.getElementsByClassName(img);
+	let a = document.getElementById(less);
+	let imag = document.getElementsByClassName(img);
 	let mybtn = document.getElementById(btn);
+	let mybtn2 = document.getElementById(btn2);
+	let ftr = document.getElementsByClassName(ft);
+	let dive = document.getElementsByClassName(div);
 	
-	if (words.classList === "lessContent"){
-		words.classList.remove("lessContent");
-		words.classList.add("moreInitialContent");
-		img.classList.remove("lessContent");
-		img.classList.add("moreInitialContent");
+	if (a.classList.contains("lessContent")){
+		a.classList.remove("lessContent");
+		a.classList.add("moreInlineContent");
+		imag[0].classList.remove("lessContent");
+		imag[0].classList.add("moreBlockContent");
+		ftr[0].classList.remove("lessContent");
+		ftr[0].classList.add("moreBlockContent");
+		dive[0].classList.remove("lessContent");
+		dive[0].classList.add("moreBlockContent");
+		// ftr[1].classList.remove("lessContent");
+		// ftr[1].classList.add("moreBlockContent");
 		mybtn.innerHTML = "Read less ->";
+		mybtn2.innerHTML = "Read less ->";
+		mybtn.classList.add("lessContent");
     } else {
-		words.classList.remove("moreInitialContent");
-		words.classList.add("lessContent");
-		img.classList.remove("moreInitialContent");
-		img.classList.add("lessContent");
+		a.classList.remove("moreInlineContent");
+		a.classList.add("lessContent");
+		imag[0].classList.remove("moreBlockContent");
+		imag[0].classList.add("lessContent");
+		ftr[0].classList.remove("moreBlockContent");
+		ftr[0].classList.add("lessContent");
+		dive[0].classList.remove("moreBlockContent");
+		dive[0].classList.add("lessContent");
+		// ftr[1].classList.remove("moreBlockContent");
+		// ftr[1].classList.add("lessContent");
 		mybtn.innerHTML = "Read more ->";
+		mybtn2.innerHTML = "Read more ->";
+		mybtn.classList.remove("lessContent");
 	}
 }
+
+// function disappear3(less, img, btn) {
+	
+// 	let words = document.getElementById(less);
+// 	let imag = document.getElementsByClassName(img);
+// 	let mybtn = document.getElementById(btn);
+	
+// 	if (words.classList === "lessContent"){
+// 		words.classList.remove("lessContent");
+// 		words.classList.add("moreInlineContent");
+// 		imag[0].classList.remove("lessContent");
+// 		imag[0].classList.add("moreBlockContent");
+// 		mybtn.innerHTML = "Read more ->";
+//     } else {
+// 		words.classList.remove("moreInlineContent");
+// 		words.classList.add("lessContent");
+// 		imag[0].classList.remove("moreBlockContent");
+// 		imag[0].classList.add("lessContent");
+// 		mybtn.innerHTML = "Read less ->";
+// 	}
+// }
 
 
 /*

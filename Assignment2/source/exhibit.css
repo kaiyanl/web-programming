@@ -102,6 +102,14 @@ main {
 				font-style: italic;
 				font-stretch: expanded;
 				text-align: center;
+				
+			}
+
+			p.s3 {
+				font-family: montserrat, sans-serif;
+				font-size: 14pt;
+				line-height: 1.5;
+				font-weight: 200;
 			}
 
 		div.img1 {
@@ -149,8 +157,11 @@ main {
 			text-align: left;
 			/*border: 2px blue solid;*/
 			padding-left: 0;
+			padding-bottom: 4%;
 			cursor: pointer;
 			margin-top: 4%;
+			font-size: 4vw;
+
 		}
 
 		div.img2 {
@@ -158,10 +169,11 @@ main {
 			flex-grow: 1;
 			margin: 4%;
 		}
+
 /*third module*/
 div.three {
-	display: flex;
-	flex-direction: column-reverse;
+	/* display: flex; */
+	/* flex-direction: column-reverse; */
 	margin-bottom: 2%;
 }
 
@@ -233,7 +245,7 @@ footer {
 
 .moreInitialContent {
 	display: initial;
-}
+} 
 
 .moreBlockContent {
 	display: block;
@@ -242,6 +254,18 @@ footer {
 .lessContent{
 	display: none;
 }
+
+.moreInlineContent {
+	display: inline;
+}
+
+.moreInlineBlockContent {
+	display: inline-block;
+}
+
+/* #less1{
+	display: inline;
+} */
 
 
 /* media query switches to tablet view in wide window */
@@ -318,11 +342,12 @@ footer {
 			width: 40%;
 			margin: 4% 0 2% 2%;
 			float: right;
+			display: block;
 		}
 
 /*third*/
 	div.three {
-	display: flex;
+	/* display: flex; */
 	flex-direction: column-reverse;
 	margin-bottom: 2%;
 	}
@@ -339,7 +364,7 @@ footer {
 	}
 
 	div.w3 {
-		display: inline;
+		/* display: inline-block; */
 	}
 
 		.p2 {
