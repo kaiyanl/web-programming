@@ -37,7 +37,6 @@ header {
 		/*font-stretch: expanded;*/
 		/*border: 2px blue solid; */
 		padding: 5% 0;
-		width: 30%;
 	}
 
 	nav a {
@@ -111,6 +110,7 @@ main {
 	div.two {
 		display: flex;
 		flex-direction: column;
+		margin-top: 3%;
 	}
 
 		div.w2 {
@@ -277,6 +277,7 @@ footer {
 		nav {
 			margin-right: 2%;
 			font-size: 3vw;
+			width: 36%;
 		}
 
 	div.one {
@@ -333,7 +334,7 @@ footer {
 
 		div.img2 {
 			width: 50%;
-			margin: 4% 0 2% 2%;
+			margin: 2% 0 2% 5%;
 			float: right;
 			display: block;
 		}
@@ -439,8 +440,11 @@ footer {
 	}
 
 	nav {
-		margin-right: 10%;
+		margin-right: 8%;
 		font-size: 2.2vw;
+		width: 30%;
+		align-items: right;
+
 	}
 
 	.t2 .bold {
@@ -454,7 +458,7 @@ footer {
 
 		div.w1 {
 			flex-direction: column;
-			width: 70%;
+			/*width: 70%;*/
 			margin-right: 10%;
 		}
 
@@ -464,7 +468,7 @@ footer {
 
 	div.two {
 		flex-direction: row;
-		margin-top: 2%;
+		/*margin-top: 2%;*/
 	}
 
 		div.w2 {
@@ -477,10 +481,10 @@ footer {
 				border-bottom: 1px black solid;
 			}
 
-		div.img2 {
+/*		div.img2 {
 			margin-right: 0;
-			margin-left: 1%
-		}
+			margin-left: 5%;
+		}*/
 
 	div.three {
 		flex-direction: row;
