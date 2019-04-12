@@ -1,17 +1,5 @@
-/* Flexbox CSS for exotic poultry page */
-/* sticky footer using flex-grow on items */
-/* bird layout using justify-content on container */
-
 
 body {
-    /*background-color: gray;*/
-	/*  Choose a font stack. A browser uses the first 
-	    font in the stack that it has.  */
-     /*font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;*/
-     /*min-height: 100vh;  */
-     /* needed to make sure body fills up window */
-
-	/* the whole body is a flexbox container */
 	display: flex;
 	flex-direction: column;  /* stack items inside vertically */ 
 	font-family: montserrat, sans-serif; 
@@ -19,8 +7,6 @@ body {
 	font-style: normal;
 }
 
-/* flex item contained in body */
-/* not a flexbox container */
 header {
 	/*background-color: paleturquoise;*/
 	display: flex;
@@ -110,7 +96,7 @@ main {
 			p.s3 {
 				font-family: montserrat, sans-serif;
 				/*font-size: 14pt; */
-				font-size: normal;
+				font-size: 1em;
 				line-height: 1.5;
 				font-weight: 200;
 			}
@@ -222,8 +208,13 @@ footer {
 	flex-basis: auto;
 }
 
+	.foot {
+		display: flex;
+		flex-direction: column;
+	}
 	footer .bold {
 		font-weight: bold;
+		margin-bottom: 20px;
 	}
 
 	#f2 {
@@ -231,7 +222,7 @@ footer {
 	}
 
 	footer p {
-		margin-bottom: 1%;
+		/*margin-bottom: 1%;*/
 		line-height: 1.5;
 	}
 
@@ -263,11 +254,6 @@ footer {
 .moreInlineBlockContent {
 	display: inline-block;
 }
-
-/* #less1{
-	display: inline;
-} */
-
 
 /* media query switches to tablet view in wide window */
 @media screen and (min-width: 480px) {
@@ -381,7 +367,7 @@ footer {
 		p.s3 {
 			font-weight: 200;
 			/*font-size: 12pt;*/
-			font-size: normal;
+			font-size: 1em;
 		}
 
 	#i1 {
@@ -402,16 +388,16 @@ footer {
 		margin-left: 4%;
 	}
 
-	footer .bold {
+/*	footer .bold {
 		font-weight: bold;
 		margin-bottom: 8%;
-	}
+	}*/
 
-	footer p {
+/*	footer p {
 		
 		margin-bottom: 1%;
 	}
-
+*/
 
 #btn3 {
 	display: inline-block;
@@ -462,7 +448,7 @@ footer {
 
 	p.bold {
 		font-weight: bold;
-		margin-bottom: 10%;
+		margin-bottom: 20px;
 	}
 
 		div.w1 {
@@ -564,9 +550,6 @@ footer {
 		font-size: 2vw;
 	}
 
-	.foot .bold {
-
-	}
 
 /*	.bigfoot {
 		display: none;
