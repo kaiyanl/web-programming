@@ -1,0 +1,147 @@
+body {
+    background: linear-gradient(to bottom, rgb(73,138,220), rgb(98,59,156));
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column
+}
+.upDiv {
+    display: flex;
+    flex-direction: column;
+    padding: 15% 10%;
+    flex: 1 0 auto;
+}
+
+.localDiv {
+    display: flex;
+    flex-direction: column;
+/*    flex: 1 0 auto;*/
+    justify-content:flex-end;
+    margin-bottom: 20pt;
+    font-size: 10vw;
+    font-family: 'IBM Plex Sans',sans-serif;
+    font-weight: 500;
+    color: white;
+}
+
+.northDiv {
+    display: flex;
+/*    flex: 1 0 auto;*/
+/*    align-items: center;*/
+    justify-content: center;
+    font-size: 4.2vw;
+    font-family: 'IBM Plex Sans',sans-serif;
+    font-weight: 500;
+/*    color: white;*/
+    margin-bottom: 40pt;
+}
+
+.forecastDiv {
+    display: flex;
+/*    flex: 1 0 auto;*/
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 40pt;
+}
+
+.forecastDiv #text {
+    text-align: left;
+    font-family: 'IBM Plex Sans',sans-serif;
+    font-weight: 500;
+    font-size: 2em;
+    color: white;
+    margin-bottom: 20pt
+    
+}
+
+    .imgDiv{
+/*        display: flex;*/
+/*        flex: 1 0 auto;*/
+        justify-content: center;
+        margin-bottom: 40pt;
+    }
+
+
+#submitDiv {
+    display: flex;
+    flex-direction: row;
+    font-family: 'IBM Plex Sans',sans-serif;
+    font-weight: 500;
+    font-size: 2em;
+    color: white;
+    height: 1.2em;
+}
+
+#city {
+    flex: 1 0 auto;
+    font-family: IBM Plex Sans;
+    font-weight: 200;
+    color: white;
+    font-size: x-large;
+    width: 60%
+}
+
+#btn {
+    flex: 0.5 0 auto;
+
+    background: rgb(73,138,220);
+    font-family: 'IBM Plex Sans',sans-serif;
+    font-weight: 500;
+    color: white;
+    font-size: 0.6em;
+}
+
+.currentDiv {
+    display: flex;
+    flex-direction: row;
+    align-items:flex-start;
+    justify-content: center;
+    flex: 1 0 auto;
+    font-family: 'Saira Extra Condensed',san-serif;
+    font-weight: 300;
+    color: white;
+}
+
+.currentDiv #text {
+    display: flex;
+    flex-direction: column;
+    border-right: 2px solid black;
+    font-size: 2.5em;
+    padding-right: 10pt;
+}
+
+@media only screen and (min-width: 500px) {
+  body {
+    background-color: lightblue;
+  }
+}
+
+
+
+
+
+
+
+
+img {
+    width: 80%; 
+}
+
+
+
+
+
+#temp {
+    font-size: 6em;
+    padding-left: 10pt; 
+}
+
+
+
+#current {
+    margin-bottom: 8pt;
+}
+
+footer {
+    flex: 1 0 auto;
+}
