@@ -10,6 +10,7 @@ body {
     flex-direction: column;
     padding: 15% 10%;
     flex: 1 0 auto;
+    z-index: 1;
 }
 
 .localDiv {
@@ -127,7 +128,12 @@ img {
     width: 80%; 
 }
 
-
+.downDiv {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    z-index: 2;
+}
 
 
 
@@ -144,4 +150,25 @@ img {
 
 footer {
     flex: 1 0 auto;
+}
+
+#movingHourDivs {
+    justify-content: center;
+    background-color: white;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+    animation-name: slideUp;
+    z-index: 2;
+}
+
+@keyframes slideUp {
+    from{
+        position: absolute;
+        top: 100vh;
+    }
+    
+    to {
+        position: absolute;
+        top: 0vh;
+    }
 }
