@@ -141,20 +141,21 @@ img {
 }
 
 .iconDiv {
-    position: absolute;
-    bottom: 0;
     width: 100%;
     margin: 0 auto;
 }
 
 .movingDivs {
     position: absolute;
-    background-color: white;
+    background-color: skyblue;
     animation-duration: 2s;
     animation-fill-mode: forwards;
     animation-name: none;
     z-index: 2;   
 /*    bottom: 0;*/
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
         
@@ -192,4 +193,50 @@ img {
   body {
     background-color: lightblue;
   }
+}
+
+#btn2 {
+        color: white;
+    font-size: 8em;
+}
+
+.rowDiv {
+    display: flex;
+    flex-direction: row;
+    border-bottom: grey solid 1px;
+    padding: 0.8em 0;
+    flex: 1 0 auto;
+}
+
+
+.elemDiv {
+    flex: 1 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tempDown {
+    font-size: 18vw;
+    font-family:'Saira Extra Condensed',san-serif;
+    font-weight: 500;
+}
+
+
+
+#imgDown {
+    width: 100%;
+    height: 80%
+}
+
+.imgDownClass {
+    width: 30%
+}
+
+
+
+.timeClass {
+    font-family:'Saira Extra Condensed',san-serif;
+    font-weight: 300;
+    font-size: 4vw
 }

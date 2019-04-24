@@ -1,4 +1,4 @@
-"strict mode"
+"strict mode";
 
 function moveUp(movingDivs, btn) {
 
@@ -9,8 +9,8 @@ function moveUp(movingDivs, btn) {
     
     if(dive[0].classList.contains(movingDivs)) {
         dive[0].style.animationName = "slideUp";
-        mybtn.removeAttribute("onclick");
-        mybtn.setAttribute("onclick", "moveDown('movingDivs', 'btn1')");
+//        mybtn.removeAttribute("onclick");
+//        mybtn.setAttribute("onclick", "moveDown('movingDivs', 'btn1')");
     }
     
     if (dive[0].classList.contains("lessContent")){
@@ -27,14 +27,14 @@ function moveDown(movingDivs, btn) {
     
     if(dive[0].classList.contains(movingDivs)) {
         dive[0].style.animationName = "slideDown";
-        mybtn.removeAttribute("onclick");
-        mybtn.setAttribute("onclick", "moveUp('movingDivs', 'btn1')");
+//        mybtn.removeAttribute("onclick");
+//        mybtn.setAttribute("onclick", "moveUp('movingDivs', 'btn1')");
     }
     //todo: need async 
-    if (dive[0].classList.contains("moreContent")){
-		dive[0].classList.remove("moreContent");
-        dive[0].classList.add("lessContent");
-    }
+//    if (dive[0].classList.contains("moreContent")){
+//		dive[0].classList.remove("moreContent");
+//        dive[0].classList.add("lessContent");
+//    }
 }
 
 function submit() {
