@@ -6,6 +6,7 @@
     <title>Weather App</title>
     <link rel="stylesheet" type="text/css" href="reset.css">
     <link rel="stylesheet" type="text/css" href="weather.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="http://fonts.googleapis.com/css?family=Saira+Extra+Condensed:300" rel="stylesheet">
     <!--font-family:'Saira Extra Condensed',san-serif;-->
 
@@ -14,7 +15,6 @@
 </head>
 
 <body>
-    <main>
         <div class="upDiv">
             <div class="localDiv">
                 <h1>Local Weather</h1>
@@ -40,40 +40,29 @@
                 </div>
                 <div id="temp">67&#x00B0</div>
             </div>
-            <div>
-                <button onclick="moveUp('movingDivs', 'btn1')" id="btn1">More Hours!</button>
+            <div class="iconDiv">
+                <i class="fa fa-angle-up" onclick="moveUp('movingDivs', 'btn1')" id="btn1"></i>
+<!--                <button onclick="moveUp('movingDivs', 'btn1')" id="btn1">More Hours!</button>-->
             </div>
         </div>
 
-        <div class="downDiv">
-            <div class="movingDivs">
-                <div id="text1">
-                    Testing Animation Movement!
-                </div>
-                <div id="text2">
-                    Testing for several diff
-                </div>
-                <div id="text3">
-                    <img src="../weatherDesign/assets/fewclouds-day.svg">
-                    <!-- Uncomment this to see how it fills naturally to screen size
-                    <img src="../weatherDesign/assets/fewclouds-day.svg">
-                    -->
-                </div>
+<!--        <div class="downDiv">-->
+        <div class="movingDivs lessContent">
+            <div id="text1">
+                Testing Animation Movement!
+            </div>
+            <div id="text2">
+                Testing for several diff
+            </div>
+            <div id="text3">
+                <img src="../weatherDesign/assets/fewclouds-day.svg">
+                 <p></p>Uncomment this to see how it fills naturally to screen size
+                <img src="../weatherDesign/assets/fewclouds-day.svg">              
             </div>
         </div>
-    </main>
+<!--        </div>-->
+    
     <script src="weather.js" type="text/javascript"></script>
-   
-    <script type="text/javascript">
-		function submit() {
-
-			let city = document.getElementById("city").value;
-
-			// let icon = document.getElementById("iconSVG");
-			// icon.src = "../../weather/weatherDesign/assets/fewclouds-day.svg"
-		}
-
-	</script>
 </body>
 
 </html>

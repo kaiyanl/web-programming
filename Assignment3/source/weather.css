@@ -5,12 +5,14 @@ body {
     display: flex;
     flex-direction: column
 }
+
 .upDiv {
     display: flex;
     flex-direction: column;
-    padding: 15% 10%;
+    margin: 15% 10% 0 10%;
     flex: 1 0 auto;
     z-index: 1;
+    position: relative;
 }
 
 .localDiv {
@@ -19,7 +21,7 @@ body {
 /*    flex: 1 0 auto;*/
     justify-content:flex-end;
     margin-bottom: 20pt;
-    font-size: 10vw;
+    font-size: 9vw;
     font-family: 'IBM Plex Sans',sans-serif;
     font-weight: 500;
     color: white;
@@ -111,19 +113,6 @@ body {
     padding-right: 10pt;
 }
 
-@media only screen and (min-width: 500px) {
-  body {
-    background-color: lightblue;
-  }
-}
-
-
-
-
-
-
-
-
 img {
     width: 80%; 
 }
@@ -136,21 +125,26 @@ img {
     width: 100%;
 }
 
-
-
 #temp {
     font-size: 6em;
     padding-left: 10pt; 
 }
 
-
-
 #current {
     margin-bottom: 8pt;
 }
 
-footer {
-    flex: 1 0 auto;
+
+#btn1 {
+    color: white;
+    font-size: 8em;
+}
+
+.iconDiv {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .movingDivs {
@@ -160,19 +154,20 @@ footer {
     animation-fill-mode: forwards;
     animation-name: none;
     z-index: 2;   
+/*    bottom: 0;*/
 }
 
-
+        
 @keyframes slideUp {
     from{
         top: 100%;
     }
-    
+
     to {
         top: 0%;
     }
 }
-
+    
 @keyframes slideDown {
     from{
         top: 0%;
@@ -181,4 +176,20 @@ footer {
     to {
         top: 100%;
     }
+}
+
+
+.lessContent{
+	display: none;
+}
+
+
+.moreContent{
+	display: block;
+}
+    
+@media only screen and (min-width: 500px) {
+  body {
+    background-color: lightblue;
+  }
 }
