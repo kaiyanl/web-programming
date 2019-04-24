@@ -1,11 +1,9 @@
-"strict mode";
+"use strict";
 
 function moveUp(movingDivs, btn) {
-
+    
 	let dive = document.getElementsByClassName(movingDivs);
     let mybtn = document.getElementById(btn);
-    
-
     
     if(dive[0].classList.contains(movingDivs)) {
         dive[0].style.animationName = "slideUp";
@@ -30,11 +28,14 @@ function moveDown(movingDivs, btn) {
 //        mybtn.removeAttribute("onclick");
 //        mybtn.setAttribute("onclick", "moveUp('movingDivs', 'btn1')");
     }
+    
     //todo: need async 
-//    if (dive[0].classList.contains("moreContent")){
-//		dive[0].classList.remove("moreContent");
-//        dive[0].classList.add("lessContent");
-//    }
+    if (dive[0].classList.contains("moreContent")){
+        setTimeout(function(){
+        dive[0].classList.remove("moreContent");
+        dive[0].classList.add("lessContent");
+        },2000)
+    }
 }
 
 function submit() {
