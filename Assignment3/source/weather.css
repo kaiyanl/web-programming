@@ -133,6 +133,7 @@ img {
     flex-direction: column;
     flex: 1 0 auto;
     z-index: 2;
+    width: 100%;
 }
 
 
@@ -152,23 +153,32 @@ footer {
     flex: 1 0 auto;
 }
 
-#movingHourDivs {
-    justify-content: center;
+.movingDivs {
+    position: absolute;
     background-color: white;
-    animation-duration: 4s;
+    animation-duration: 2s;
     animation-fill-mode: forwards;
-    animation-name: slideUp;
-    z-index: 2;
+    animation-name: none;
+    z-index: 2;   
 }
+
 
 @keyframes slideUp {
     from{
-        position: absolute;
-        top: 100vh;
+        top: 100%;
     }
     
     to {
-        position: absolute;
-        top: 0vh;
+        top: 0%;
+    }
+}
+
+@keyframes slideDown {
+    from{
+        top: 0%;
+    }
+    
+    to {
+        top: 100%;
     }
 }
