@@ -255,3 +255,22 @@ input {
     background: #2e3192;
     text-decoration-color: white;
 }
+
+#map {
+    clip-path: circle(40%);
+    position: absolute;
+    z-index: 1;
+}
+
+#cities {
+    clip-path: circle(40%);
+    position: absolute;
+    z-index: 3;
+}
+
+#dopplerMaps {
+    clip-path: circle(40%);
+    position: absolute;
+    z-index: 2;
+}
+
