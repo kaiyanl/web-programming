@@ -317,11 +317,13 @@ function setAllWeather(object){
     let divImg4 = document.getElementById("img4");
     let divImg5 = document.getElementById("img5");
     let divImg6 = document.getElementById("img6");
+    let divImgTb = document.getElementById("img1tb");
     let divImg2SD = document.getElementById("img2SD");
     let divImg3SD = document.getElementById("img3SD");
     let divImg4SD = document.getElementById("img4SD");
     let divImg5SD = document.getElementById("img5SD");
     let divImg6SD = document.getElementById("img6SD");
+    
     
     divImg.src = iconToImage[object.list[0].weather[0].icon];
     divImg2.src = iconToImage[object.list[1].weather[0].icon];
@@ -329,6 +331,7 @@ function setAllWeather(object){
     divImg4.src = iconToImage[object.list[3].weather[0].icon];
     divImg5.src = iconToImage[object.list[4].weather[0].icon];
     divImg6.src = iconToImage[object.list[5].weather[0].icon];
+    divImgTb.src = iconToImage[object.list[0].weather[0].icon];
     divImg2SD.src = iconToImage[object.list[1].weather[0].icon];
     divImg3SD.src = iconToImage[object.list[2].weather[0].icon];
     divImg4SD.src = iconToImage[object.list[3].weather[0].icon];
