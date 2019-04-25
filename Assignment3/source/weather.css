@@ -1,9 +1,11 @@
 body {
     background: linear-gradient(to bottom, rgb(73,138,220), rgb(98,59,156));
     text-align: center;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column
+/*    min-height: 100vh;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+    height: 100vh;
+/*    overflow-y: auto;*/
 }
 
 ::placeholder{
@@ -14,22 +16,24 @@ body {
     display: flex;
     flex-direction: column;
 /*    margin: 15% 10% 0 10%;*/
-    flex: 1 0 auto;
+/*    flex: 1 0 auto;*/
     z-index: 1;
     position: relative;
+    height: 100%;
+    width: 100%;
 }
 
 .localDiv {
     display: flex;
     flex-direction: column;
-/*    flex: 1 0 auto;*/
+    flex: 1 0 auto;
     justify-content:flex-end;
     margin-bottom: 20pt;
     font-size: 9vw;
     font-family: 'IBM Plex Sans',sans-serif;
     font-weight: 500;
     color: white;
-    margin: 15% 10% 0 10%;
+    margin: 20% 10% 5% 10%;
 }
 
 .northDiv {
@@ -48,10 +52,10 @@ body {
 
 .forecastDiv {
     display: flex;
-/*    flex: 1 0 auto;*/
+    flex: 1 0 auto;
     flex-direction: column;
     justify-content: center;
-    margin: 0 10% 40pt 10%;
+    margin: 0 10%;
 /*    margin-bottom: 40pt;*/
 }
 
@@ -67,9 +71,10 @@ body {
 
     .imgDiv{
 /*        display: flex;*/
-/*        flex: 1 0 auto;*/
+        flex: 1 0 auto;
         justify-content: center;
-        margin: 0 10% 40pt 10%;
+        margin: 10% 20% 10% 20%;
+        height: 10em;
 /*        margin-bottom: 40pt;*/
     }
 
@@ -94,15 +99,18 @@ body {
     font-size: x-large;
     width: 60%;
     padding-left: 5%;
+    border:none
 }
 
 #btn {
-    flex: 0.5 0 auto;
+    flex: 1 0 auto;
     background: #8f85c5;
     font-family: 'IBM Plex Sans',sans-serif;
     font-weight: 500;
     color: white;
     font-size: 0.6em;
+    border: none;
+    width: 40%;
 }
 
 .currentDiv {
@@ -126,7 +134,8 @@ body {
 }
 
 img {
-    width: 80%; 
+/*    max-width: 100%; */
+    max-height: 100%;
 }
 
 .downDiv {
@@ -150,26 +159,28 @@ img {
 #btn1 {
     color: white;
     font-size: 8em;
+/*    vertical-align: bottom;*/
 }
 
 .iconDiv {
-    flex: 1 0 auto;
     width: 100%;
+    flex: 1 0 auto;
 /*    margin: 0 10%;*/
 }
 
 .movingDivs {
     position: absolute;
-    background-color: skyblue;
+    background-color: white;
     animation-duration: 2s;
     animation-fill-mode: forwards;
     animation-name: none;
     z-index: 2;   
 /*    top: 100%;*/
-    flex: 1 0 auto;
     display: flex;
+/*    flex: 1 0 auto;*/
     flex-direction: column;
     width: 100%;
+    min-height: 100vh;
 }
 
         
@@ -200,24 +211,18 @@ img {
 
 
 .moreContent{
-	display: block;
-}
-    
-@media only screen and (min-width: 500px) {
-  body {
-    background-color: lightblue;
-  }
+	display: flex;
 }
 
 #btn2 {
-        color: white;
+    color: rgb(98,59,156);
     font-size: 8em;
 }
 
 .rowDiv {
     display: flex;
     flex-direction: row;
-    border-bottom: grey solid 1px;
+    border-bottom: #D3D3D3 solid 2px;
     padding: 0.8em 0;
     flex: 1 0 auto;
 }
@@ -239,12 +244,12 @@ img {
 
 
 .imgDown {
-    width: 100%;
-    height: 80%
+    max-width: 100%;
+    max-height: 80%;
 }
 
 .imgDownClass {
-    width: 30%
+    width: 4em;
 }
 
 
@@ -252,7 +257,7 @@ img {
 .timeClass {
     font-family:'Saira Extra Condensed',san-serif;
     font-weight: 300;
-    font-size: 4vw
+    font-size: 5vw
 }
 
 input {
@@ -278,3 +283,242 @@ input {
     z-index: 2;
 }
 
+
+#lastRowDiv {
+    border-bottom: none
+}
+
+.dopplerDiv {
+    display: none;
+}
+
+.localDiv2 {
+    display: none;
+}
+
+.tableCurentDiv{
+    display: none;
+    
+}
+@media only screen and (min-width: 780px) {
+    
+    body {
+        height: 100vh;
+    }
+    
+    .dopplerDiv {
+        display: initial;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    
+    .tabletUpDiv{
+        display: flex;
+        flex-direction: row;
+        flex: 1 0 auto;
+        position: relative;
+/*        width: 100vh;*/
+    }
+    
+    .leftDiv {
+        display: flex;
+        flex-direction: column;
+/*        height: 100vh;*/
+        padding: 3% 0 0 8%;
+/*        height: 100%;*/
+/*        width: 60%;*/
+        position: relative;
+    }
+    
+    .localDiv {
+        display: none;
+    }
+    
+    .localDiv2 {
+        display: initial;
+        font-family:'IBM Plex Sans',sans-serif;
+        font-weight: 500;
+        color: white;
+        flex-direction: row;
+        font-size: 3.5vw;
+/*        margin-bottom: 2%;*/
+        flex:1 0 auto;
+        text-align: left;
+    }
+    
+    .northDiv {
+        margin: 2% 0 6% 0;
+        font-size: 2.2vw;
+        text-align: left;
+        display: initial;
+        flex:1 0 auto;
+    }
+    
+    .forecastDiv {
+        margin: 0;
+        flex-direction: row;
+        flex: initial;
+        justify-content: flex-start;
+        flex:1 0 auto;
+    }
+    
+    .forecastDiv #text {
+        font-size: 1.5vw;
+    }
+    
+    #submitDiv {
+        font-size: 1.5vw;
+    }
+    
+    #city {
+/*        font-size: initial;*/
+        width: 100%;
+        margin: 0 10%
+    }
+    
+
+    
+    .iconDiv {
+        display: none;
+    }
+    
+    .movingDivs {
+        display: none;
+    }
+    
+    .staticDivs {
+        display: flex;
+        flex-direction: row;
+        flex: 1 0 auto;
+        width: 100%;
+        background: white;
+        height: 40%;
+    }
+    
+    .rowDiv {
+        flex-direction: column;
+        border-bottom: none;
+        border-left: #D3D3D3 solid 2px;
+    }
+    
+    .imgDownClass {
+        align-self: center;
+        width: 11vw
+    }
+    
+    
+    .imgDiv {
+        display: none;
+    }
+    
+/*
+    .elemDiv {
+        flex: 1 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+*/
+    .timeClass {
+        font-size: 2vw
+    }
+    .tempDown {
+      font-size: 5vw;
+        font-family:'Saira Extra Condensed',san-serif;
+        font-weight: 500;
+    }
+    
+    .currentDiv {
+        display: none;
+    }
+    
+    .tableCurentDiv{
+        display: flex;
+        flex-direction: row;
+/*        flex: 1 0 auto;*/
+        padding: 0 8%;
+        flex:1 0 auto;
+    }
+    
+    .textTb {
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 auto;
+    }
+    
+    .imgDivTb {
+        flex: 1 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .temp {
+        padding-left: 0;
+        flex: 1 0 auto;
+    }
+    
+    #map {
+        width: 25vw;
+/*        margin-top: 10%;*/
+        display: initial;
+        position: absolute;
+        right: -50%;
+        bottom: 5%;
+        top: 20%;
+    }
+    
+    #cities {
+        width: 25vw;
+/*        margin-top: 10%;*/
+        display: initial;
+        position: absolute;
+        right: -50%;
+        bottom: 5%;
+        top: 20%;
+    }
+
+    #dopplerMaps {
+        width: 25vw;
+/*        margin-top: 10%;*/
+        display: initial;
+        right: -50%;
+        bottom: 5%;
+        top: 20%;
+    }
+    
+
+}
+
+
+
+
+
+#img1tb {
+    
+    flex: 1 0 auto;
+    display: flex;
+    max-width:  50%;
+    max-height: 60%;
+    align-self: center;
+}
+
+#textTb {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Saira Extra Condensed',san-serif;
+    font-weight: 300;
+    color: white;
+    justify-content: center;
+    font-size: 2vw
+}
+
+#tempTb {
+    font-size: 5vw;
+    padding-left: 10pt; 
+    align-self: center;
+    font-family: 'Saira Extra Condensed',san-serif;
+    font-weight: 500;
+    color: white;
+    padding-left: 0;
+}

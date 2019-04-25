@@ -16,42 +16,63 @@
 
 <body>
         <div class="upDiv">
-            <div class="localDiv">
-                <h1>Local Weather</h1>
-                <h1 id="six">Six Hour Forecast</h1>
-            </div>
-            <div class="northDiv">
-                <h1>Northern California with doppler radar</h1>
-            </div>
-            <div class="forecastDiv">
-                <div id="text">Forecast for</div>
-                <div id="submitDiv">
-                    <input type="text" placeholder="Davis,CA" name="city" id="city">
-                    <button onclick="submit()" id="btn">submit</button>
+            <div class="tabletUpDiv">
+                <div class="leftDiv">
+                    <div class="localDiv">
+                        <h1>Local Weather</h1>
+                        <h1 id="six">Six Hour Forecast</h1>
+                    </div>
+                    <div class="localDiv2">
+                        <h1>Local Weather Six Hour Forecast</h1>
+                    </div>
+                    <div class="northDiv">
+                        <h1>Northern California with doppler radar</h1>
+                    </div>
+                    <div class="forecastDiv">
+                        <div id="text">Forecast for</div>
+                        <div id="submitDiv">
+                            <input type="text" placeholder="Davis,CA" name="city" id="city">
+                            <button onclick="submit()" id="btn">submit</button>
+                        </div>
+                    </div>
+                    <div class="imgDiv">
+                        <img src="../weatherDesign/assets/fewclouds-day.svg" id="img1">
+                    </div>
+                    <div class="currentDiv">
+                        <div id="text">
+                            <div id="current">current</div>
+                            <div id="currentTime">12PM</div>
+                        </div>
+                        <div id="temp">67&#x00B0</div>
+                    </div>
+    <!-- tablet -->
+                    <div class="tableCurentDiv">
+
+                            <div id="textTb">
+                                <div id="current">current</div>
+                                <div id="currentTime">12PM</div>
+                            </div>
+<!--                            <div class="imgDivTb">-->
+                            <img src="../weatherDesign/assets/fewclouds-day.svg" id="img1tb">
+<!--                            </div>-->
+                            <div id="tempTb">67&#x00B0</div>
+     
+                    </div>
+                    
+                    <div class="iconDiv">
+                        <i class="fa fa-angle-up" onclick="moveUp('movingDivs', 'btn1')" id="btn1"></i>
+                    </div>
+                    
+                                    <!--                <div class="dopplerDiv">-->
+                    <img src="http://radar.weather.gov/ridge/Overlays/Topo/Short/DAX_Topo_Short.jpg" id="map" onload="getTenImages()">
+                    <img src="http://radar.weather.gov/ridge/Overlays/Cities/Short/DAX_City_Short.gif" id="cities">
+                    <img src="https://radar.weather.gov/ridge/RadarImg/N0R/DAX_N0R_0.gif" id="dopplerMaps">
+    <!--                </div> -->
                 </div>
-            </div>
-            <div class="imgDiv">
-                <img src="../weatherDesign/assets/fewclouds-day.svg" id="img1">
-            </div>
-            <div class="currentDiv">
-                <div id="text">
-                    <div id="current">current</div>
-                    <div id="currentTime">12PM</div>
-                </div>
-                <div id="temp">67&#x00B0</div>
-            </div>
-            <div class="iconDiv">
-                <i class="fa fa-angle-up" onclick="moveUp('movingDivs', 'btn1')" id="btn1"></i>
-<!--                <button onclick="moveUp('movingDivs', 'btn1')" id="btn1">More Hours!</button>-->
-            </div>
-            <div class="dopplerDiv">
-                <img src="http://radar.weather.gov/ridge/Overlays/Topo/Short/DAX_Topo_Short.jpg" id="map" onload="getTenImages()">
-                <img src="http://radar.weather.gov/ridge/Overlays/Cities/Short/DAX_City_Short.gif" id="cities">
-                <img src="https://radar.weather.gov/ridge/RadarImg/N0R/DAX_N0R_0.gif" id="dopplerMaps">
-            </div>
-            
-            
-            
+                
+
+            </div>    
+
         <div class="movingDivs lessContent">
             <div class="iconDiv">
                 <i class="fa fa-angle-down" onclick="moveDown('movingDivs', 'btn2')" id="btn2"></i>
@@ -78,12 +99,47 @@
                     <div class="elemDiv imgDownClass"><img class="imgDown" id="img5" src="../weatherDesign/assets/fewclouds-day.svg"></div>
                     <div class="elemDiv tempDown" id="temp5">67&#x00B0</div>
             </div>
-            <div class="rowDiv">
+            <div class="rowDiv" id="lastRowDiv">
                     <div class="elemDiv timeClass" id="time6">5:00 PM</div>
                     <div class="elemDiv imgDownClass"><img class="imgDown" id="img6" src="../weatherDesign/assets/fewclouds-day.svg"></div>
                     <div class="elemDiv tempDown" id="temp6">67&#x00B0</div>
             </div>
         </div>
+            
+            
+        <div class="staticDivs">
+            <div class="iconDiv">
+                <i class="fa fa-angle-down" onclick="moveDown('movingDivs', 'btn2')" id="btn2"></i>
+<!--                <button onclick="moveUp('movingDivs', 'btn1')" id="btn1">More Hours!</button>-->
+            </div>
+            
+            <div class="rowDiv">
+                    <div class="elemDiv timeClass" id="time2">1:00 PM</div>
+                    <div class="elemDiv imgDownClass"><img class="imgDown" id="img2" src="../weatherDesign/assets/fewclouds-day.svg"></div>
+                    <div class="elemDiv tempDown" id="temp2">67&#x00B0</div>
+            </div>
+            <div class="rowDiv">
+                    <div class="elemDiv timeClass" id="time3">2:00 PM</div>
+                    <div class="elemDiv imgDownClass"><img class="imgDown" id="img3" src="../weatherDesign/assets/fewclouds-day.svg"></div>
+                    <div class="elemDiv tempDown" id="temp3">67&#x00B0</div>
+            </div>
+            <div class="rowDiv">
+                    <div class="elemDiv timeClass" id="time4">3:00 PM</div>
+                    <div class="elemDiv imgDownClass"><img class="imgDown" id="img4" src="../weatherDesign/assets/fewclouds-day.svg"></div>
+                    <div class="elemDiv tempDown" id="temp4">67&#x00B0</div>
+            </div>
+            <div class="rowDiv">
+                    <div class="elemDiv timeClass" id="time5">4:00 PM</div>
+                    <div class="elemDiv imgDownClass"><img class="imgDown" id="img5" src="../weatherDesign/assets/fewclouds-day.svg"></div>
+                    <div class="elemDiv tempDown" id="temp5">67&#x00B0</div>
+            </div>
+            <div class="rowDiv" id="lastRowDiv">
+                    <div class="elemDiv timeClass" id="time6">5:00 PM</div>
+                    <div class="elemDiv imgDownClass"><img class="imgDown" id="img6" src="../weatherDesign/assets/fewclouds-day.svg"></div>
+                    <div class="elemDiv tempDown" id="temp6">67&#x00B0</div>
+            </div>
+        </div>
+            
         </div>
 
 <!--        <div class="downDiv">-->
