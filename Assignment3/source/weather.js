@@ -111,10 +111,16 @@ function makeCORSrequest(city) {
     xhr.onload = function() {
         let responseStr = xhr.responseText;
         object = JSON.parse(responseStr);
+        let a = JSON.stringify(object, undefined, 2);
+        if(a[31] == '"'){
+            alert("City not found");
+            throw("City not found");
+        }
         console.log(JSON.stringify(object, undefined, 2));
         let miles = checkDistance(object);
         if(miles > 150){
-            throw "Not Found";
+            alert("City not found");
+            throw "City not Found";
         }
         else{
             setAllWeather(object);       
@@ -143,6 +149,12 @@ function setAllWeather(object){
     let divTemp4 = document.getElementById("temp4");
     let divTemp5 = document.getElementById("temp5");
     let divTemp6 = document.getElementById("temp6");
+    let divTempTb = document.getElementById("tempTb");
+    let divTemp2SD = document.getElementById("temp2SD");
+    let divTemp3SD = document.getElementById("temp3SD");
+    let divTemp4SD = document.getElementById("temp4SD");
+    let divTemp5SD = document.getElementById("temp5SD");
+    let divTemp6SD = document.getElementById("temp6SD");
     
     let temp1 = Math.round(object.list[0].main.temp);
     let temp2 = Math.round(object.list[1].main.temp);
@@ -157,6 +169,12 @@ function setAllWeather(object){
     divTemp4.textContent = temp4 + "\xB0";
     divTemp5.textContent = temp5 + "\xB0";
     divTemp6.textContent = temp6 + "\xB0";
+    divTempTb.textContent = temp1 + "\xB0";
+    divTemp2SD.textContent = temp2 + "\xB0";
+    divTemp3SD.textContent = temp3 + "\xB0";
+    divTemp4SD.textContent = temp4 + "\xB0";
+    divTemp5SD.textContent = temp5 + "\xB0";
+    divTemp6SD.textContent = temp6 + "\xB0";
     
 //Inititalize times
     
@@ -166,57 +184,117 @@ function setAllWeather(object){
     let divTime4 = document.getElementById("time4");
     let divTime5 = document.getElementById("time5");
     let divTime6 = document.getElementById("time6");
+    let divTime2SD = document.getElementById("time2SD");
+    let divTime3SD = document.getElementById("time3SD");
+    let divTime4SD = document.getElementById("time4SD");
+    let divTime5SD = document.getElementById("time5SD");
+    let divTime6SD = document.getElementById("time6SD");
     
     let time1 = new Date();
     
     let time1Holder = time1.getHours();
-    if(time1Holder > 24){
-        time1Holder = time1.getHours() - 24 + "AM";
+    if(time1Holder > 24) {
+        time1Holder = time1.getHours() - 24 + "AM"; //if it is higher than 24, it is the AM
     }
-    if(time1Holder > 12){
-        time1Holder = time1.getHours() - 12 + "PM";
+    if(time1Holder > 12) {
+        time1Holder = time1.getHours() - 12 + "PM"; //if higher than 12, it is PM
+    }
+    if(time1Holder == 12){
+        time1Holder = 12 + "PM"; //if mid-day
+    }
+    if(time1Holder < 12) {
+        time1Holder = time1Holder + "AM"; //if any AM hour
+    }
+    if(time1Holder == 0) {
+        time1Holder = 12 + "AM"; //if midnight, 12AM
     }
     
     ///
     let time2 = time1.getHours() + 1;
     if(time2 > 24){
-        time2 = (time1.getHours() - 23) + ':00' + "AM";
+        time2 = (time2 - 24) + ':00' + "AM";
     }
     if(time2 > 12){
-        time2 = (time1.getHours() - 11) + ':00' + "PM";
+        time2 = (time2 - 12) + ':00' + "PM";
+    }
+    if(time2 == 12){
+        time2 = 12 + "PM"; //if mid-day
+    }
+    if(time2 < 12) {
+        time2 = time2 + "AM"; //if any AM hour
+    }
+    if(time2 == 0) {
+        time2 = 12 + "AM"; //if midnight, 12AM
     }
     ///
     let time3 = time1.getHours() + 2;
     if(time3 > 24){
-        time3 = (time1.getHours() - 22) + ':00' + "AM";
+        time3 = (time3 - 24) + ':00' + "AM";
     }
     if(time3 > 12){
-        time3 = (time1.getHours() - 10) + ':00' + "PM";
+        time3 = (time3 - 12) + ':00' + "PM";
+    }
+    if(time3 == 12){
+        time3 = 12 + "PM"; //if mid-day
+    }
+    if(time3 < 12) {
+        time3 = time3 + "AM"; //if any AM hour
+    }
+    if(time3 == 0) {
+        time3 = 12 + "AM"; //if midnight, 12AM
     }
     ///
     let time4 = time1.getHours() + 3;
     if(time4 > 24){
-        time4 = (time1.getHours() - 21) + ':00' + "AM";
+        time4 = (time4 - 24) + ':00' + "AM";
     }
     if(time4 > 12){
-        time4 = (time1.getHours() - 9) + ':00' + "PM";
+        time4 = (time4 - 12) + ':00' + "PM";
+    }
+    if(time4 == 12){
+        time4 = 12 + "PM"; //if mid-day
+    }
+    if(time4 < 12) {
+        time4 = time4 + "AM"; //if any AM hour
+    }
+    if(time4 == 0) {
+        time4 = 12 + "AM"; //if midnight, 12AM
     }
     ///
     let time5 = time1.getHours() + 4;
     if(time5 > 24){
-        time5 = (time1.getHours() - 20) + ':00' + "AM";
+        time5 = (time5 - 24) + ':00' + "AM";
     }
     if(time5 > 12){
-        time5 = (time1.getHours() - 8) + ':00' + "PM";
+        time5 = (time5 - 12) + ':00' + "PM";
+    } 
+    if(time5 == 12){
+        time5 = 12 + "PM"; //if mid-day
+    }
+    if(time5 < 12) {
+        time5 = time5 + "AM"; //if any AM hour
+    }
+    if(time5 == 0) {
+        time5 = 12 + "AM"; //if midnight, 12AM
     }
     ///
     let time6 = time1.getHours() + 5;
     if(time6 > 24){
         time6 = (time1.getHours() - 19) + ':00' + "AM";
     }
-    if(time5 > 12){
-        time5 = (time1.getHours() - 7) + ':00' + "PM";
+    if(time6 > 12){
+        time6 = (time1.getHours() - 7) + ':00' + "PM";
     }
+    if(time6 == 12){
+        time6 = 12 + "PM"; //if mid-day
+    }
+    if(time6 < 12) {
+        time6 = time6 + "AM"; //if any AM hour
+    }
+    if(time6 == 0) {
+        time6 = 12 + "AM"; //if midnight, 12AM
+    } 
+    
     
     
     divTime.textContent = time1Holder;
@@ -225,6 +303,11 @@ function setAllWeather(object){
     divTime4.textContent = time4;
     divTime5.textContent = time5;
     divTime6.textContent = time6;
+    divTime2SD.textContent = time2;
+    divTime3SD.textContent = time3;
+    divTime4SD.textContent = time4;
+    divTime5SD.textContent = time5;
+    divTime6SD.textContent = time6;
     
 //Initialize images
     
@@ -234,6 +317,11 @@ function setAllWeather(object){
     let divImg4 = document.getElementById("img4");
     let divImg5 = document.getElementById("img5");
     let divImg6 = document.getElementById("img6");
+    let divImg2SD = document.getElementById("img2SD");
+    let divImg3SD = document.getElementById("img3SD");
+    let divImg4SD = document.getElementById("img4SD");
+    let divImg5SD = document.getElementById("img5SD");
+    let divImg6SD = document.getElementById("img6SD");
     
     divImg.src = iconToImage[object.list[0].weather[0].icon];
     divImg2.src = iconToImage[object.list[1].weather[0].icon];
@@ -241,7 +329,11 @@ function setAllWeather(object){
     divImg4.src = iconToImage[object.list[3].weather[0].icon];
     divImg5.src = iconToImage[object.list[4].weather[0].icon];
     divImg6.src = iconToImage[object.list[5].weather[0].icon];
-    
+    divImg2SD.src = iconToImage[object.list[1].weather[0].icon];
+    divImg3SD.src = iconToImage[object.list[2].weather[0].icon];
+    divImg4SD.src = iconToImage[object.list[3].weather[0].icon];
+    divImg5SD.src = iconToImage[object.list[4].weather[0].icon];
+    divImg6SD.src = iconToImage[object.list[5].weather[0].icon];
 }
 /*
 function getTime(ind) {
