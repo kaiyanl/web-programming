@@ -269,18 +269,26 @@ input {
     clip-path: circle(40%);
     position: absolute;
     z-index: 1;
+    display: none;
 }
 
 #cities {
     clip-path: circle(40%);
     position: absolute;
     z-index: 3;
+    display: none;
 }
 
 #dopplerMaps {
     clip-path: circle(40%);
     position: absolute;
     z-index: 2;
+    display: none;
+    visibility: hidden;
+    top: 0%;
+    
+/*    right: -10000%;*/
+    
 }
 
 
@@ -288,9 +296,6 @@ input {
     border-bottom: none
 }
 
-.dopplerDiv {
-    display: none;
-}
 
 .localDiv2 {
     display: none;
@@ -300,6 +305,185 @@ input {
     display: none;
     
 }
+
+.staticDivs {
+    display: none;
+}
+
+
+
+@media only screen and (min-width: 480px){
+    .leftDiv{
+        position: relative;
+    }
+    .localDiv {
+        display: none;
+    }
+    
+    .localDiv2 {
+        display: block;
+        font-family:'IBM Plex Sans',sans-serif;
+        font-weight: 500;
+        color: white;
+/*        flex-direction: row;*/
+        font-size: 5vw;
+/*        margin-bottom: 2%;*/
+        flex:1 0 auto;
+        margin-top: 8%;
+    }
+    
+    .northDiv {
+/*        display: flex;*/
+    /*    flex: 1 0 auto;*/
+    /*    align-items: center;*/
+        justify-content: center;
+        font-size: 4vw;
+        font-family: 'IBM Plex Sans',sans-serif;
+        font-weight: 500;
+    /*    color: white;*/
+        margin-top: 1%;
+    /*    margin-bottom: 40pt;*/
+        color: #2e3192;
+    }
+    
+    .iconDiv {
+        display: none;
+    }
+    
+    .movingDivs {
+        display: none;
+    }
+    
+    .staticDivs {
+        display: flex;
+        flex-direction: row;
+        flex: 1 0 auto;
+        width: 100%;
+        background: white;
+        height: 40%;
+    }
+    
+    .rowDiv {
+        flex-direction: column;
+        border-bottom: none;
+        border-left: #D3D3D3 solid 2px;
+    }
+    
+    .imgDownClass {
+        align-self: center;
+        width: 15vw;
+    }
+    
+    
+/*
+    .elemDiv {
+        flex: 1 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+*/
+    .timeClass {
+        font-size: 3vw;
+    }
+    .tempDown {
+      font-size: 8vw;
+        font-family:'Saira Extra Condensed',san-serif;
+        font-weight: 500;
+    }
+    
+    #map {
+        width: 40vw;
+/*        margin-top: 10%;*/
+        display: initial;
+        position: absolute;
+        right: 5%;
+/*        bottom: 40%;*/
+        top: 40%;
+    }
+    
+    #cities {
+        width: 40vw;
+/*        margin-top: 10%;*/
+        display: initial;
+        position: absolute;
+        right: 5%;
+/*        bottom: 40%;*/
+        top: 40%;
+    }
+
+    #dopplerMaps {
+        width: 40vw;
+/*        margin-top: 10%;*/
+        display: initial;
+        position: absolute;
+        right: 5%;
+/*        bottom: 40%;*/
+        top: 40%;
+        visibility: visible;
+    }
+    
+    .forecastDiv {
+/*        margin: 0;*/
+        flex-direction: row;
+        flex: initial;
+        justify-content: flex-start;
+        margin: 0 20%;
+        align-items: center;
+        flex:1 0 auto;
+    }
+    
+    .forecastDiv #text {
+        text-align: center;
+        margin-bottom: 0;
+        font-size: 2.2vw;
+        
+    }
+    
+    #submitDiv {
+        font-size: 3vw;
+
+    }
+    
+    #city {
+        font-size: initial;
+        width: 100%;
+        margin: 0 5%;
+        padding: 3% 0 3% 5%
+    }
+    
+    .imgDiv {
+        display: flex;
+        flex: 1 0 auto;
+        justify-content: flex-start;
+        margin: 5% 20% 5% 15%;
+/*        margin-bottom: 40pt;*/
+    }
+    
+    .currentDiv {
+        display: flex;
+        flex-direction: row;
+        align-items:flex-start;
+        justify-content: flex-start;
+        flex: 1 0 auto;
+        font-family: 'Saira Extra Condensed',san-serif;
+        font-weight: 300;
+        color: white;
+        margin: 0 0 5% 15%;
+    }
+    
+    .imgDown {
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+
+
+
+
+
+
+
 @media only screen and (min-width: 780px) {
     
     body {
@@ -331,9 +515,11 @@ input {
         position: relative;
     }
     
+/*
     .localDiv {
         display: none;
     }
+*/
     
     .localDiv2 {
         display: initial;
@@ -379,13 +565,17 @@ input {
     
 
     
+/*
     .iconDiv {
         display: none;
     }
+*/
     
+/*
     .movingDivs {
         display: none;
     }
+*/
     
     .staticDivs {
         display: flex;
@@ -403,7 +593,6 @@ input {
     }
     
     .imgDownClass {
-        align-self: center;
         width: 11vw
     }
     
@@ -421,12 +610,10 @@ input {
     }
 */
     .timeClass {
-        font-size: 2vw
+        font-size: 2vw;
     }
     .tempDown {
       font-size: 5vw;
-        font-family:'Saira Extra Condensed',san-serif;
-        font-weight: 500;
     }
     
     .currentDiv {
@@ -485,6 +672,7 @@ input {
         right: -50%;
         bottom: 5%;
         top: 20%;
+        visibility: visible;
     }
     
 

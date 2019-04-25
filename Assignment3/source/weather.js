@@ -255,6 +255,7 @@ function getTime(ind) {
 */
 //----------------------------------------------
 //Doppler
+let x=window.matchMedia("(min-width: 480px)");
 
 function addToArray(newImage) {
 	if (count < 10) {
@@ -264,7 +265,9 @@ function addToArray(newImage) {
 		count = count+1;
 		if (count >= 10) {
 			console.log("Got 10 doppler images");
+            if (x.matches){
 		    startAnimateDopplers();
+            }
         }
 	}
 }
