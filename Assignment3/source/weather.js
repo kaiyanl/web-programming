@@ -69,6 +69,37 @@ function submit() {
     // icon.src = "../../weather/weatherDesign/assets/fewclouds-day.svg"
 }
 
+/* Function to check distance
+
+From:
+
+https://stackoverflow.com/questions/18883601/function-to-calculate-distance-between-two-coordinates
+
+We used this to convert coordinates to miles using only the object (target city) as we can keep Sacramento's lat/lon constant.
+*/
+function checkDistance(object) {
+    let sacLat = 38.5816;
+    let sacLon = -121.4944;
+    let lat2 = object.city.coord.lat;
+    let lon2 = object.city.coord.lon; 
+    
+    var R = 6371; // Radius of the earth in km
+    var dLat = deg2rad(lat2-sacLat);  // deg2rad below
+    var dLon = deg2rad(lon2-sacLon); 
+    var a = 
+        Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.cos(deg2rad(sacLat)) * Math.cos(deg2rad(lat2)) * 
+        Math.sin(dLon/2) * Math.sin(dLon/2)
+        ; 
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+    var d = R * c; // Distance in km
+    return d * 0.621371; //Conversion to miles!
+}
+
+function deg2rad(deg) {
+    return deg * (Math.PI/180);
+}
+
 //-----------------------------------------------
 //CORS
 
@@ -81,7 +112,13 @@ function makeCORSrequest(city) {
         let responseStr = xhr.responseText;
         object = JSON.parse(responseStr);
         console.log(JSON.stringify(object, undefined, 2));
-        setAllWeather(object);
+        let miles = checkDistance(object);
+        if(miles > 150){
+            throw "Not Found";
+        }
+        else{
+            setAllWeather(object);       
+        }
     }
     xhr.onerror = function() {
         alert('Woops, there was an error making the request.');
