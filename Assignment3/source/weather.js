@@ -168,13 +168,58 @@ function setAllWeather(object){
     let divTime6 = document.getElementById("time6");
     
     let time1 = new Date();
-    let time2 = time1.getHours() + 1;
-    let time3 = time1.getHours() + 2;
-    let time4 = time1.getHours() + 3;
-    let time5 = time1.getHours() + 4;
-    let time6 = time1.getHours() + 5;
     
-    divTime.textContent = time1.getHours();
+    let time1Holder = time1.getHours();
+    if(time1Holder > 24){
+        time1Holder = time1.getHours() - 24 + "AM";
+    }
+    if(time1Holder > 12){
+        time1Holder = time1.getHours() - 12 + "PM";
+    }
+    
+    ///
+    let time2 = time1.getHours() + 1;
+    if(time2 > 24){
+        time2 = (time1.getHours() - 23) + ':00' + "AM";
+    }
+    if(time2 > 12){
+        time2 = (time1.getHours() - 11) + ':00' + "PM";
+    }
+    ///
+    let time3 = time1.getHours() + 2;
+    if(time3 > 24){
+        time3 = (time1.getHours() - 22) + ':00' + "AM";
+    }
+    if(time3 > 12){
+        time3 = (time1.getHours() - 10) + ':00' + "PM";
+    }
+    ///
+    let time4 = time1.getHours() + 3;
+    if(time4 > 24){
+        time4 = (time1.getHours() - 21) + ':00' + "AM";
+    }
+    if(time4 > 12){
+        time4 = (time1.getHours() - 9) + ':00' + "PM";
+    }
+    ///
+    let time5 = time1.getHours() + 4;
+    if(time5 > 24){
+        time5 = (time1.getHours() - 20) + ':00' + "AM";
+    }
+    if(time5 > 12){
+        time5 = (time1.getHours() - 8) + ':00' + "PM";
+    }
+    ///
+    let time6 = time1.getHours() + 5;
+    if(time6 > 24){
+        time6 = (time1.getHours() - 19) + ':00' + "AM";
+    }
+    if(time5 > 12){
+        time5 = (time1.getHours() - 7) + ':00' + "PM";
+    }
+    
+    
+    divTime.textContent = time1Holder;
     divTime2.textContent = time2;
     divTime3.textContent = time3;
     divTime4.textContent = time4;
