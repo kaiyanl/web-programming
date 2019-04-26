@@ -5,6 +5,7 @@ body {
 /*    display: flex;*/
 /*    flex-direction: column;*/
     height: 100vh;
+    display: flex;
 /*    overflow-y: auto;*/
 }
 
@@ -21,6 +22,7 @@ body {
     position: relative;
     height: 100%;
     width: 100%;
+    flex-grow: 1;
 }
 
 .localDiv {
@@ -63,7 +65,8 @@ body {
     text-align: left;
     font-family: 'IBM Plex Sans',sans-serif;
     font-weight: 500;
-    font-size: 2em;
+    font-size: 1.8em;
+/*    font-size: 7vw;*/
     color: white;
     margin-bottom: 20pt
     
@@ -110,7 +113,7 @@ body {
     color: white;
     font-size: 0.6em;
     border: none;
-    width: 40%;
+/*    width: 100%;*/
 }
 
 .currentDiv {
@@ -129,7 +132,7 @@ body {
     display: flex;
     flex-direction: column;
     border-right: 2px solid black;
-    font-size: 2.5em;
+    font-size: 10vw;
     padding-right: 10pt;
 }
 
@@ -147,7 +150,7 @@ img {
 }
 
 #temp {
-    font-size: 6em;
+    font-size: 23vw;
     padding-left: 10pt; 
 }
 
@@ -180,7 +183,8 @@ img {
 /*    flex: 1 0 auto;*/
     flex-direction: column;
     width: 100%;
-    min-height: 100vh;
+/*    min-height: 100vh;*/
+    height: 100%;
 }
 
         
@@ -310,6 +314,10 @@ input {
     display: none;
 }
 
+.iconDiv {
+    flex: 1 0 auto;
+}
+
 
 
 @media only screen and (min-width: 480px){
@@ -427,29 +435,41 @@ input {
 /*        margin: 0;*/
         flex-direction: row;
         flex: initial;
-        justify-content: flex-start;
+        justify-content: center;
         margin: 0 20%;
+        
         align-items: center;
         flex:1 0 auto;
     }
     
     .forecastDiv #text {
-        text-align: center;
+        text-align: initial;
         margin-bottom: 0;
         font-size: 2.2vw;
+        flex: 0 0 auto;
         
     }
     
     #submitDiv {
         font-size: 3vw;
+        flex: 1 0 auto;
 
     }
     
     #city {
         font-size: initial;
-        width: 100%;
+        max-width: 100%;
         margin: 0 5%;
         padding: 3% 0 3% 5%
+            flex: initial;
+    }
+    
+    #btn {
+        padding: 0;
+/*        align-self: initial;*/
+        max-width:  100%;
+        width: initial;
+        flex: 1 0 auto;
     }
     
     .imgDiv {
@@ -470,6 +490,14 @@ input {
         font-weight: 300;
         color: white;
         margin: 0 0 5% 15%;
+    }
+    
+    .currentDiv #text {
+        font-size: 6vw;
+    }
+    
+    #temp{
+        font-size: 14vw;
     }
     
     .imgDown {
@@ -502,7 +530,7 @@ input {
         flex-direction: row;
         flex: 1 0 auto;
         position: relative;
-/*        width: 100vh;*/
+        max-height: 100%;
     }
     
     .leftDiv {
@@ -542,27 +570,30 @@ input {
     }
     
     .forecastDiv {
-        margin: 0;
+        margin: 0 25% 0 0;
         flex-direction: row;
         flex: initial;
         justify-content: flex-start;
         flex:1 0 auto;
     }
     
+
     .forecastDiv #text {
         font-size: 1.5vw;
     }
-    
+
     #submitDiv {
         font-size: 1.5vw;
     }
     
     #city {
 /*        font-size: initial;*/
-        width: 100%;
-        margin: 0 10%
+/*        width: 100%;*/
+/*        margin: 0 10%;*/
+        max-width: 100%;
     }
     
+
 
     
 /*
