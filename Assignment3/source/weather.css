@@ -149,6 +149,12 @@ img {
     width: 100%;
 }
 
+/*
+.shade {
+    display: none;
+}
+*/
+
 #temp {
     font-size: 23vw;
     padding-left: 10pt; 
@@ -227,7 +233,8 @@ img {
     display: flex;
     flex-direction: row;
     border-bottom: #D3D3D3 solid 2px;
-    padding: 0.8em 0;
+/*    padding: 0.8em 0;*/
+    padding-bottom: 0.8em;
     flex: 1 0 auto;
 }
 
@@ -321,6 +328,13 @@ input {
 
 
 @media only screen and (min-width: 480px){
+/*
+    .shade {
+        display: initial;
+        background: red;
+        height: 10%
+    }
+*/
     .leftDiv{
         position: relative;
     }
@@ -369,6 +383,7 @@ input {
         width: 100%;
         background: white;
         height: 40%;
+        
     }
     
     .rowDiv {
@@ -392,8 +407,11 @@ input {
     }
 */
     .timeClass {
+/*        flex-grow: 0.5;*/
         font-size: 3vw;
+        background: linear-gradient(to bottom, rgb(169,169,169), white);
     }
+    
     .tempDown {
       font-size: 8vw;
         font-family:'Saira Extra Condensed',san-serif;
@@ -504,6 +522,11 @@ input {
         max-width: 100%;
         max-height: 100%;
     }
+    
+    .tabletUpDiv {
+        background: linear-gradient(to bottom, rgb(73,138,220), rgb(98,59,156));
+    }
+    
 }
 
 
