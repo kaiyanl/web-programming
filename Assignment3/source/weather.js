@@ -378,9 +378,14 @@ function startAnimateDopplers(){
 }
 
 function animateDopplers(i){
+    let win = screen;
     pic = document.getElementById("dopplerMaps");
     pic.src = imageArray[i].src;
-    pic.style.display = "inline";
+    if(win.width < 480){
+        pic.style.display = "none";
+    } else {
+        pic.style.display = "inline";   
+    }
     i++;
     return i;
 }
