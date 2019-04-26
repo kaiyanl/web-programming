@@ -62,6 +62,11 @@ function moveDown(movingDivs, btn) {
 function submit() {
 
     let city = document.getElementById("city").value;
+    if(city[city.length-3] == ',' || city[city.length-2] == 'C'){
+        city = city + ",US";
+    } else{
+        city = city + ",CA,US";
+    }
        
     makeCORSrequest(city);
 
