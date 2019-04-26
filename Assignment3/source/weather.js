@@ -74,6 +74,10 @@ function submit() {
     // icon.src = "../../weather/weatherDesign/assets/fewclouds-day.svg"
 }
 
+function defaultWeather() {
+    makeCORSrequest("Davis");
+}
+
 /* Function to check distance
 
 From:
@@ -424,3 +428,5 @@ function getTenImages() {
 		dateObj.setMinutes( dateObj.getMinutes()-1 ); // back in time one minute
 	}
 }
+
+defaultWeather();
