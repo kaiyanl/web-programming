@@ -12,6 +12,8 @@ Copy a folder and all its contents to a remote server:
 scp -r /path/to/source-folder user@server:/path/to/destination-folder/
 Copy one single local file to a remote destination:
 scp /path/to/source-file user@host:/path/to/destination-folder/
+Copy a folder from a remote server to your current local server:
+scp -r user@host:/path/to/source-file /path/to/destination-folder
 
 Unix:
 If the subdirectory mydir exists in your current directory and it is not empty, you can delete it by entering at the Unix prompt: 
