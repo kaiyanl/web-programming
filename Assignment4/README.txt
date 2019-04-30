@@ -10,6 +10,8 @@ If you don't want to save but quit, use the command C-x C-c (Ctrl+x, followed by
 scp command: https://www.garron.me/en/articles/scp.html
 Copy a folder and all its contents to a remote server:
 scp -r /path/to/source-folder user@server:/path/to/destination-folder/
+Copy one single local file to a remote destination:
+scp /path/to/source-file user@host:/path/to/destination-folder/
 
 Unix:
 If the subdirectory mydir exists in your current directory and it is not empty, you can delete it by entering at the Unix prompt: 
