@@ -24,7 +24,7 @@ let iconToImage = { "01d" : "../weatherDesign/assets/clearsky.svg",
 function moveUp(movingDivs, btn) {
     
 	let dive = document.getElementsByClassName(movingDivs);
-    let mybtn = document.getElementById(btn);
+    // let mybtn = document.getElementById("btn");
     
     if(dive[0].classList.contains(movingDivs)) {
         dive[0].style.animationName = "slideUp";
@@ -42,7 +42,7 @@ function moveUp(movingDivs, btn) {
 function moveDown(movingDivs, btn) {
 
 	let dive = document.getElementsByClassName(movingDivs);
-    let mybtn = document.getElementById(btn);
+    // let mybtn = document.getElementById("btn");
     
     if(dive[0].classList.contains(movingDivs)) {
         dive[0].style.animationName = "slideDown";
