@@ -1,10 +1,7 @@
-Access Server:
-ssh my-kerberos-id@server162.site
-
-port# is 53119
+Access Server: ssh my-kerberos-id@server162.site      
 
 Server detects queries of the form and should return the palindrome as JSON:
-http://server162.site:53119/query?word=anything
+http://server162.site:53119/query?word=anything		port# is 53119
 
 emacs command: https://www.digitalocean.com/community/tutorials/how-to-use-the-emacs-editor-in-linux#basic-command-keys
 To save a file, press C-x C-s (Ctrl+x, followed by Ctrl+s). 
