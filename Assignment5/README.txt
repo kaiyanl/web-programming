@@ -1,3 +1,6 @@
+npm install express
+npm install request
+
 Server detects queries of the form and should return the translation as JSON:
 http://server162.site:53119/translate?english=apple
 
