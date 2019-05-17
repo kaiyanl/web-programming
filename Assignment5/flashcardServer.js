@@ -1,9 +1,13 @@
 const express = require('express')
+const sqlite3 = require("sqlite3").verbose();
+const fs = require("fs"); // file system
+
 const port = 53119
 const APIrequest = require('request');
 const http = require('http');
 const APIkey = 'AIzaSyAnBSkl-zu9eupqVziEz7qjFmSmPCauHvg';  // ADD API KEY HERE
 const APIurl = "https://translation.googleapis.com/language/translate/v2?key="+APIkey
+
 
 function queryHandler(req, res, next) {
     // let url = req.url;
@@ -67,17 +71,32 @@ function fileNotFound(req, res) {
     res.send('Cannot find '+url);
     }
 
-// function palindrome(word) {
-//     //word abc -> return abccba
-//     let palin=word;
-//     for(let i=0; i<word.length; i++){
-//         palin = palin+word[word.length-1-i];
-//     }
-//     return palin;
-// }
+function tableDropCallback(err) {
+    if (err) {
+    console.log("Table drop error",err);
+    } else {
+    console.log("Table dropped if exists");
+    db.run(createStr,tableCreationCallback);
+    }
+}
 
+function tableCreationCallback(err) {
+    if (err) {
+	console.log("Table creation error",err);
+    } else {
+	console.log("Table created");
+    }
+}
+
+// create database
+const dbFileName = "Flashcards.db";
+const db = new sqlite3.Database(dbFileName);  
+const dropStr = 'DROP TABLE IF EXISTS Flashcards'
+const createStr = 'CREATE TABLE Flashcards (user int, english string, chinese string, seen int, correct int)'
+db.run(dropStr,tableDropCallback);
+process.on('exit', function(){db.close();}); // Close database on exiting the terminal
 // put together the server pipeline
-const app = express()
+const app = express();
 app.use(express.static('public'));  // can I find a static file? 
 app.get('/translate', queryHandler );   // if not, is it a valid query?
 app.use( fileNotFound );            // otherwise not found

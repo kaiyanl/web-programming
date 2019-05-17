@@ -1,5 +1,8 @@
+let word1, output;
+
+
 function sendRequest(){
-	let word1 = document.getElementById("word").value;
+  word1 = document.getElementById("word").value;
 	makeCorsRequest(word1);
 }
 
@@ -27,7 +30,7 @@ function makeCorsRequest(word1) {
       let responseStr = xhr.responseText;  // get the JSON string 
       let object = JSON.parse(responseStr);  // turn it into an object
       // console.log(JSON.stringify(object, undefined, 2));  print it out as a string, nicely formatted
-      let output = document.getElementById("outputGoesHere");
+      output = document.getElementById("outputGoesHere");
       output.textContent = object.Chinese;
   };
 
@@ -39,3 +42,18 @@ function makeCorsRequest(word1) {
   xhr.send();
 }
 
+function saveFlashcard() {
+  const insertStr = 'INSERT INTO Flashcards VALUES(1,' +word1+ ',' +output.textContent+ ',0,0)'
+  db.run(insertStr,insertCallback);
+}
+
+function insertCallback(err) {
+    if (err) {
+  console.log("Insertion error",err);
+    } else {
+  console.log("Inserted");
+    db.all ( 'SELECT * FROM Flashcards', dataCallback);
+  }
+}
+
+function dataCallback( err, data ) {console.log(data)}
