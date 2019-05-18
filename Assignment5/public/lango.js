@@ -1,8 +1,4 @@
 let word1, output;
-const sqlite3 = require("sqlite3").verbose();
-const fs = require("fs"); // file system
-const dbFileName = "Flashcards.db";
-const db = new sqlite3.Database(dbFileName);  
 
 function sendRequest(){
   word1 = document.getElementById("word").value;
@@ -17,11 +13,9 @@ function createCORSRequest(method, url) {
 
 // Make the actual CORS request.
 function makeCorsRequest(word1) {
-
-   let url = `translate?english=${word1}`
-
+  let url = `translate?english=${word1}`
   let xhr = createCORSRequest('GET', url);
-
+  
   // checking if browser does CORS
   if (!xhr) {
     alert('Not supported');
@@ -46,17 +40,8 @@ function makeCorsRequest(word1) {
 }
 
 function saveFlashcard() {
-  const insertStr = 'INSERT INTO Flashcards VALUES(1,' +word1+ ',' +output.textContent+ ',0,0)'
-  db.run(insertStr,insertCallback);
+  let url = `store?english=${word1}&chinese=${output.textContent}`
+  let xhr = new XMLHttpRequest();
+  xhr.open("GET", url, true);
+  xhr.send();
 }
-
-function insertCallback(err) {
-    if (err) {
-  console.log("Insertion error",err);
-    } else {
-  console.log("Inserted");
-    db.all ( 'SELECT * FROM Flashcards', dataCallback);
-  }
-}
-
-function dataCallback( err, data ) {console.log(data)}

@@ -1,17 +1,17 @@
-const express = require('express')
+const express = require('express');
 const sqlite3 = require("sqlite3").verbose();
 const fs = require("fs"); // file system
 
-const port = 53119
+const port = 53119;
 const APIrequest = require('request');
 const http = require('http');
 const APIkey = 'AIzaSyAnBSkl-zu9eupqVziEz7qjFmSmPCauHvg';  // ADD API KEY HERE
-const APIurl = "https://translation.googleapis.com/language/translate/v2?key="+APIkey
-
+const APIurl = "https://translation.googleapis.com/language/translate/v2?key="+APIkey;
 
 function translateQueryHandler(req, res, next) {
     // let url = req.url;
     let qObj = req.query;
+    console.log(`\ntranslateQuery: `);
     console.log(qObj);
     if (qObj.english != undefined) {
         let requestObject = 
@@ -47,11 +47,6 @@ function translateQueryHandler(req, res, next) {
             // API worked but is not giving you data
             console.log(APIresHead.error);
             } else {
-            // console.log("In Chinese: ", 
-            //     APIresBody.data.translations[0].translatedText);
-            // console.log("\n\nJSON was:");
-            // console.log(JSON.stringify(APIresBody, undefined, 2));
-            // print it out as a string, nicely formatted
             res.json( {"English" : qObj.english, "Chinese": APIresBody.data.translations[0].translatedText} );
             }
         }
@@ -60,10 +55,11 @@ function translateQueryHandler(req, res, next) {
     else {
 	next();
     }
-}
+};
 
 function storeQueryHandler(req, res, next) {
     let qObj = req.query;
+    console.log(`\nstoreQuery: `);
     console.log(qObj);
     if (qObj.english != undefined && qObj.chinese != undefined) {
         const insertStr = `INSERT INTO Flashcards VALUES(1,"${qObj.english}","${qObj.chinese}",0,0)`
@@ -73,6 +69,8 @@ function storeQueryHandler(req, res, next) {
             } else {
                 console.log("Inserted");
                 db.all ( 'SELECT * FROM Flashcards', function(err,data) {
+                    console.log(`\nFlashcards Database:`);
+                    console.log(data);
                     res.json(data);
                 });
             }
@@ -81,14 +79,14 @@ function storeQueryHandler(req, res, next) {
     else {
 	next();
     }
-}
+};
 
 function fileNotFound(req, res) {
     let url = req.url;
     res.type('text/plain');
     res.status(404);
     res.send('Cannot find '+url);
-    }
+};
 
 function tableDropCallback(err) {
     if (err) {
@@ -97,7 +95,7 @@ function tableDropCallback(err) {
     console.log("Table dropped if exists");
     db.run(createStr,tableCreationCallback);
     }
-}
+};
 
 function tableCreationCallback(err) {
     if (err) {
@@ -105,17 +103,7 @@ function tableCreationCallback(err) {
     } else {
 	console.log("Table created");
     }
-}
-
-// function insertCallback(err) {
-//     if (err) {
-//   console.log("Insertion error",err);
-//     } else {
-//   console.log("Inserted");
-//     db.all ( 'SELECT * FROM Flashcards', function(err,data) {console.log(data)});
-//   }
-// }
-// function dataCallback( err, data ) {console.log(data)}
+};
 
 // create database
 const dbFileName = "Flashcards.db";
@@ -124,12 +112,11 @@ const dropStr = 'DROP TABLE IF EXISTS Flashcards'
 const createStr = 'CREATE TABLE Flashcards (user int, english string, chinese string, seen int, correct int)'
 db.run(dropStr,tableDropCallback);
 process.on('exit', function(){db.close();}); // Close database on exiting the terminal
+
 // put together the server pipeline
 const app = express();
 app.use(express.static('public'));  // can I find a static file? 
 app.get('/translate', translateQueryHandler );   // if not, is it a valid query?
-app.get('/store', storeQueryHandler )
+app.get('/store', storeQueryHandler );
 app.use( fileNotFound );            // otherwise not found
-
-app.listen(port, function (){console.log('Listening...');} )
- 
+app.listen(port, function (){console.log('Listening...');} );
