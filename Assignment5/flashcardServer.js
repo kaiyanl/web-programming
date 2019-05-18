@@ -9,7 +9,7 @@ const APIkey = 'AIzaSyAnBSkl-zu9eupqVziEz7qjFmSmPCauHvg';  // ADD API KEY HERE
 const APIurl = "https://translation.googleapis.com/language/translate/v2?key="+APIkey
 
 
-function queryHandler(req, res, next) {
+function translateQueryHandler(req, res, next) {
     // let url = req.url;
     let qObj = req.query;
     console.log(qObj);
@@ -56,8 +56,27 @@ function queryHandler(req, res, next) {
             }
         }
         } // end callback function
+    }
+    else {
+	next();
+    }
+}
 
-	
+function storeQueryHandler(req, res, next) {
+    let qObj = req.query;
+    console.log(qObj);
+    if (qObj.english != undefined && qObj.chinese != undefined) {
+        const insertStr = `INSERT INTO Flashcards VALUES(1,"${qObj.english}","${qObj.chinese}",0,0)`
+        db.run(insertStr,function(err){
+            if (err) {
+                console.log("Insertion error",err);
+            } else {
+                console.log("Inserted");
+                db.all ( 'SELECT * FROM Flashcards', function(err,data) {
+                    res.json(data);
+                });
+            }
+        });
     }
     else {
 	next();
@@ -88,6 +107,16 @@ function tableCreationCallback(err) {
     }
 }
 
+// function insertCallback(err) {
+//     if (err) {
+//   console.log("Insertion error",err);
+//     } else {
+//   console.log("Inserted");
+//     db.all ( 'SELECT * FROM Flashcards', function(err,data) {console.log(data)});
+//   }
+// }
+// function dataCallback( err, data ) {console.log(data)}
+
 // create database
 const dbFileName = "Flashcards.db";
 const db = new sqlite3.Database(dbFileName);  
@@ -98,7 +127,8 @@ process.on('exit', function(){db.close();}); // Close database on exiting the te
 // put together the server pipeline
 const app = express();
 app.use(express.static('public'));  // can I find a static file? 
-app.get('/translate', queryHandler );   // if not, is it a valid query?
+app.get('/translate', translateQueryHandler );   // if not, is it a valid query?
+app.get('/store', storeQueryHandler )
 app.use( fileNotFound );            // otherwise not found
 
 app.listen(port, function (){console.log('Listening...');} )

@@ -1,5 +1,8 @@
 let word1, output;
-
+const sqlite3 = require("sqlite3").verbose();
+const fs = require("fs"); // file system
+const dbFileName = "Flashcards.db";
+const db = new sqlite3.Database(dbFileName);  
 
 function sendRequest(){
   word1 = document.getElementById("word").value;
