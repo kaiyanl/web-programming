@@ -1,30 +1,19 @@
-<!doctype HTML>
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lango App</title>
 
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<title>Translator</title>
-<link rel="stylesheet" type="text/css" href="reset.css">
-</head>
-
-<body>
-
-<header>
-<h2>Translator</h2>
-</header>
-
-<main>
-<div id="inputDiv">
-  <input id="word"> <p onclick="sendRequest()">submit</p>
-  <button onclick="saveFlashcard()">Save</button>
-</div>
-<div id="outputDiv">
-  <p id="outputGoesHere"></p>
-</div>
-</main>
-
-<script src="lango.js"></script>
-</body>
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="lango.css">
+    
+  
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="lango.js"></script>
+  </body>
 </html>
-
