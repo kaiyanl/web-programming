@@ -16,40 +16,39 @@ function translateQueryHandler(req, res, next) {
     if (qObj.english != undefined) {
         let requestObject = 
         {
-        "source": "en",
-        "target": "zh-CN",
-        "q": [
-            // "example phrase"
-            qObj.english
-        ]
+            "source": "en",
+            "target": "zh-CN",
+            "q": [
+                qObj.english
+            ]
         }
         // requestObject.q[0] = qObj.english;
         APIrequest(
-        { // HTTP header stuff
+        {   // HTTP header stuff
             url: APIurl,
             method: "POST",
             headers: {"content-type": "application/json"},
             // will turn the given object into JSON
             json: requestObject },
-        // callback function for API request
-        APIcallback
+            // callback function for API request
+            APIcallback
         );
 
         // callback function, called when data is received from API
         function APIcallback(err, APIresHead, APIresBody) {
-        // gets three objects as input
-        if ((err) || (APIresHead.statusCode != 200)) {
-            // API is not working
-            console.log("Got API error");
-            console.log(body);
-        } else {
-            if (APIresHead.error) {
-            // API worked but is not giving you data
-            console.log(APIresHead.error);
+            // gets three objects as input
+            if ((err) || (APIresHead.statusCode != 200)) {
+                // API is not working
+                console.log("Got API error");
+                console.log(body);
             } else {
-            res.json( {"English" : qObj.english, "Chinese": APIresBody.data.translations[0].translatedText} );
+                if (APIresHead.error) {
+                // API worked but is not giving you data
+                console.log(APIresHead.error);
+                } else {
+                res.json( {"English" : qObj.english, "Chinese": APIresBody.data.translations[0].translatedText} );
+                }
             }
-        }
         } // end callback function
     }
     else {
@@ -62,8 +61,8 @@ function storeQueryHandler(req, res, next) {
     console.log(`\nstoreQuery: `);
     console.log(qObj);
     if (qObj.english != undefined && qObj.chinese != undefined) {
-        const insertStr = `INSERT INTO Flashcards VALUES(1,"${qObj.english}","${qObj.chinese}",0,0)`
-        db.run(insertStr,function(err){
+        const insertStr = 'INSERT INTO Flashcards (user,english,chinese,seen,correct) VALUES(1,@0,@1,0,0)'
+        db.run(insertStr,qObj.english,qObj.chinese,function(err){
             if (err) {
                 console.log("Insertion error",err);
             } else {
@@ -77,7 +76,7 @@ function storeQueryHandler(req, res, next) {
         });
     }
     else {
-	next();
+	    next();
     }
 };
 
@@ -115,8 +114,8 @@ process.on('exit', function(){db.close();}); // Close database on exiting the te
 
 // put together the server pipeline
 const app = express();
-app.use(express.static('public'));  // can I find a static file? 
-app.get('/translate', translateQueryHandler );   // if not, is it a valid query?
+app.use(express.static('public'));
+app.get('/translate', translateQueryHandler );
 app.get('/store', storeQueryHandler );
-app.use( fileNotFound );            // otherwise not found
+app.use( fileNotFound );
 app.listen(port, function (){console.log('Listening...');} );
