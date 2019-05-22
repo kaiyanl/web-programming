@@ -1,77 +1,135 @@
 'use strict';
 
-// An element to go into the DOM
-
-var lango = React.createElement(
-	"h1",
-	{ id: "logo" },
-	"Lango!"
-);
-
-// A component - function that returns some elements 
-function FirstCard() {
-	return React.createElement(
-		"div",
-		{ className: "textCard" },
-		React.createElement("p", { id: "outputGoesHere" })
-	);
-}
-
-// Another component
 function FirstInputCard() {
 	return React.createElement(
 		"div",
 		{ className: "textCard" },
-		React.createElement("textarea", { id: "word" }),
+		React.createElement("input", { placeholder: "English", id: "word", onKeyPress: checkReturn })
+	);
+}
+
+function FirstCard() {
+	return React.createElement(
+		"div",
+		{ className: "textCard" },
 		React.createElement(
 			"p",
-			{ onClick: sendRequest },
-			"submit"
+			{ id: "output", className: "grayColor" },
+			"Chinese"
 		)
 	);
 }
 
-// An element with some contents, including a variable
-// that has to be evaluated to get an element, and some
-// functions that have to be run to get elements. 
-var main = React.createElement(
-	"main",
-	null,
-	lango,
+function LangoTitleDisplay() {
+	return React.createElement(
+		"div",
+		{
+			className: "LangoTitle" },
+		React.createElement(
+			"p",
+			null,
+			"Lango!"
+		)
+	);
+}
+
+function StartReviewDiv() {
+	return React.createElement(
+		"div",
+		{
+			className: "StartReviewDiv" },
+		React.createElement(
+			"button",
+			{ id: "StartReviewButton", onClick: StartReviewFunc },
+			"Start Review"
+		)
+	);
+}
+
+function SaveFlashcard() {
+	return React.createElement(
+		"div",
+		{ className: "SaveButtonDiv" },
+		React.createElement(
+			"button",
+			{ onClick: saveFlashcard, className: "SaveButton" },
+			"Save"
+		)
+	);
+}
+
+function FooterDisplay() {
+	return React.createElement(
+		"div",
+		{ className: "userDisplay" },
+		React.createElement(
+			"p",
+			null,
+			"UserName"
+		)
+	);
+}
+
+var textCards = React.createElement(
+	"div",
+	{
+		className: "textCards" },
 	React.createElement(FirstInputCard, null),
-	React.createElement(
-		"button",
-		{ onClick: saveFlashcard },
-		"Save"
-	),
 	React.createElement(FirstCard, null)
 );
 
-ReactDOM.render(main, document.getElementById('root'));
+var header = React.createElement(
+	"header",
+	null,
+	React.createElement(StartReviewDiv, null),
+	React.createElement(LangoTitleDisplay, null)
+);
 
-// onKeyPress function for the textarea element
+var main = React.createElement(
+	"main",
+	null,
+	textCards,
+	React.createElement(SaveFlashcard, null)
+);
+
+var footer = React.createElement(
+	"footer",
+	null,
+	React.createElement(FooterDisplay, null)
+);
+
+var body = React.createElement(
+	"div",
+	{ className: "body" },
+	header,
+	main,
+	footer
+);
+
+ReactDOM.render(body, document.getElementById('root'));
+
+// onKeyPress function
 // When the charCode is 13, the user has hit the return key
 function checkReturn(event) {
 	console.log(event.charCode);
+	if (event.charCode == 13) {
+		var english = document.getElementById("word").value;
+		sendRequest(english);
+	}
 }
 
-var word1 = void 0,
-    output = void 0;
-
-function sendRequest() {
-	word1 = document.getElementById("word").value;
-	makeCorsRequest(word1);
+function sendRequest(word) {
+	makeCorsRequest(word);
 }
 
 function createCORSRequest(method, url) {
 	var xhr = new XMLHttpRequest();
-	xhr.open(method, url, true); // call its open method
+	xhr.open(method, url, true);
 	return xhr;
 }
 
-// Make the actual CORS request.
-function makeCorsRequest(word1) {
-	var url = "translate?english=" + word1;
+function makeCorsRequest(word) {
+	var url = "translate?english=" + word;
 	var xhr = createCORSRequest('GET', url);
 
 	// checking if browser does CORS
@@ -80,26 +138,31 @@ function makeCorsRequest(word1) {
 		return;
 	}
 
-	// Load some functions into response handlers.
 	xhr.onload = function () {
-		var responseStr = xhr.responseText; // get the JSON string 
-		var object = JSON.parse(responseStr); // turn it into an object
-		// console.log(JSON.stringify(object, undefined, 2));  print it out as a string, nicely formatted
-		output = document.getElementById("outputGoesHere");
-		output.textContent = object.Chinese;
+		var responseStr = xhr.responseText;
+		var object = JSON.parse(responseStr);
+		var outputElem = document.getElementById("output");
+		outputElem.textContent = object.Chinese;
+		outputElem.classList.remove("grayColor");
+		outputElem.classList.add("blackColor");
 	};
 
 	xhr.onerror = function () {
 		alert('Woops, there was an error making the request.');
 	};
 
-	// Actually send request to server
 	xhr.send();
 }
 
 function saveFlashcard() {
-	var url = "store?english=" + word1 + "&chinese=" + output.textContent;
+	var english = document.getElementById("word").value;
+	var chinese = document.getElementById("output").textContent;
+	var url = "store?english=" + english + "&chinese=" + chinese;
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", url, true);
 	xhr.send();
+}
+
+function StartReviewFunc() {
+	console.log("Review coming soon!");
 }

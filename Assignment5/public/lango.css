@@ -1,77 +1,140 @@
-body {
-    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-    background: yellow;
+#root {
+    height: 100vh;
+}
+
+.body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid red; */
 }
 
 header {
     position: relative;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    margin: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+    /* border: 1px solid green; */
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    justify-content: center;
+    margin-left: 20%;
+    margin-right: 20%;
+    /* border: 1px solid green; */
+}
+
+footer {
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: helvetica; 
+    font-size: 25pt;
+    background: #606B9B;
+    color: white;
+    /* border: 1px solid green; */
+}
+
+div.textCards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 50%;
+    flex: 1 0 auto;
+    align-items: flex-end;
+    /* border: 1px solid blue; */
 }
 
 div.textCard {
     background-color: #ffffff;
     border-style: solid;
     border-width: 4px;
-
-    width: 40%;
-    height: 40vh;
-
+    border-color: gray;
+    width: 45%;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-div.textCards{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    padding: 1%;
+    height: 80%;
 }
 
 div.LangoTitle {
     align-items: center;
-    color: blue;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 900;
+    color: #606B9B;
+    font-size: 70pt;
 }
 
-div.ReviewButton {
+p {
+    text-align: center;
+}
+
+div.StartReviewDiv {
     position: absolute;
     left: 0%;
+    height: 35%;
+    width: 18%;
 }
 
-/* don't get weird blue border when I type */
-textarea:focus {
-    outline: none;
-}
-
-textarea {
-    margin: 10%;
-    border: 1px solid red;
+#StartReviewButton {
+    font-family: helvetica;
+    font-size: 25pt;
+    background: #606B9B;
+    color: white;
+    border-radius: 12px;
+    border: none;
+    height: 100%;
+    width: 100%;
 }
 
 #word {
     width: 100%;
-    align-items: center;
+    height: 35pt;
+    font-family: helvetica;
+    font-size: 30pt;
+    text-align: center;
+    border: none;
+    /* border: 1px solid red; */
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-    margin: 10%;
+#output {
+    width: 100%;
+    font-family: helvetica;
+    font-size: 30pt;
+    text-align: center;
+    /* border: 1px solid red; */
+}
+
+.grayColor {
+    color: gray;
+}
+
+.blackColor {
+    color: initial;
 }
 
 div.SaveButtonDiv{
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+    flex: 1 0 auto;
 }
 
 .SaveButton{
-    width: 40%;
-}
-
-footer {
-    color: blue;
-}
-
-p {
-    text-align: center;
+    width: 15%;
+    font-family: helvetica; 
+    font-size: 25pt;
+    color: white;
+    background: #70C7A9;
+    border-radius: 12px;
+    border: none;
+    height: 30%;
 }
