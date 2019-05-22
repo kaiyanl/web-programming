@@ -14,31 +14,84 @@ function FirstCard() {
 // Another component
 function FirstInputCard() {
          return (<div className="textCard">
-	          <textarea id="word"></textarea>
-			  <p onClick={sendRequest}>submit</p>
+	          <textarea id="word" onKeyPress={checkReturn}></textarea>
 		  </div>);
             }
+
+function LangoTitleDisplay() {
+    return (<div
+            className="LangoTitle">
+            <p>Lango!</p>        
+            </div>
+            )
+}
+
+function StartReviewButton() {
+    return (<div
+            className="ReviewButton">
+            <button onClick={StartReviewFunc}>Start Review</button>
+            </div>
+    )
+}
+
+function FooterDisplay() {
+    return (<div className="userDisplay">
+            <p>UserName</p>
+            </div>)
+}
+
+function SaveFlashcard() {
+    return (<div className="SaveButtonDiv">
+            <button onClick={saveFlashcard} className="SaveButton">Save</button>
+            </div>)
+}
 	    
 // An element with some contents, including a variable
 // that has to be evaluated to get an element, and some
 // functions that have to be run to get elements. 
+const textCards = (<div
+                className="textCards">
+                <FirstInputCard/>
+                <FirstCard/>
+                </div>)
+
 const main = (<main>
-		{lango}
-	      	<FirstInputCard/>
-			<button onClick={saveFlashcard}>Save</button>
-	      	<FirstCard />
+	      	{textCards}
+            <SaveFlashcard/>    
 	      </main>
 	     );
 
+const header = (<header>
+            <StartReviewButton/>
+            <LangoTitleDisplay/>
+	      </header>
+	     );
+
+const footer = (<footer>
+            <FooterDisplay/>
+            </footer>)
+
+const body = (<div>
+        {header}
+        {main}
+        {footer}
+    </div>)
+
+
+
+
 ReactDOM.render(
-    main,
+    body,
     document.getElementById('root')
 );
 
 // onKeyPress function for the textarea element
 // When the charCode is 13, the user has hit the return key
 function checkReturn(event) {
-	 console.log(event.charCode);
+    console.log(event.charCode);
+    if(event.charCode == 13){
+        sendRequest();
+    }
 }
 
 let word1, output;
@@ -87,5 +140,9 @@ function saveFlashcard() {
 	let xhr = new XMLHttpRequest();
 	xhr.open("GET", url, true);
 	xhr.send();
+}
+
+function StartReviewFunc() {
+    console.log("Review coming soon!");
 }
 	 
