@@ -36,7 +36,8 @@ footer {
     align-items: center;
     justify-content: center;
     font-family: helvetica; 
-    font-size: 25pt;
+    /* font-size: 25pt; */
+    font-size: 2.5vw;
     background: #606B9B;
     color: white;
     /* border: 1px solid green; */
@@ -47,7 +48,8 @@ footer {
     font-family: 'Raleway', sans-serif;
     font-weight: 900;
     color: #606B9B;
-    font-size: 70pt;
+    /* font-size: 70pt; */
+    font-size: 8vw;
 }
 
 p {
@@ -58,12 +60,15 @@ p {
     position: absolute;
     left: 0%;
     height: 35%;
-    width: 18%;
+    /* width: 18%; */
+    width: 15vw;
+    white-space: nowrap;
 }
 
 #StartReviewButton {
     font-family: helvetica;
-    font-size: 25pt;
+    /* font-size: 25pt; */
+    font-size: 2vw;
     background: #606B9B;
     color: white;
     border-radius: 12px;
@@ -128,9 +133,11 @@ p {
 }
 
 .SaveButton{
-    width: 15%;
+    /* width: 15%; */
+    width: 10vw;
     font-family: helvetica; 
-    font-size: 25pt;
+    /* font-size: 25pt; */
+    font-size: 2vw;
     color: white;
     background: #70C7A9;
     border-radius: 12px;
@@ -152,15 +159,18 @@ p {
     }
 
     .StartReviewDiv {
-        width: 22%;
+        /* width: 22%; */
+        width: 20vw;
     }
 
     #StartReviewButton {
-        font-size: 16pt;
+        /* font-size: 16pt; */
+        font-size: 3vw;
     }
 
     .LangoTitle {
-        font-size: 66pt;
+        /* font-size: 66pt; */
+        font-size: 11.5vw;
     }
 
     .SaveButtonDiv{
@@ -168,8 +178,10 @@ p {
     }
 
     .SaveButton{
-        width: 22%;
-        font-size: 20pt;
+        /* width: 22%; */
+        width: 18vw;
+        /* font-size: 20pt; */
+        font-size: 4vw;
     }
 
     .textCards{
@@ -187,6 +199,10 @@ p {
     #output {
         font-size: 25pt;
     }
+
+    footer {
+        font-size: 4vw;
+    }
 }
 
 /* mobile view: iphone8 Plus' width is 414px */
@@ -197,7 +213,7 @@ p {
         margin-right: 3%;
         align-items: flex-start;
         padding-top: 5%;
-        /* height: 18vh;; */
+        height: 18vh;;
     }
 
     main {
@@ -211,14 +227,16 @@ p {
     }
 
     #StartReviewButton {
-        font-size: 10pt;
+        /* font-size: 10pt; */
+        font-size: 3.5vw;
         border-radius: 6px;
     }
 
     .LangoTitle {
-        font-size: 36pt;
+        /* font-size: 36pt; */
+        font-size: 12vw;
         padding-left: 10%; 
-        /* align-items: flex-end; */
+        align-items: flex-end;
     }
 
     .SaveButtonDiv{
@@ -227,7 +245,8 @@ p {
 
     .SaveButton{
         width: 35%;
-        font-size: 17pt;
+        /* font-size: 17pt; */
+        font-size: 6vw;
         border-radius: 6px;
     }
 
@@ -250,6 +269,7 @@ p {
     }
 
     footer {
-        font-size: 17pt;
+        /* font-size: 17pt; */
+        font-size: 5.5vw;
     }
 }
