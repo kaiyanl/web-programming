@@ -6,7 +6,7 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 header {
@@ -17,7 +17,7 @@ header {
     align-items: center;
     margin-left: 10%;
     margin-right: 10%;
-    border: 1px solid green;
+    /* border: 1px solid green; */
 }
 
 main {
@@ -27,7 +27,7 @@ main {
     justify-content: center;
     margin-left: 20%;
     margin-right: 20%;
-    border: 1px solid green;
+    /* border: 1px solid green; */
 }
 
 footer {
@@ -39,7 +39,7 @@ footer {
     font-size: 25pt;
     background: #606B9B;
     color: white;
-    border: 1px solid green;
+    /* border: 1px solid green; */
 }
 
 .LangoTitle {
@@ -79,7 +79,7 @@ p {
     height: 37.5vh;
     flex: 1 0 auto;
     align-items: flex-end;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
 }
 
 .textCard {
@@ -101,7 +101,7 @@ p {
     font-size: 30pt;
     text-align: center;
     border: none;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 #output {
@@ -109,7 +109,7 @@ p {
     font-family: helvetica;
     font-size: 30pt;
     text-align: center;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .grayColor {
@@ -186,5 +186,70 @@ p {
 
     #output {
         font-size: 25pt;
+    }
+}
+
+/* mobile view: iphone8 Plus' width is 414px */
+@media (max-width: 414px) {
+
+    header {
+        margin-left: 3%;
+        margin-right: 3%;
+        align-items: flex-start;
+        padding-top: 5%;
+        /* height: 18vh;; */
+    }
+
+    main {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .StartReviewDiv {
+        width: 25%;
+        height: 20%;;
+    }
+
+    #StartReviewButton {
+        font-size: 10pt;
+        border-radius: 6px;
+    }
+
+    .LangoTitle {
+        font-size: 36pt;
+        padding-left: 10%; 
+        /* align-items: flex-end; */
+    }
+
+    .SaveButtonDiv{
+        align-items: center;
+    }
+
+    .SaveButton{
+        width: 35%;
+        font-size: 17pt;
+        border-radius: 6px;
+    }
+
+    .textCards{
+        flex-direction: column;
+        height: 40vh;
+    }
+
+    .textCard {
+        width: 100%;
+        height: 45%;
+    }
+
+    #word {
+        font-size: 20pt;
+    }
+
+    #output {
+        font-size: 20pt;
+    }
+
+    footer {
+        font-size: 17pt;
     }
 }
