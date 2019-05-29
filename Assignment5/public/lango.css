@@ -146,7 +146,7 @@ p {
 }
 
 /* tablet view: ipad width is 768px */
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px) {
 
     header{
         margin-left: 5%;
@@ -206,7 +206,7 @@ p {
 }
 
 /* mobile view: iphone8 Plus' width is 414px */
-@media (max-width: 414px) {
+@media only screen and (max-width: 414px) {
 
     header {
         margin-left: 3%;
