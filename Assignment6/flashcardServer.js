@@ -226,17 +226,54 @@ function gotProfile(accessToken, refreshToken, profile, done) {
     // and to store him in DB if not already there. 
     // Second arg to "done" will be passed into serializeUser,
     // should be key to get user out of database.
-    const getIdStr = 'SELECT COLUMN gid FROM Users'
+    /** TESTING USER INSERTION, THIS ADDS FAKE USERS
+    const insertStr1 = 'INSERT INTO Users (gid,firstName,lastName) VALUES(1,0,0)'
+    const insertStr2 = 'INSERT INTO Users (gid,firstName,lastName) VALUES(2,0,0)'
+        db.run(insertStr1,function(err){
+            if (err) {
+                console.log("Insertion error",err);
+            } else {
+                console.log("Inserted");
+                }
+            });
+    db.run(insertStr2,function(err){
+            if (err) {
+                console.log("Insertion error",err);
+            } else {
+                console.log("Inserted");
+                }
+            });
+    **/
+    const getIdStr = 'SELECT gid FROM Users'
     db.all(getIdStr,function(err,data){
         if (err) {
             console.log("Select error",err);
         } else {
             console.log("Got it!");
             console.log(data);
-            res.json(data);
+            let flag = 0;
+            for(let i = 0; i < data.length; i++){
+                if(profile.id == data[i].gid){
+                        console.log("Profile is gid!");
+                        flag = 1;
+                }
             }
+            if(flag == 0){
+                const insertUser = 'INSERT INTO Users (gid,firstName,lastName) VALUES(@0,@1,@2)'
+                db.run(insertUser, profile.id, profile.name.givenName, profile.name.familyName, function(err){  
+                            if (err) {
+                                console.log("User insertion error",err);
+                            } else {
+                                console.log("User insertion complete!");
+                            }   
+                        })
+            }
+            console.log("Filler text!");
+            console.log(data);
         }
-    );
+    });
+    
+    
     
 
     let dbRowID = profile.id;  // temporary! Should be the real unique
@@ -265,6 +302,6 @@ passport.deserializeUser((dbRowID, done) => {
     // here is a good place to look up user data in database using
     // dbRowID. Put whatever you want into an object. It ends up
     // as the property "user" of the "req" object. 
-    let userData = {userData: "data from db row goes here"};
+    let userData = {userID: dbRowID};
     done(null, userData);
 });
