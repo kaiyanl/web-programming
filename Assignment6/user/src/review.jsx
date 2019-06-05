@@ -1,13 +1,13 @@
 'use strict';
 
 function FirstInputCard() {
-	return (<div className="textCard">
+	return (<div className="textCard english">
 		 <input placeholder="English" id="word" onKeyPress={checkReturn}></input>
 	 </div>);
 }
 
 function FirstCard() {
-	 return (<div className="textCard">
+	 return (<div className="textCard chinese">
 	 <p id="output" className="grayColor">Chinese</p>
 	 </div>);
 	 }
@@ -23,14 +23,14 @@ function LangoTitleDisplay() {
 function StartReviewDiv() {
     return (<div
             className="StartReviewDiv">
-            <button id="StartReviewButton" onClick={StartReviewFunc}>Start Review</button>
+            <button id="StartReviewButton" onClick={addCardFunc}>Add</button>
             </div>
     )
 }
 
 function SaveFlashcard() {
     return (<div className="SaveButtonDiv">
-            <button onClick={saveFlashcard} className="SaveButton">Save</button>
+            <button onClick={saveFlashcard} className="SaveButton">Next</button>
             </div>)
 }
 
@@ -128,6 +128,6 @@ function saveFlashcard() {
 	xhr.send();
 }
 
-function StartReviewFunc() {
-    location.href='http://server162.site:53119/user/review.html';
+function addCardFunc() {
+    location.href='http://server162.site:53119/user/lango.html';
 }

@@ -182,7 +182,7 @@ app.get('/store', storeQueryHandler );
 app.use( fileNotFound );
 app.listen(port, function (){console.log('Listening...');} );
 
-// middleware functions
+// ---------------------------------middleware functions------------------------------------
 
 // print the url of incoming HTTP request
 function printURL (req, res, next) {
@@ -249,8 +249,7 @@ function gotProfile(accessToken, refreshToken, profile, done) {
         if (err) {
             console.log("Select error",err);
         } else {
-            console.log("Got it!");
-            console.log(data);
+            console.log("Got Column gid from Table Users!");
             let flag = 0;
             for(let i = 0; i < data.length; i++){
                 if(profile.id == data[i].gid){
@@ -265,11 +264,13 @@ function gotProfile(accessToken, refreshToken, profile, done) {
                                 console.log("User insertion error",err);
                             } else {
                                 console.log("User insertion complete!");
+                                console.log("All data from Users!:");
+                                db.all('select * from Users',function(err,data){
+                                    console.log(data);
+                                });
                             }   
                         })
             }
-            console.log("Filler text!");
-            console.log(data);
         }
     });
     

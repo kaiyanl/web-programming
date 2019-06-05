@@ -3,7 +3,7 @@
 function FirstInputCard() {
 	return React.createElement(
 		"div",
-		{ className: "textCard" },
+		{ className: "textCard english" },
 		React.createElement("input", { placeholder: "English", id: "word", onKeyPress: checkReturn })
 	);
 }
@@ -11,7 +11,7 @@ function FirstInputCard() {
 function FirstCard() {
 	return React.createElement(
 		"div",
-		{ className: "textCard" },
+		{ className: "textCard chinese" },
 		React.createElement(
 			"p",
 			{ id: "output", className: "grayColor" },
@@ -40,8 +40,8 @@ function StartReviewDiv() {
 			className: "StartReviewDiv" },
 		React.createElement(
 			"button",
-			{ id: "StartReviewButton", onClick: StartReviewFunc },
-			"Start Review"
+			{ id: "StartReviewButton", onClick: addCardFunc },
+			"Add"
 		)
 	);
 }
@@ -53,7 +53,7 @@ function SaveFlashcard() {
 		React.createElement(
 			"button",
 			{ onClick: saveFlashcard, className: "SaveButton" },
-			"Save"
+			"Next"
 		)
 	);
 }
@@ -163,6 +163,6 @@ function saveFlashcard() {
 	xhr.send();
 }
 
-function StartReviewFunc() {
-	location.href = 'http://server162.site:53119/user/review.html';
+function addCardFunc() {
+	location.href = 'http://server162.site:53119/user/lango.html';
 }

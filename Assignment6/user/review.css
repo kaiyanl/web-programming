@@ -1,0 +1,284 @@
+#root {
+    height: 100vh;
+}
+
+.body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid red; */
+}
+
+header {
+    position: relative;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    /* border: 1px solid green; */
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    justify-content: center;
+    margin-left: 20%;
+    margin-right: 20%;
+    /* border: 1px solid green; */
+}
+
+footer {
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: helvetica; 
+    /* font-size: 25pt; */
+    font-size: 2.5vw;
+    background: #606B9B;
+    color: white;
+    /* border: 1px solid green; */
+}
+
+.LangoTitle {
+    align-items: center;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 900;
+    color: #606B9B;
+    /* font-size: 70pt; */
+    font-size: 8vw;
+}
+
+p {
+    text-align: center;
+}
+
+.StartReviewDiv {
+    position: absolute;
+    left: 0%;
+    height: 35%;
+    /* width: 18%; */
+    width: 15vw;
+    white-space: nowrap;
+}
+
+#StartReviewButton {
+    font-family: helvetica;
+    /* font-size: 25pt; */
+    font-size: 2vw;
+    background: #606B9B;
+    color: white;
+    border-radius: 12px;
+    border: none;
+    height: 100%;
+    width: 60%;
+}
+
+.textCards{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 37.5vh;
+    flex: 1 0 auto;
+    align-items: center;
+    margin-top: 5vh;
+    /* border: 1px solid blue; */
+}
+
+.textCard {
+    background-color: #ffffff;
+    border-style: solid;
+    border-width: 4px;
+    border-color: gray;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: 1%; */
+    /* height: 40%; */
+}
+
+.english {
+    height: 75%;
+}
+
+.chinese {
+    height: 15%;
+}
+
+#word {
+    width: 100%;
+    font-family: helvetica;
+    font-size: 30pt;
+    text-align: center;
+    border: none;
+    /* border: 1px solid red; */
+}
+
+#output {
+    width: 100%;
+    font-family: helvetica;
+    font-size: 30pt;
+    text-align: center;
+    /* border: 1px solid red; */
+}
+
+.grayColor {
+    color: gray;
+}
+
+.blackColor {
+    color: initial;
+}
+
+.SaveButtonDiv{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1 0 auto;
+}
+
+.SaveButton{
+    /* width: 15%; */
+    width: 10vw;
+    font-family: helvetica; 
+    /* font-size: 25pt; */
+    font-size: 2vw;
+    color: white;
+    background: #70C7A9;
+    border-radius: 12px;
+    border: none;
+    height: 30%;
+}
+
+/* tablet view: ipad width is 768px */
+@media only screen and (max-width: 768px) {
+
+    header{
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    main {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .StartReviewDiv {
+        /* width: 22%; */
+        width: 20vw;
+    }
+
+    #StartReviewButton {
+        /* font-size: 16pt; */
+        font-size: 3vw;
+    }
+
+    .LangoTitle {
+        /* font-size: 66pt; */
+        font-size: 11.5vw;
+    }
+
+    .SaveButtonDiv{
+        align-items: flex-start;
+    }
+
+    .SaveButton{
+        /* width: 22%; */
+        width: 18vw;
+        /* font-size: 20pt; */
+        font-size: 4vw;
+    }
+
+    .textCards{
+        align-items: center;
+    }
+
+    .textCard {
+        height: 60%;
+    }
+
+    #word {
+        font-size: 25pt;
+    }
+
+    #output {
+        font-size: 25pt;
+    }
+
+    footer {
+        font-size: 4vw;
+    }
+}
+
+/* mobile view: iphone8 Plus' width is 414px */
+@media only screen and (max-width: 414px) {
+
+    header {
+        margin-left: 3%;
+        margin-right: 3%;
+        align-items: flex-start;
+        padding-top: 5%;
+        height: 18vh;;
+    }
+
+    main {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .StartReviewDiv {
+        width: 25%;
+        height: 20%;;
+    }
+
+    #StartReviewButton {
+        /* font-size: 10pt; */
+        font-size: 3.5vw;
+        border-radius: 6px;
+    }
+
+    .LangoTitle {
+        /* font-size: 36pt; */
+        font-size: 12vw;
+        padding-left: 10%; 
+        align-items: flex-end;
+    }
+
+    .SaveButtonDiv{
+        align-items: center;
+    }
+
+    .SaveButton{
+        width: 35%;
+        /* font-size: 17pt; */
+        font-size: 6vw;
+        border-radius: 6px;
+    }
+
+    .textCards{
+        flex-direction: column;
+        height: 40vh;
+    }
+
+    .textCard {
+        width: 100%;
+        height: 45%;
+    }
+
+    #word {
+        font-size: 20pt;
+    }
+
+    #output {
+        font-size: 20pt;
+    }
+
+    footer {
+        /* font-size: 17pt; */
+        font-size: 5.5vw;
+    }
+}
