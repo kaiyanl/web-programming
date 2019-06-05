@@ -95,12 +95,21 @@ function fileNotFound(req, res) {
     res.send('Cannot find '+url);
 };
 
-function tableDropCallback(err) {
+function cardTableDropCallback(err) {
     if (err) {
     console.log("Table drop error",err);
     } else {
     console.log("Table dropped if exists");
     db.run(createCardTableStr,tableCreationCallback);
+    }
+};
+
+function userTableDropCallback(err) {
+    if (err) {
+    console.log("Table drop error",err);
+    } else {
+    console.log("Table dropped if exists");
+    db.run(createUserTableStr,tableCreationCallback);
     }
 };
 
@@ -115,10 +124,12 @@ function tableCreationCallback(err) {
 // create database
 const dbFileName = "Flashcards.db";
 const db = new sqlite3.Database(dbFileName);  
-const dropStr = 'DROP TABLE IF EXISTS Flashcards'
+const dropCardTableStr = 'DROP TABLE IF EXISTS Flashcards'
+const dropUserTableStr = 'DROP TABLE IF EXISTS Users'
 const createCardTableStr = 'CREATE TABLE Flashcards (user int, english string, chinese string, seen int, correct int)'
 const createUserTableStr = 'CREATE TABLE Users (gid int, firstName string, lastName string)'
-db.run(dropStr,tableDropCallback);
+db.run(dropCardTableStr,cardTableDropCallback);
+db.run(dropUserTableStr,userTableDropCallback);
 process.on('exit', function(){db.close();}); // Close database on exiting the terminal
 
 // put together the server pipeline
@@ -215,6 +226,18 @@ function gotProfile(accessToken, refreshToken, profile, done) {
     // and to store him in DB if not already there. 
     // Second arg to "done" will be passed into serializeUser,
     // should be key to get user out of database.
+    const getIdStr = 'SELECT COLUMN gid FROM Users'
+    db.all(getIdStr,function(err,data){
+        if (err) {
+            console.log("Select error",err);
+        } else {
+            console.log("Got it!");
+            console.log(data);
+            res.json(data);
+            }
+        }
+    );
+    
 
     let dbRowID = profile.id;  // temporary! Should be the real unique
     // key for db Row for this user in DB table.
