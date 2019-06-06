@@ -197,7 +197,11 @@ var Card = function (_React$Component6) {
 function flip() {
   console.log("Inside flip function");
   var card = document.getElementsByClassName('card-container');
-  card[0].classList.add('hover');
+  if (card[0].classList.contains('hover')) {
+    card[0].classList.remove('hover');
+  } else {
+    card[0].classList.add('hover');
+  }
 }
 
 // Render Card component

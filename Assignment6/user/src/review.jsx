@@ -1,9 +1,44 @@
 'use strict';
 
+  // React component for the front side of the card
+  class CardFront extends React.Component {
+	render(props) {
+	  return(
+		<div className='card-side side-front'>
+		   <div className='card-side-container'>
+				<h2 id='trans'>{this.props.text}</h2>
+		  </div>
+		</div>
+	  )
+	}
+  }
+  
+  // React component for the back side of the card
+  class CardBack extends React.Component {
+	render(props) {
+	  return(
+		<div className='card-side side-back'>
+		   <div className='card-side-container'>
+				<h2 id='congrats'>{this.props.text}</h2>
+		  </div>
+		</div>
+	  )
+	}
+  }
+
 function FirstInputCard() {
-	return (<div className="textCard english">
-		 <input placeholder="English" id="word" onKeyPress={checkReturn}></input>
-	 </div>);
+	// return (<div className="textCard english">
+	// 	 {/* <input placeholder="English" id="word" onKeyPress={checkReturn}></input> */}
+	//  </div>);
+	return(
+		<div className='card-container textCard english' onClick={flip}>
+		  <div className='card-body'>
+			<CardBack text="Correct!" />
+			  
+			<CardFront text="Volare" />
+		  </div>
+		</div>
+	  );
 }
 
 function FirstCard() {
@@ -73,8 +108,6 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
-// onKeyPress function
-// When the charCode is 13, the user has hit the return key
 function checkReturn(event) {
     console.log(event.charCode);
     if(event.charCode == 13){
@@ -130,4 +163,14 @@ function saveFlashcard() {
 
 function addCardFunc() {
     location.href='http://server162.site:53119/user/lango.html';
+}
+
+function flip(){
+    console.log("Inside flip function");
+    let card = document.getElementsByClassName('card-container');
+    if (card[0].classList.contains('hover')) {
+      card[0].classList.remove('hover');
+    } else {
+      card[0].classList.add('hover');
+    }
 }
