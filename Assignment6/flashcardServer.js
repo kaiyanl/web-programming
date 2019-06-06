@@ -64,6 +64,42 @@ function translateQueryHandler(req, res, next) {
     }
 };
 
+function reviewQueryHandler(req, res, next) {
+    
+    let user = req.user;
+    console.log(`\nreviewQuery: `);
+    console.log(user);
+    console.log(user.userID);
+    
+    const insertStr1 = 'INSERT INTO Flashcards (user,english,chinese,seen,correct) VALUES(@0,0,0,0,0)'
+    const insertStr2 = 'INSERT INTO Flashcards (user,english,chinese,seen,correct) VALUES(@0,0,0,0,0)'
+    db.run(insertStr1, user.userID, function(err){
+            if (err) {
+                console.log("Insertion error",err);
+            } else {
+                console.log("Inserted");
+                }
+            });
+    db.run(insertStr2, user.userID, function(err){
+            if (err) {
+                console.log("Insertion error",err);
+            } else {
+                console.log("Inserted");
+                const selectStr = `SELECT * FROM Flashcards WHERE user = ${user.userID}` 
+                db.all(selectStr, function(err,data) {
+                    if(err) {
+                        throw err;
+                    }
+                    console.log("Trying db.all");
+                    console.log(data);
+                    console.log("Should have displayed data");
+                    console.log(data[0].chinese);
+                    res.json(data);
+                })
+            }
+        });
+};
+
 function storeQueryHandler(req, res, next) {
     let qObj = req.query;
     console.log(`\nstoreQuery: `);
@@ -179,6 +215,7 @@ app.get('/user/*',
 // app.use(express.static('public'));
 app.get('/user/translate', translateQueryHandler );
 app.get('/user/store', storeQueryHandler );
+app.get('/user/review', reviewQueryHandler);
 app.use( fileNotFound );
 app.listen(port, function (){console.log('Listening...');} );
 

@@ -33,19 +33,29 @@ function FirstInputCard() {
 	return(
 		<div className='card-container textCard english' onClick={flip}>
 		  <div className='card-body'>
-			<CardBack text="Correct!" />
+			<CardBack className='cardBack' text="Correct!" />
 			  
-			<CardFront text="Volare" />
+			<CardFront className='cardFront' text="Volare" />
 		  </div>
 		</div>
 	  );
 }
 
+displayFlashcard();
+
+
+function FirstCard() {
+	return (<div className="textCard">
+		 <input placeholder="Answer here!" id="word" onKeyPress={checkReturn}></input>
+	 </div>);
+}
+/*
 function FirstCard() {
 	 return (<div className="textCard chinese">
 	 <p id="output" className="grayColor">Chinese</p>
 	 </div>);
 	 }
+*/
 
 function LangoTitleDisplay() {
     return (<div
@@ -65,7 +75,7 @@ function StartReviewDiv() {
 
 function SaveFlashcard() {
     return (<div className="SaveButtonDiv">
-            <button onClick={saveFlashcard} className="SaveButton">Next</button>
+            <button onClick={displayFlashcard} className="SaveButton">Next</button>
             </div>)
 }
 
@@ -151,13 +161,32 @@ function makeCorsRequest(word) {
 
 	xhr.send();
 }
+    
 
-function saveFlashcard() {
-	let english = document.getElementById("word").value;
-	let chinese = document.getElementById("output").textContent;
-	let url = `store?english=${english}&chinese=${chinese}`
+
+function displayFlashcard() {
+	let url = `review`
 	let xhr = new XMLHttpRequest();
 	xhr.open("GET", url, true);
+
+    if (!xhr) {
+		alert('Not supported');
+		return;
+	}
+
+	xhr.onload = function() {
+		let responseStr = xhr.responseText;
+		let object = JSON.parse(responseStr);
+		let outputElem = document.getElementsByClassName("english");
+		outputElem[0].textContent = object[0].chinese;
+		outputElem[0].classList.remove("grayColor");
+		outputElem[0].classList.add("blackColor");
+	};
+
+	xhr.onerror = function() {
+		alert('Woops, there was an error making the request.');
+	};
+    
 	xhr.send();
 }
 
