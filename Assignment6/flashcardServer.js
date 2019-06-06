@@ -177,8 +177,8 @@ app.get('/user/*',
        ); 
 
 // app.use(express.static('public'));
-app.get('/translate', translateQueryHandler );
-app.get('/store', storeQueryHandler );
+app.get('/user/translate', translateQueryHandler );
+app.get('/user/store', storeQueryHandler );
 app.use( fileNotFound );
 app.listen(port, function (){console.log('Listening...');} );
 
