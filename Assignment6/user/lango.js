@@ -64,7 +64,7 @@ function FooterDisplay() {
 		{ className: "userDisplay" },
 		React.createElement(
 			"p",
-			null,
+			{ className: "username" },
 			"UserName"
 		)
 	);
@@ -166,3 +166,30 @@ function saveFlashcard() {
 function StartReviewFunc() {
 	location.href = 'http://server162.site:53119/user/review.html';
 }
+
+function displayUsername() {
+	var url = "display";
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", url, true);
+
+	if (!xhr) {
+		alert('Not supported');
+		return;
+	}
+
+	xhr.onload = function () {
+		var responseStr = xhr.responseText;
+		var object = JSON.parse(responseStr);
+		var outputElem = document.getElementsByClassName("username");
+		var username = object[0].firstName + ' ' + object[0].lastName;
+		outputElem[0].textContent = username;
+	};
+
+	xhr.onerror = function () {
+		alert('Woops, there was an error making the request.');
+	};
+
+	xhr.send();
+}
+
+displayUsername();

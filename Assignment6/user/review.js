@@ -85,23 +85,29 @@ function FirstInputCard() {
 		React.createElement(
 			'div',
 			{ className: 'card-body' },
-			React.createElement(CardBack, { text: 'Correct!' }),
-			React.createElement(CardFront, { text: 'Volare' })
+			React.createElement(CardBack, { className: 'cardBack', text: 'Correct!' }),
+			React.createElement(CardFront, { className: 'cardFront', text: 'Volare' })
 		)
 	);
 }
 
+displayFlashcard();
+displayUsername();
+
 function FirstCard() {
 	return React.createElement(
 		'div',
-		{ className: 'textCard chinese' },
-		React.createElement(
-			'p',
-			{ id: 'output', className: 'grayColor' },
-			'Chinese'
-		)
+		{ className: 'textCard' },
+		React.createElement('input', { placeholder: 'Answer here!', id: 'word', onKeyPress: checkReturn })
 	);
 }
+/*
+function FirstCard() {
+	 return (<div className="textCard chinese">
+	 <p id="output" className="grayColor">Chinese</p>
+	 </div>);
+	 }
+*/
 
 function LangoTitleDisplay() {
 	return React.createElement(
@@ -135,7 +141,7 @@ function SaveFlashcard() {
 		{ className: 'SaveButtonDiv' },
 		React.createElement(
 			'button',
-			{ onClick: saveFlashcard, className: 'SaveButton' },
+			{ onClick: displayFlashcard, className: 'SaveButton' },
 			'Next'
 		)
 	);
@@ -147,7 +153,7 @@ function FooterDisplay() {
 		{ className: 'userDisplay' },
 		React.createElement(
 			'p',
-			null,
+			{ className: 'username' },
 			'UserName'
 		)
 	);
@@ -188,6 +194,8 @@ var body = React.createElement(
 	main,
 	footer
 );
+
+var englishCompare = void 0; //Global var for comparing
 
 ReactDOM.render(body, document.getElementById('root'));
 
@@ -235,12 +243,59 @@ function makeCorsRequest(word) {
 	xhr.send();
 }
 
-function saveFlashcard() {
-	var english = document.getElementById("word").value;
-	var chinese = document.getElementById("output").textContent;
-	var url = 'store?english=' + english + '&chinese=' + chinese;
+function displayUsername() {
+	var url = 'display';
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", url, true);
+
+	if (!xhr) {
+		alert('Not supported');
+		return;
+	}
+
+	xhr.onload = function () {
+		var responseStr = xhr.responseText;
+		var object = JSON.parse(responseStr);
+		var outputElem = document.getElementsByClassName("username");
+		var username = object[0].firstName + ' ' + object[0].lastName;
+		outputElem[0].textContent = username;
+	};
+
+	xhr.onerror = function () {
+		alert('Woops, there was an error making the request.');
+	};
+
+	xhr.send();
+}
+
+function displayFlashcard() {
+	var url = 'review';
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", url, true);
+
+	if (!xhr) {
+		alert('Not supported');
+		return;
+	}
+
+	xhr.onload = function () {
+		var responseStr = xhr.responseText;
+		var object = JSON.parse(responseStr);
+		var outputElem = document.getElementById('trans');
+		var card = document.getElementsByClassName('card-container');
+		outputElem.textContent = object.chinese;
+		englishCompare = object.english;
+		outputElem.classList.remove("grayColor");
+		outputElem.classList.add("blackColor");
+		if (card[0].classList.contains('hover')) {
+			card[0].classList.remove('hover');
+		}
+	};
+
+	xhr.onerror = function () {
+		alert('Woops, there was an error making the request.');
+	};
+
 	xhr.send();
 }
 
@@ -251,9 +306,31 @@ function addCardFunc() {
 function flip() {
 	console.log("Inside flip function");
 	var card = document.getElementsByClassName('card-container');
+	var input = document.getElementById('word');
+	var back = document.getElementById('congrats');
+
 	if (card[0].classList.contains('hover')) {
 		card[0].classList.remove('hover');
 	} else {
 		card[0].classList.add('hover');
+	}
+
+	if (englishCompare != input.value) {
+		back.textContent = englishCompare;
+	} else {
+		back.textContent = 'Correct!';
+		var url = 'correct';
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", url, true);
+
+		if (!xhr) {
+			alert('Not supported');
+			return;
+		}
+		xhr.onerror = function () {
+			alert('Woops, there was an error making the request.');
+		};
+
+		xhr.send();
 	}
 }

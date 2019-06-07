@@ -114,6 +114,8 @@ const body = (<div className="body">
         {footer}
     </div>);
 
+let englishCompare; //Global var for comparing
+
 ReactDOM.render(
     body,
     document.getElementById('root')
@@ -177,7 +179,7 @@ function displayUsername() {
 		let responseStr = xhr.responseText;
 		let object = JSON.parse(responseStr);
 		let outputElem = document.getElementsByClassName("username");
-		let username = object[0].firsrName + ' ' + object[0].lastName;
+		let username = object[0].firstName + ' ' + object[0].lastName;
 		outputElem[0].textContent = username;
 	};
 
@@ -201,15 +203,22 @@ function displayFlashcard() {
 	xhr.onload = function() {
 		let responseStr = xhr.responseText;
 		let object = JSON.parse(responseStr);
-		let outputElem = document.getElementsByClassName("english");
-		outputElem[0].textContent = object[0].chinese;
-		outputElem[0].classList.remove("grayColor");
-		outputElem[0].classList.add("blackColor");
+		let outputElem = document.getElementById('trans');
+        let card = document.getElementsByClassName('card-container');
+		outputElem.textContent = object.chinese;
+        englishCompare = object.english;
+		outputElem.classList.remove("grayColor");
+		outputElem.classList.add("blackColor");
+        if (card[0].classList.contains('hover')) {
+          card[0].classList.remove('hover');
+        }
 	};
 
 	xhr.onerror = function() {
 		alert('Woops, there was an error making the request.');
 	};
+    
+    
     
 	xhr.send();
 }
@@ -221,9 +230,34 @@ function addCardFunc() {
 function flip(){
     console.log("Inside flip function");
     let card = document.getElementsByClassName('card-container');
+    let input = document.getElementById('word');
+    let back = document.getElementById('congrats');
+    
     if (card[0].classList.contains('hover')) {
       card[0].classList.remove('hover');
     } else {
       card[0].classList.add('hover');
     }
+    
+    if(englishCompare != input.value){
+        back.textContent = englishCompare;
+    } else {
+        back.textContent = 'Correct!';
+        let url = 'correct'
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", url, true);
+
+        if (!xhr) {
+            alert('Not supported');
+            return;
+        }
+        xhr.onerror = function() {
+            alert('Woops, there was an error making the request.');
+        };
+
+        xhr.send();
+    }
+    
+    
+    
 }

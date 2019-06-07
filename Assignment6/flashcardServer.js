@@ -66,75 +66,97 @@ function translateQueryHandler(req, res, next) {
 
 function reviewQueryHandler(req, res, next) {
     
-    let user = req.user;
-    console.log(`\nreviewQuery: `);
-    console.log(user);
-    console.log(user.userID);
+//    let user = req.user;
+//    console.log(`\nreviewQuery: `);
+//    console.log(user);
+//    console.log(user.userID);
     
-    const insertStr1 = 'INSERT INTO Flashcards (user,english,chinese,seen,correct) VALUES(@0,0,0,0,0)'
-    const insertStr2 = 'INSERT INTO Flashcards (user,english,chinese,seen,correct) VALUES(@0,0,0,0,0)'
-    db.run(insertStr1, user.userID, function(err){
-            if (err) {
-                console.log("Insertion error",err);
-            } else {
-                console.log("Inserted");
-                }
-            });
-    db.run(insertStr2, user.userID, function(err){
-            if (err) {
-                console.log("Insertion error",err);
-            } else {
-                console.log("Inserted");
-                const selectStr = `SELECT * FROM Flashcards WHERE user = ${user.userID}` 
-                db.all(selectStr, function(err,data) {
-                    if(err) {
-                        throw err;
-                    }
-                    console.log("Trying db.all");
-                    console.log(data);
-                    console.log("Should have displayed data");
-                    console.log(data[0].chinese);
-                    res.json(data);
-                })
-            }
+//    console.log("Inserted");
+    const selectStr = `SELECT * FROM Flashcards WHERE user = ${req.user.userID}` 
+    db.all(selectStr, function(err,data) {
+        if(err) {
+            throw err;
+        }
+        let randomCard = Math.floor(Math.random() * (data.length));
+        
+        let score = ( Math.max(1,5-data[randomCard].correct) + Math.max(1,5-data[randomCard].seen) + 5*((data[randomCard].seen-data[randomCard].correct)/(data[randomCard].seen + 0.0001)) );
+        
+        let randomValue = Math.floor(Math.random() * 16);
+        
+        while(randomValue > score) {
+            randomCard = Math.floor(Math.random() * (data.length));
+            score = ( Math.max(1,5-data[randomCard].correct) + Math.max(1,5-data[randomCard].seen) + 5*((data[randomCard].seen-data[randomCard].correct)/(data[randomCard].seen + 0.0001)) );
+            randomValue = Math.floor(Math.random() * 16);
+        }
+        let seen = data[randomCard].seen + 1;
+        englishGlob = data[randomCard].english;
+        
+        const updateSeenStr = `UPDATE Flashcards SET seen=${seen} WHERE user = ${req.user.userID} AND english = '${englishGlob}'`;  
+        db.run(updateSeenStr, function(err) {
+            if(err){
+                throw err;
+            } 
         });
+        
+        console.log("Trying db.all");
+        console.log(data);
+        console.log(data[randomCard]);
+        console.log("Should have displayed data");
+        res.json(data[randomCard]);
+    });
+    
+    //const updateStr = `UPDATE Flashcards SET seen=seen+1 WHERE user = ${user.userID} AND english = ${data[0].english}`
 };
+
+let englishGlob;
 
 function displayQueryHandler(req, res, next) {
-    
-    let user = req.user;
     console.log(`\ndisplayQuery: `);
-    console.log(user);
-    console.log(user.userID);
+    console.log(req.user);
+    console.log(req.user.userID);
     
-    const insertStr = 'INSERT INTO Users (gid,firstName,lastName) VALUES(@0,0,0)'
+    const selectStr = `select * from Users where gid=${req.user.userID}`
+    db.all(selectStr,function(err,data){
+        if(err){
+            throw err;
+        }
+        res.json(data);
+    });
+    
+    
+//    const selectStr = `SELECT * FROM Users WHERE gid = ${req.user.userID}` 
 
-    db.run(insertStr, user.userID, function(err){
-            if (err) {
-                console.log("Insertion error",err);
-            } else {
-                console.log("Inserted");
-                const selectStr = `SELECT * FROM Users WHERE gid = ${user.userID}` 
-                db.all(selectStr, function(err,data) {
-                    if(err) {
-                        throw err;
-                    }
-                    console.log("Trying db.all");
-                    console.log(data);
-                    console.log("Should have displayed data");
-                    res.json(data);
-                })
-            }
-        });
 };
+
+function correctQueryHandler(req, res, next) {
+    const selectStr = `SELECT * FROM Flashcards WHERE user = ${req.user.userID} AND english = '${englishGlob}'`;
+    db.all(selectStr, function(err,data) {
+        if(err) {
+            throw err;
+        }
+        else {
+            let correct = data[0].correct + 1;
+            const updateSeenStr = `UPDATE Flashcards SET correct=${correct} WHERE user = ${req.user.userID} AND english = '${englishGlob}'`;
+            db.run(updateSeenStr, function(err) {
+            if(err){
+                throw err;
+            } 
+            });
+            
+        }
+    });
+    
+    
+    
+}
 
 function storeQueryHandler(req, res, next) {
     let qObj = req.query;
     console.log(`\nstoreQuery: `);
     console.log(qObj);
     if (qObj.english != undefined && qObj.chinese != undefined) {
-        const insertStr = 'INSERT INTO Flashcards (user,english,chinese,seen,correct) VALUES(1,@0,@1,0,0)'
-        db.run(insertStr,qObj.english,qObj.chinese,function(err){
+        const insertStr = 'INSERT INTO Flashcards (user,english,chinese,seen,correct) VALUES(@0,@1,@2,0,0)'
+        db.run(insertStr,req.user.userID,qObj.english,qObj.chinese,function(err){
             if (err) {
                 console.log("Insertion error",err);
             } else {
@@ -245,6 +267,7 @@ app.get('/user/translate', translateQueryHandler );
 app.get('/user/store', storeQueryHandler );
 app.get('/user/review', reviewQueryHandler);
 app.get('/user/display',displayQueryHandler);
+app.get('/user/correct', correctQueryHandler);
 app.use( fileNotFound );
 app.listen(port, function (){console.log('Listening...');} );
 

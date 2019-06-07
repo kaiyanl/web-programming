@@ -1,0 +1,79 @@
+
+.parentDiv {display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100%;
+    
+}
+
+.rightDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.leftDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+/*    align-items: center;*/
+    padding-left: 10%;
+    width: 50%;
+    background: linear-gradient(to bottom right, #606B9B, #B191D4);
+    
+}
+
+.google {
+    max-height: 80%;
+    max-width:  80%;
+    margin-right: 10%;
+}
+
+
+
+.linkDiv {
+    padding: 2%;
+    height: 5%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #70C7A9;
+}
+
+.link {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+}
+
+.loginText {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.welcomDiv {
+    font-family: 'Raleway', sans-serif;
+    font-size: 7vw;
+    font-weight: 900;
+    color: white
+}
+
+.langoDiv {
+    font-family: 'Raleway', sans-serif;
+    font-size: 7vw;
+    font-weight: 900;
+    color: white;
+}
+
+.customDiv {
+    margin-top: 10%;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 3vw;
+    color: #70C7A9;
+}

@@ -146,7 +146,7 @@ function displayUsername() {
 		let responseStr = xhr.responseText;
 		let object = JSON.parse(responseStr);
 		let outputElem = document.getElementsByClassName("username");
-		let username = object[0].firsrName + ' ' + object[0].lastName;
+		let username = object[0].firstName + ' ' + object[0].lastName;
 		outputElem[0].textContent = username;
 	};
 
