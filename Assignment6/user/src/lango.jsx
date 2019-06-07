@@ -36,7 +36,7 @@ function SaveFlashcard() {
 
 function FooterDisplay() {
     return (<div className="userDisplay">
-            <p>UserName</p>
+            <p className="username">UserName</p>
             </div>)
 }
 
@@ -131,3 +131,30 @@ function saveFlashcard() {
 function StartReviewFunc() {
     location.href='http://server162.site:53119/user/review.html';
 }
+
+function displayUsername() {
+	let url = `display`
+	let xhr = new XMLHttpRequest();
+	xhr.open("GET", url, true);
+
+    if (!xhr) {
+		alert('Not supported');
+		return;
+	}
+
+	xhr.onload = function() {
+		let responseStr = xhr.responseText;
+		let object = JSON.parse(responseStr);
+		let outputElem = document.getElementsByClassName("username");
+		let username = object[0].firsrName + ' ' + object[0].lastName;
+		outputElem[0].textContent = username;
+	};
+
+	xhr.onerror = function() {
+		alert('Woops, there was an error making the request.');
+	};
+    
+	xhr.send();
+}
+
+displayUsername();

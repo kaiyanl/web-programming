@@ -100,6 +100,34 @@ function reviewQueryHandler(req, res, next) {
         });
 };
 
+function displayQueryHandler(req, res, next) {
+    
+    let user = req.user;
+    console.log(`\ndisplayQuery: `);
+    console.log(user);
+    console.log(user.userID);
+    
+    const insertStr = 'INSERT INTO Users (gid,firstName,lastName) VALUES(@0,0,0)'
+
+    db.run(insertStr, user.userID, function(err){
+            if (err) {
+                console.log("Insertion error",err);
+            } else {
+                console.log("Inserted");
+                const selectStr = `SELECT * FROM Users WHERE gid = ${user.userID}` 
+                db.all(selectStr, function(err,data) {
+                    if(err) {
+                        throw err;
+                    }
+                    console.log("Trying db.all");
+                    console.log(data);
+                    console.log("Should have displayed data");
+                    res.json(data);
+                })
+            }
+        });
+};
+
 function storeQueryHandler(req, res, next) {
     let qObj = req.query;
     console.log(`\nstoreQuery: `);
@@ -216,6 +244,7 @@ app.get('/user/*',
 app.get('/user/translate', translateQueryHandler );
 app.get('/user/store', storeQueryHandler );
 app.get('/user/review', reviewQueryHandler);
+app.get('/user/display',displayQueryHandler);
 app.use( fileNotFound );
 app.listen(port, function (){console.log('Listening...');} );
 
