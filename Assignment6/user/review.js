@@ -76,9 +76,6 @@ var CardBack = function (_React$Component2) {
 }(React.Component);
 
 function FirstInputCard() {
-	// return (<div className="textCard english">
-	// 	 {/* <input placeholder="English" id="word" onKeyPress={checkReturn}></input> */}
-	//  </div>);
 	return React.createElement(
 		'div',
 		{ className: 'card-container textCard english', onClick: flip },
@@ -101,13 +98,6 @@ function FirstCard() {
 		React.createElement('input', { placeholder: 'Answer here!', id: 'word', onKeyPress: checkReturn })
 	);
 }
-/*
-function FirstCard() {
-	 return (<div className="textCard chinese">
-	 <p id="output" className="grayColor">Chinese</p>
-	 </div>);
-	 }
-*/
 
 function LangoTitleDisplay() {
 	return React.createElement(
@@ -202,8 +192,7 @@ ReactDOM.render(body, document.getElementById('root'));
 function checkReturn(event) {
 	console.log(event.charCode);
 	if (event.charCode == 13) {
-		var english = document.getElementById("word").value;
-		sendRequest(english);
+		flip();
 	}
 }
 
@@ -304,7 +293,6 @@ function addCardFunc() {
 }
 
 function flip() {
-	console.log("Inside flip function");
 	var card = document.getElementsByClassName('card-container');
 	var input = document.getElementById('word');
 	var back = document.getElementById('congrats');
@@ -317,8 +305,14 @@ function flip() {
 
 	if (englishCompare != input.value) {
 		back.textContent = englishCompare;
+		back.classList.remove("addBorder");
+		back.classList.remove("addBackgroundColor");
+		back.classList.remove("addTextColor");
 	} else {
-		back.textContent = 'Correct!';
+		back.classList.add("addBorder");
+		back.classList.add("addBackgroundColor");
+		back.classList.add("addTextColor");
+		back.textContent = 'CORRECT!';
 		var url = 'correct';
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", url, true);

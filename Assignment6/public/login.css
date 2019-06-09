@@ -1,4 +1,7 @@
-
+body {
+    height: 100%;
+    width: 100%;
+}
 .parentDiv {display: flex;
     flex-direction: row;
     height: 100vh;
@@ -10,7 +13,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 45%;
 }
 
 .leftDiv {
@@ -18,27 +21,23 @@
     flex-direction: column;
     justify-content: center;
 /*    align-items: center;*/
-    padding-left: 10%;
+    padding-left: 5%;
     width: 50%;
     background: linear-gradient(to bottom right, #606B9B, #B191D4);
     
 }
 
 .google {
-    max-height: 80%;
-    max-width:  80%;
-    margin-right: 10%;
+    height: 100%;
+    margin-right: 5%;
 }
 
 
 
 .linkDiv {
-    padding: 2%;
-    height: 5%;
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 0.5%;
+    height: 3vw;
+    width: 18vw;
     background-color: #70C7A9;
 }
 
@@ -48,12 +47,13 @@
     height: 100%;
     width: 100%;
     align-items: center;
+    text-decoration: none;
 }
 
 .loginText {
-    display: flex;
-    align-items: center;
     color: white;
+    flex: 1 0 auto;
+    font-size: 1.5vw;
 }
 
 .welcomDiv {
@@ -77,3 +77,72 @@
     font-size: 3vw;
     color: #70C7A9;
 }
+
+.midDiv {
+    width: 5%;
+    background: linear-gradient(to right, lightgrey, white);
+}
+
+/* tablet view: ipad width is 768px */
+@media screen and (max-width: 768px) {
+    .parentDiv{
+        flex-direction: column;
+    }
+
+    .leftDiv {
+        width: initial;
+        height: 75vh;
+        padding: 0 15vh;
+    }
+
+    .welcomDiv{
+        font-size: 10vw;
+    }
+    .langoDiv{
+        font-size: 10vw;
+    }
+    .customDiv{
+        font-size: 4vw;
+    }
+    .midDiv {
+        width: initial;
+        height: 10vh;
+        background: linear-gradient(to bottom, lightgrey, white);
+    }
+    .rightDiv {
+        width: 100%;
+        height: 15vh;
+        align-items: flex-start;
+    }
+    .linkDiv{
+        height: 5vh;
+        width: 40vw;
+    }
+    .loginText{
+        font-size: 3vw;
+    }
+}
+
+/* mobile view: iphone8 Plus' width is 414px */
+@media screen and (max-width: 414px) {
+    .leftDiv {
+        padding: 0 7vh;
+    }
+    .welcomDiv{
+        font-size: 12vw;
+    }
+    .langoDiv {
+        font-size: 12vw;
+    }
+    .customDiv{
+        font-size: 6vw;
+    }
+    .linkDiv{
+        height: 6vh;
+        width: 60vw;
+    }
+    .loginText {
+        font-size: 5vw;
+    }
+}
+    

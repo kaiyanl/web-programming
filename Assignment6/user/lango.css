@@ -36,8 +36,7 @@ footer {
     align-items: center;
     justify-content: center;
     font-family: helvetica; 
-    /* font-size: 25pt; */
-    font-size: 2.5vw;
+    font-size: 3vh;
     background: #606B9B;
     color: white;
     /* border: 1px solid green; */

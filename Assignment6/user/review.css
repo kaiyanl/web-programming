@@ -36,8 +36,7 @@ footer {
     align-items: center;
     justify-content: center;
     font-family: helvetica; 
-    /* font-size: 25pt; */
-    font-size: 2.5vw;
+    font-size: 3vh;
     background: #606B9B;
     color: white;
     /* border: 1px solid green; */
@@ -110,16 +109,32 @@ p {
 #word {
     width: 100%;
     font-family: helvetica;
-    font-size: 30pt;
-    text-align: center;
+    font-size: 2vw;
+    padding-left: 2vw;
+    height: 8vh;
     border: none;
     /* border: 1px solid red; */
+}
+
+#trans {
+    font-size: 2vw;
+}
+
+#congrats {
+    font-family: helvetica;
+    font-weight: bold;
+    font-size: 2vw;
+    height: 18vh;
+    width: 30vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #output {
     width: 100%;
     font-family: helvetica;
-    font-size: 30pt;
+    font-size: 2vw;
     text-align: center;
     /* border: 1px solid red; */
 }
@@ -167,7 +182,6 @@ p {
 .card-container {
   position: relative;
   z-index: 1;
-  margin: 32px auto;
   -webkit-perspective: 1000px;
           perspective: 1000px;
 }
@@ -254,22 +268,27 @@ p {
         width: 18vw;
         /* font-size: 20pt; */
         font-size: 4vw;
+        margin-top: 5vw;
     }
 
     .textCards{
         align-items: center;
     }
 
-    .textCard {
-        height: 60%;
+    #word {
+        font-size: 20pt;
     }
 
-    #word {
-        font-size: 25pt;
+    #trans {
+        font-size: 20pt;
+    }
+    
+    #congrats {
+        font-size: 20pt;
     }
 
     #output {
-        font-size: 25pt;
+        font-size: 20pt;
     }
 
     footer {
@@ -329,19 +348,38 @@ p {
 
     .textCard {
         width: 100%;
-        height: 45%;
     }
 
     #word {
-        font-size: 20pt;
+        font-size: 15pt;
+    }
+
+    #trans {
+        font-size: 15pt;
+    }
+    
+    #congrats {
+        font-size: 15pt;
     }
 
     #output {
-        font-size: 20pt;
+        font-size: 15pt;
     }
 
     footer {
         /* font-size: 17pt; */
         font-size: 5.5vw;
     }
+}
+
+.addBorder {
+    border: 4px solid #8ac74d;
+}
+
+.addBackgroundColor {
+    background-color: #d6ffb1;
+}
+
+.addTextColor {
+    color: #8ac74d;
 }

@@ -121,10 +121,25 @@ function makeCorsRequest(word) {
 
 function saveFlashcard() {
 	let english = document.getElementById("word").value;
-	let chinese = document.getElementById("output").textContent;
+	// let chinese = document.getElementById("output").textContent;
+	let text = 	document.getElementById("output").textContent;
+	let chinese;
+	if (text != 'Chinese') {
+		chinese = text;
+	};
 	let url = `store?english=${english}&chinese=${chinese}`
 	let xhr = new XMLHttpRequest();
 	xhr.open("GET", url, true);
+
+    if (!xhr) {
+		alert('Not supported');
+		return;
+	}
+
+	xhr.onerror = function() {
+		alert('Woops, there was an error making the request.');
+	};
+    
 	xhr.send();
 }
 

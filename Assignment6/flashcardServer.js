@@ -19,8 +19,8 @@ const googleLoginData = {
 
 function translateQueryHandler(req, res, next) {
     let qObj = req.query;
-    console.log(`\ntranslateQuery: `);
-    console.log(qObj);
+    // console.log(`\ntranslateQuery: `);
+    // console.log(qObj);
     if (qObj.english != undefined) {
         let requestObject = 
         {
@@ -65,27 +65,30 @@ function translateQueryHandler(req, res, next) {
 };
 
 function reviewQueryHandler(req, res, next) {
-    
-//    let user = req.user;
-//    console.log(`\nreviewQuery: `);
-//    console.log(user);
-//    console.log(user.userID);
-    
-//    console.log("Inserted");
     const selectStr = `SELECT * FROM Flashcards WHERE user = ${req.user.userID}` 
     db.all(selectStr, function(err,data) {
         if(err) {
             throw err;
         }
+
         let randomCard = Math.floor(Math.random() * (data.length));
-        
-        let score = ( Math.max(1,5-data[randomCard].correct) + Math.max(1,5-data[randomCard].seen) + 5*((data[randomCard].seen-data[randomCard].correct)/(data[randomCard].seen + 0.0001)) );
+
+        let score;
+        if(data[randomCard].seen == 0) {
+            score = 15;
+        } else {
+            score = ( Math.max(1,5-data[randomCard].correct) + Math.max(1,5-data[randomCard].seen) + 5*((data[randomCard].seen-data[randomCard].correct)/(data[randomCard].seen + 0.0001)) );
+        }
         
         let randomValue = Math.floor(Math.random() * 16);
         
         while(randomValue > score) {
             randomCard = Math.floor(Math.random() * (data.length));
-            score = ( Math.max(1,5-data[randomCard].correct) + Math.max(1,5-data[randomCard].seen) + 5*((data[randomCard].seen-data[randomCard].correct)/(data[randomCard].seen + 0.0001)) );
+            if(data[randomCard].seen == 0) {
+                score = 15;
+            } else {
+                score = ( Math.max(1,5-data[randomCard].correct) + Math.max(1,5-data[randomCard].seen) + 5*((data[randomCard].seen-data[randomCard].correct)/(data[randomCard].seen + 0.0001)) );
+            }
             randomValue = Math.floor(Math.random() * 16);
         }
         let seen = data[randomCard].seen + 1;
@@ -98,23 +101,17 @@ function reviewQueryHandler(req, res, next) {
             } 
         });
         
-        console.log("Trying db.all");
+        console.log("\nDatabase:");
         console.log(data);
+        console.log("\nCurrent flashcard:");
         console.log(data[randomCard]);
-        console.log("Should have displayed data");
         res.json(data[randomCard]);
     });
-    
-    //const updateStr = `UPDATE Flashcards SET seen=seen+1 WHERE user = ${user.userID} AND english = ${data[0].english}`
 };
 
 let englishGlob;
 
 function displayQueryHandler(req, res, next) {
-    console.log(`\ndisplayQuery: `);
-    console.log(req.user);
-    console.log(req.user.userID);
-    
     const selectStr = `select * from Users where gid=${req.user.userID}`
     db.all(selectStr,function(err,data){
         if(err){
@@ -122,10 +119,6 @@ function displayQueryHandler(req, res, next) {
         }
         res.json(data);
     });
-    
-    
-//    const selectStr = `SELECT * FROM Users WHERE gid = ${req.user.userID}` 
-
 };
 
 function correctQueryHandler(req, res, next) {
@@ -142,34 +135,29 @@ function correctQueryHandler(req, res, next) {
                 throw err;
             } 
             });
-            
         }
     });
-    
-    
-    
 }
 
 function storeQueryHandler(req, res, next) {
     let qObj = req.query;
-    console.log(`\nstoreQuery: `);
-    console.log(qObj);
-    if (qObj.english != undefined && qObj.chinese != undefined) {
+    // console.log(`\nstoreQuery: `);
+    // console.log(qObj);
+    if (qObj.english != undefined && qObj.chinese != 'undefined') {
         const insertStr = 'INSERT INTO Flashcards (user,english,chinese,seen,correct) VALUES(@0,@1,@2,0,0)'
         db.run(insertStr,req.user.userID,qObj.english,qObj.chinese,function(err){
             if (err) {
                 console.log("Insertion error",err);
             } else {
                 console.log("Inserted");
-                db.all ( 'SELECT * FROM Flashcards', function(err,data) {
-                    console.log(`\nFlashcards Database:`);
+                db.all ( `SELECT * FROM Flashcards WHERE user=${req.user.userID}`, function(err,data) {
+                    console.log(`\nDatabase:`);
                     console.log(data);
-                    res.json(data);
                 });
             }
         });
-    }
-    else {
+    } else {
+
 	    next();
     }
 };
@@ -181,41 +169,55 @@ function fileNotFound(req, res) {
     res.send('Cannot find '+url);
 };
 
-function cardTableDropCallback(err) {
+// function cardTableDropCallback(err) {
+//     if (err) {
+//     console.log("Flashcards Table drop error",err);
+//     } else {
+//     console.log("Flashcards Table dropped if exists");
+//     db.run(createCardTableStr,cardTableCreationCallback);
+//     }
+// };
+
+// function userTableDropCallback(err) {
+//     if (err) {
+//     console.log("Users Table drop error",err);
+//     } else {
+//     console.log("Users Table dropped if exists");
+//     db.run(createUserTableStr,usersTableCreationCallback);
+//     }
+// };
+
+function cardTableCreationCallback(err) {
     if (err) {
-    console.log("Table drop error",err);
-    } else {
-    console.log("Table dropped if exists");
-    db.run(createCardTableStr,tableCreationCallback);
-    }
+	console.log("Flashcards Table creation error",err);
+    } 
+    // else {
+	// console.log("Flashcards Table created");
+    // }
 };
 
-function userTableDropCallback(err) {
+function usersTableCreationCallback(err) {
     if (err) {
-    console.log("Table drop error",err);
-    } else {
-    console.log("Table dropped if exists");
-    db.run(createUserTableStr,tableCreationCallback);
-    }
-};
-
-function tableCreationCallback(err) {
-    if (err) {
-	console.log("Table creation error",err);
-    } else {
-	console.log("Table created");
-    }
+	console.log("Users Table creation error",err);
+    } 
+    // else {
+	// console.log("Users Table created");
+    // }
 };
 
 // create database
 const dbFileName = "Flashcards.db";
 const db = new sqlite3.Database(dbFileName);  
-const dropCardTableStr = 'DROP TABLE IF EXISTS Flashcards'
-const dropUserTableStr = 'DROP TABLE IF EXISTS Users'
-const createCardTableStr = 'CREATE TABLE Flashcards (user int, english string, chinese string, seen int, correct int)'
-const createUserTableStr = 'CREATE TABLE Users (gid int, firstName string, lastName string)'
-db.run(dropCardTableStr,cardTableDropCallback);
-db.run(dropUserTableStr,userTableDropCallback);
+// const dropCardTableStr = 'DROP TABLE IF EXISTS Flashcards'
+// const dropUserTableStr = 'DROP TABLE IF EXISTS Users'
+// const createCardTableStr = 'CREATE TABLE Flashcards (user int, english string, chinese string, seen int, correct int)'
+// const createUserTableStr = 'CREATE TABLE Users (gid int, firstName string, lastName string)'
+// db.run(dropCardTableStr,cardTableDropCallback);
+// db.run(dropUserTableStr,userTableDropCallback);
+const createCardTableStr = 'CREATE TABLE IF NOT EXISTS Flashcards (user int, english string, chinese string, seen int, correct int)';
+const createUserTableStr = 'CREATE TABLE IF NOT EXISTS Users (gid int, firstName string, lastName string)';
+db.run(createCardTableStr,cardTableCreationCallback);
+db.run(createUserTableStr,usersTableCreationCallback);
 process.on('exit', function(){db.close();}); // Close database on exiting the terminal
 
 // put together the server pipeline
@@ -275,7 +277,7 @@ app.listen(port, function (){console.log('Listening...');} );
 
 // print the url of incoming HTTP request
 function printURL (req, res, next) {
-    console.log(req.url);
+    console.log('\n'+req.url);
     next();
 }
 
@@ -301,38 +303,11 @@ function fileNotFound(req, res) {
     res.send('Cannot find '+url);
     }
 
-// Some functions Passport calls, that we can use to specialize.
-// This is where we get to write our own code, not just boilerplate. 
-// The callback "done" at the end of each one resumes Passport's
-// internal process. 
-
 // function called during login, the second time passport.authenticate
 // is called (in /auth/redirect/),
 // once we actually have the profile data from Google. 
 function gotProfile(accessToken, refreshToken, profile, done) {
     console.log("Google profile",profile);
-    // here is a good place to check if user is in DB,
-    // and to store him in DB if not already there. 
-    // Second arg to "done" will be passed into serializeUser,
-    // should be key to get user out of database.
-    /** TESTING USER INSERTION, THIS ADDS FAKE USERS
-    const insertStr1 = 'INSERT INTO Users (gid,firstName,lastName) VALUES(1,0,0)'
-    const insertStr2 = 'INSERT INTO Users (gid,firstName,lastName) VALUES(2,0,0)'
-        db.run(insertStr1,function(err){
-            if (err) {
-                console.log("Insertion error",err);
-            } else {
-                console.log("Inserted");
-                }
-            });
-    db.run(insertStr2,function(err){
-            if (err) {
-                console.log("Insertion error",err);
-            } else {
-                console.log("Inserted");
-                }
-            });
-    **/
     const getIdStr = 'SELECT gid FROM Users'
     db.all(getIdStr,function(err,data){
         if (err) {
@@ -363,14 +338,7 @@ function gotProfile(accessToken, refreshToken, profile, done) {
         }
     });
     
-    
-    
-
-    let dbRowID = profile.id;  // temporary! Should be the real unique
-    // key for db Row for this user in DB table.
-    // Note: cannot be zero, has to be something that evaluates to
-    // True.  
-
+    let dbRowID = profile.id;
     done(null, dbRowID); 
 }
 

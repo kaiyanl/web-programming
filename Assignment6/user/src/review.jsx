@@ -27,14 +27,10 @@
   }
 
 function FirstInputCard() {
-	// return (<div className="textCard english">
-	// 	 {/* <input placeholder="English" id="word" onKeyPress={checkReturn}></input> */}
-	//  </div>);
 	return(
 		<div className='card-container textCard english' onClick={flip}>
 		  <div className='card-body'>
-			<CardBack className='cardBack' text="Correct!" />
-			  
+			<CardBack className='cardBack' text="Correct!" />  
 			<CardFront className='cardFront' text="Volare" />
 		  </div>
 		</div>
@@ -50,13 +46,6 @@ function FirstCard() {
 		 <input placeholder="Answer here!" id="word" onKeyPress={checkReturn}></input>
 	 </div>);
 }
-/*
-function FirstCard() {
-	 return (<div className="textCard chinese">
-	 <p id="output" className="grayColor">Chinese</p>
-	 </div>);
-	 }
-*/
 
 function LangoTitleDisplay() {
     return (<div
@@ -124,8 +113,7 @@ ReactDOM.render(
 function checkReturn(event) {
     console.log(event.charCode);
     if(event.charCode == 13){
-		let english = document.getElementById("word").value;
-		sendRequest(english);
+		flip();
     }
 }
 
@@ -166,7 +154,7 @@ function makeCorsRequest(word) {
 }
     
 function displayUsername() {
-	let url = `display`
+	let url = `display`;
 	let xhr = new XMLHttpRequest();
 	xhr.open("GET", url, true);
 
@@ -191,7 +179,7 @@ function displayUsername() {
 }
 
 function displayFlashcard() {
-	let url = `review`
+	let url = `review`;
 	let xhr = new XMLHttpRequest();
 	xhr.open("GET", url, true);
 
@@ -217,9 +205,7 @@ function displayFlashcard() {
 	xhr.onerror = function() {
 		alert('Woops, there was an error making the request.');
 	};
-    
-    
-    
+
 	xhr.send();
 }
 
@@ -228,11 +214,10 @@ function addCardFunc() {
 }
 
 function flip(){
-    console.log("Inside flip function");
     let card = document.getElementsByClassName('card-container');
     let input = document.getElementById('word');
     let back = document.getElementById('congrats');
-    
+
     if (card[0].classList.contains('hover')) {
       card[0].classList.remove('hover');
     } else {
@@ -240,10 +225,16 @@ function flip(){
     }
     
     if(englishCompare != input.value){
-        back.textContent = englishCompare;
+		back.textContent = englishCompare;
+		back.classList.remove("addBorder");
+		back.classList.remove("addBackgroundColor");
+		back.classList.remove("addTextColor");
     } else {
-        back.textContent = 'Correct!';
-        let url = 'correct'
+		back.classList.add("addBorder");
+		back.classList.add("addBackgroundColor");
+		back.classList.add("addTextColor");
+		back.textContent = 'CORRECT!';
+        let url = 'correct';
         let xhr = new XMLHttpRequest();
         xhr.open("GET", url, true);
 
@@ -253,11 +244,8 @@ function flip(){
         }
         xhr.onerror = function() {
             alert('Woops, there was an error making the request.');
-        };
+		};
 
         xhr.send();
-    }
-    
-    
-    
+    } 
 }
