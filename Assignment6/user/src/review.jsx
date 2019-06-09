@@ -29,6 +29,7 @@
 function FirstInputCard() {
 	return(
 		<div className='card-container textCard english' onClick={flip}>
+		  <img src={'./assets/rotate.png'}></img>
 		  <div className='card-body'>
 			<CardBack className='cardBack' text="Correct!" />  
 			<CardFront className='cardFront' text="Volare" />

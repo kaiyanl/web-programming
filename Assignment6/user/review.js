@@ -79,6 +79,7 @@ function FirstInputCard() {
 	return React.createElement(
 		'div',
 		{ className: 'card-container textCard english', onClick: flip },
+		React.createElement('img', { src: './assets/rotate.png' }),
 		React.createElement(
 			'div',
 			{ className: 'card-body' },
