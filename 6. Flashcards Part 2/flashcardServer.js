@@ -8,12 +8,13 @@ const GoogleStrategy = require('passport-google-oauth20');
 const port = 53119;
 const APIrequest = require('request');
 const http = require('http');
-const APIkey = 'AIzaSyAnBSkl-zu9eupqVziEz7qjFmSmPCauHvg';
+const keys = require('./config/keys');
+const APIkey = keys.API;
 const APIurl = "https://translation.googleapis.com/language/translate/v2?key="+APIkey;
 
 const googleLoginData = {
-    clientID: '412333577237-hrvls4g0cr2hdmlqn432bohhirk0pvn7.apps.googleusercontent.com',
-    clientSecret: 'nDxIP2Y8cbZuCoCnIeus3vq2',
+    clientID: keys.google.clientID,
+    clientSecret: keys.google.clientSecret,
     callbackURL: '/auth/redirect'
 };
 
@@ -227,7 +228,7 @@ app.use('/', printURL);
 app.use(cookieSession({
     maxAge: 6 * 60 * 60 * 1000, // Six hours in milliseconds
     // meaningless random string used by encryption
-    keys: ['hanger waldo mercy dance']  
+    keys: [keys.session.cookieKey]  
 }));
 // Initializes request object for further handling by passport
 app.use(passport.initialize()); 

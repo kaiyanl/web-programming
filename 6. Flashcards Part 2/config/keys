@@ -1,0 +1,10 @@
+module.exports = {
+    google: {
+        clientID: '412333577237-hrvls4g0cr2hdmlqn432bohhirk0pvn7.apps.googleusercontent.com',
+        clientSecret: 'nDxIP2Y8cbZuCoCnIeus3vq2'
+    },
+    session: {
+        cookieKey: 'hanger waldo mercy dance'
+    },
+    API: 'AIzaSyAnBSkl-zu9eupqVziEz7qjFmSmPCauHvg'
+};
