@@ -20,8 +20,6 @@ const googleLoginData = {
 
 function translateQueryHandler(req, res, next) {
     let qObj = req.query;
-    // console.log(`\ntranslateQuery: `);
-    // console.log(qObj);
     if (qObj.english != undefined) {
         let requestObject = 
         {
@@ -142,8 +140,6 @@ function correctQueryHandler(req, res, next) {
 
 function storeQueryHandler(req, res, next) {
     let qObj = req.query;
-    // console.log(`\nstoreQuery: `);
-    // console.log(qObj);
     if (qObj.english != undefined && qObj.chinese != 'undefined') {
         const insertStr = 'INSERT INTO Flashcards (user,english,chinese,seen,correct) VALUES(@0,@1,@2,0,0)'
         db.run(insertStr,req.user.userID,qObj.english,qObj.chinese,function(err){
@@ -170,24 +166,6 @@ function fileNotFound(req, res) {
     res.send('Cannot find '+url);
 };
 
-// function cardTableDropCallback(err) {
-//     if (err) {
-//     console.log("Flashcards Table drop error",err);
-//     } else {
-//     console.log("Flashcards Table dropped if exists");
-//     db.run(createCardTableStr,cardTableCreationCallback);
-//     }
-// };
-
-// function userTableDropCallback(err) {
-//     if (err) {
-//     console.log("Users Table drop error",err);
-//     } else {
-//     console.log("Users Table dropped if exists");
-//     db.run(createUserTableStr,usersTableCreationCallback);
-//     }
-// };
-
 function cardTableCreationCallback(err) {
     if (err) {
 	console.log("Flashcards Table creation error",err);
@@ -201,20 +179,11 @@ function usersTableCreationCallback(err) {
     if (err) {
 	console.log("Users Table creation error",err);
     } 
-    // else {
-	// console.log("Users Table created");
-    // }
 };
 
 // create database
 const dbFileName = "Flashcards.db";
 const db = new sqlite3.Database(dbFileName);  
-// const dropCardTableStr = 'DROP TABLE IF EXISTS Flashcards'
-// const dropUserTableStr = 'DROP TABLE IF EXISTS Users'
-// const createCardTableStr = 'CREATE TABLE Flashcards (user int, english string, chinese string, seen int, correct int)'
-// const createUserTableStr = 'CREATE TABLE Users (gid int, firstName string, lastName string)'
-// db.run(dropCardTableStr,cardTableDropCallback);
-// db.run(dropUserTableStr,userTableDropCallback);
 const createCardTableStr = 'CREATE TABLE IF NOT EXISTS Flashcards (user int, english string, chinese string, seen int, correct int)';
 const createUserTableStr = 'CREATE TABLE IF NOT EXISTS Users (gid int, firstName string, lastName string)';
 db.run(createCardTableStr,cardTableCreationCallback);
