@@ -5,7 +5,7 @@ const fs = require("fs"); // file system
 const port = 53119;
 const APIrequest = require('request');
 const http = require('http');
-const APIkey = 'AIzaSyAnBSkl-zu9eupqVziEz7qjFmSmPCauHvg';  // ADD API KEY HERE
+const APIkey = '';  // ADD API KEY HERE
 const APIurl = "https://translation.googleapis.com/language/translate/v2?key="+APIkey;
 
 function translateQueryHandler(req, res, next) {
