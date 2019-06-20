@@ -1,26 +1,21 @@
-
 body {
 	display: flex;
-	flex-direction: column;  /* stack items inside vertically */ 
+	flex-direction: column;
 	font-family: montserrat, sans-serif; 
 	font-weight: 500; 
 	font-style: normal;
 }
 
 header {
-	/*background-color: paleturquoise;*/
 	display: flex;
 	flex-direction: column-reverse; 
 	text-align: center;
 	font-family: helvetica;
-	/*font-weight: 500; */
 	font-style: normal;
-	/*border: 2px red solid;*/
 }
 
 	.w0 {
 		color: rgb(46,49,146);
-		/*border: 2px blue solid; */
 		padding-bottom: 3%;
 		font-size: 3.7vw;
 	}
@@ -34,16 +29,12 @@ header {
 		display: flex;
 		justify-content: space-around;
 		font-size: 5vw;
-		/*font-stretch: expanded;*/
-		/*border: 2px blue solid; */
 		padding: 5% 0;
 	}
 
 	nav a {
 		color: black;
 		text-decoration: none;
-		/*border: 2px blue solid; */
-		/*font-stretch: expanded;*/
   		margin: auto;
 	}
 
@@ -53,7 +44,6 @@ main {
 	flex-grow: 1; 
 	flex-shrink: 0;
 	flex-basis: auto;
-	/* always be large enough to contain contents, and grow if there is extra space in the body */
 	}
 
 /*first module*/
@@ -69,11 +59,8 @@ main {
 			align-content: center;
 			justify-content: center;
 			flex-grow: 1;
-			/*border: 2px red solid;*/
 			color: white;
 			padding: 5% 0;
-
-			/*margin: 1%;*/
 		}
 			p.s1 {
 				font-family: montserrat, sans-serif; 
@@ -82,7 +69,6 @@ main {
 				margin-bottom: 1%;
 				width: 100%;
 				text-align: center;
-				/*border: 1px red solid;*/
 			}
 
 			p.s2 {
@@ -95,7 +81,6 @@ main {
 
 			p.s3 {
 				font-family: montserrat, sans-serif;
-				/*font-size: 14pt; */
 				font-size: 1em;
 				line-height: 1.5;
 				font-weight: 200;
@@ -103,7 +88,6 @@ main {
 
 		div.img1 {
 			flex-grow: 1;
-			/*overflow: auto;*/
 		} 
 
 /*second module*/
@@ -117,7 +101,6 @@ main {
 			display: flex;
 			flex-direction: column;
 			flex-grow: 1;
-			/*border: 2px red solid;*/
 			margin: 0 10%;
 		}
 			.t2 {
@@ -139,9 +122,7 @@ main {
 			background: none;
 			text-decoration:underline;
 			color: rgb(201,82,61);
-			/*font-weight: 500;*/
 			text-align: left;
-			/*border: 2px blue solid;*/
 			padding-left: 0;
 			padding-bottom: 4%;
 			cursor: pointer;
@@ -158,8 +139,6 @@ main {
 
 /*third module*/
 div.three {
-	/* display: flex; */
-	/* flex-direction: column-reverse; */
 	margin-bottom: 2%;
 }
 
@@ -168,7 +147,6 @@ div.three {
 		float: left;
 		flex-grow: 1;
 		margin: 4%;
-		/*border: 2px red solid;*/
 	}
 
 	div.w3 {
@@ -176,10 +154,6 @@ div.three {
 		display: flex;
 		flex-direction: column;
 		flex-grow: 1;
-		/*border: 2px red solid;*/
-/*		margin-right: 10%;
-		padding-top: 1%;
-		padding-left: 1%*/;
 	}
 
 	#i1 {
@@ -188,16 +162,13 @@ div.three {
 
 		.p2 {
 			margin-top:5%;
-			/*border: 2px red solid;*/
 		}
 img {
 	width: 100%;  
-	/* fill up div.image */
 }
 
 /*footer*/
 footer {
-	/*background-color: paleturquoise;*/
 	display: flex;
 	flex-direction: column;
 	background: rgb(249,172,120);
@@ -223,7 +194,6 @@ footer {
 	}
 
 	footer p {
-		/*margin-bottom: 1%;*/
 		line-height: 1.5;
 	}
 
@@ -258,10 +228,6 @@ footer {
 
 /* media query switches to tablet view in wide window */
 @media screen and (min-width: 480px) {
-/*	body {
-		background: grey;
-	}*/
-
 	header {
 		flex-direction: row;
 		justify-content: space-between;
@@ -291,7 +257,6 @@ footer {
 
 			p.s1 {
 				font-size: 6.6vw;
-				/*border: 1px red solid;*/
 			}
 
 			p.s2 {
@@ -308,9 +273,7 @@ footer {
 
 		div.w2 {
 			display: inline;
-			/*flex-direction: column;*/
 			flex-grow: 1;
-			/*border: 2px red solid;*/
 			margin: 0 10%;
 		}
 
@@ -341,7 +304,6 @@ footer {
 
 /*third*/
 	div.three {
-	/* display: flex; */
 	flex-direction: column-reverse;
 	margin-bottom: 2%;
 	}
@@ -350,7 +312,6 @@ footer {
 		float: left;
 		margin: 0 2% 0 0;
 		width: 40%;
-		/*border: 2px red solid;*/
 	}
 
 	.few {
@@ -363,12 +324,10 @@ footer {
 
 		.p2 {
 			margin-top:0;
-			/*border: 2px red solid;*/
 		}
 
 		p.s3 {
 			font-weight: 200;
-			/*font-size: 12pt;*/
 			font-size: 1em;
 		}
 
@@ -380,31 +339,14 @@ footer {
 		display: inline-block;
 	}
 
-/*footer*/
-
-
-
-
 	#f2 {
 		margin-top: 0;
 		margin-left: 4%;
 	}
 
-/*	footer .bold {
-		font-weight: bold;
-		margin-bottom: 8%;
-	}*/
-
-/*	footer p {
-		
-		margin-bottom: 1%;
-	}
-*/
-
 #btn3 {
 	display: inline-block;
 	margin: 1% 10% 0 10%;
-	/*font-size: normal;*/
 }
 
 }
@@ -458,7 +400,6 @@ footer {
 
 		div.w1 {
 			flex-direction: column;
-			/*width: 70%;*/
 			margin-right: 10%;
 		}
 
@@ -468,7 +409,6 @@ footer {
 
 	div.two {
 		flex-direction: row;
-		/*margin-top: 2%;*/
 	}
 
 		div.w2 {
@@ -481,15 +421,8 @@ footer {
 				border-bottom: 1px black solid;
 			}
 
-/*		div.img2 {
-			margin-right: 0;
-			margin-left: 5%;
-		}*/
-
 	div.three {
 		flex-direction: row;
-		/*flex-grow: 1;*/
-		/*overflow: auto;*/
 		margin-bottom: 2%;
 	}
 		.few {
@@ -501,14 +434,9 @@ footer {
 			order: 3;
 		}
 
-		p.s3 {
-			/*font-size: 1.5vw;*/
-		}
-
 		div.img3 {
 			float: left;
 			flex-grow: 1;
-			/*border: 2px red solid;*/
 			margin-left: 0;
 			order: 1;
 		}
@@ -525,25 +453,19 @@ footer {
 		div.w3 {
 			flex-direction: column;
 			flex-grow: 1;
-			/*border: 2px red solid;*/
 			margin-right: 10%;
 			padding-top: 1%;
-			/*padding-left: 1%;*/
 		}
 
 	#btn1 {
 		margin-top: 1.5%;
-		/*font-size: 1.5vw;*/
 	}
 
 	#btn2 {
 		margin-top: 1.5%;
-		/*font-size: 1.5vw;*/
 	}
 
 	#btn3 {
-		/*margin-top: 2%;*/
-		/*font-size: 2vw;*/
 		display: none;
 	}
 
@@ -554,13 +476,6 @@ footer {
 	.foot {
 		font-size: 2vw;
 	}
-
-
-/*	.bigfoot {
-		display: none;
-	}*/
-
-
 }
 
 
