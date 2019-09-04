@@ -1,7 +1,7 @@
 # Lango
 http://lango-kl.herokuapp.com
 ## About
-Lango is a an application for learning Chinese words. After logging in, users can enter the English words in the left box of the page, and then the corresponding Chinese words translated from Google Cloud Translation API will be displayed in the right box. Users can first store the words they want to learn, and then click the button Start Review in the upper left corner of the page to test themselves.
+Lango is an application for learning Chinese words. After logging in, users can enter the English words in the left box of the page, and then the corresponding Chinese words translated from Google Cloud Translation API will be displayed in the right box. Users can first store the words they want to learn, and then click the button Start Review in the upper left corner of the page to test themselves.
 
 
 
