@@ -112,8 +112,9 @@ function makeCorsRequest(word) {
 		outputElem.classList.add("blackColor");
 	};
 
-	xhr.onerror = function() {
-		alert('Woops, there was an error making the request.');
+	xhr.onerror = function(err) {
+		alert('Woops, there was an error making the request. Check out console!');
+		console.log(err);
 	};
 
 	xhr.send();

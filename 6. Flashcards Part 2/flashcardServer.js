@@ -47,7 +47,11 @@ function translateQueryHandler(req, res, next) {
             if ((err) || (APIresHead.statusCode != 200)) {
                 // API is not working
                 console.log("Got API error");
-                console.log(body);
+                if (err) {
+                    console.log('error: ' + err);
+                } else {
+                    console.log('APIresHead.statusCode: ' + APIresHead.statusCode);
+                }     
             } else {
                 if (APIresHead.error) {
                 // API worked but is not giving you data
