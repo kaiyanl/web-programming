@@ -1,7 +1,7 @@
 # Lango
 http://lango-kl.herokuapp.com
 ## About
-Lango is an application for learning Chinese words. After logging in, users can enter the English words in the left box of the page, and then the corresponding Chinese words translated from Google Cloud Translation API will be displayed in the right box. Users can first store the words they want to learn, and then click the button Start Review in the upper left corner of the page to test themselves.
+Lango is an application for learning Chinese words. After logging in, users can enter the English words in the left box of the page, and then the corresponding Chinese words translated by Google Cloud Translation API will be displayed in the right box. Users can first store the words they want to learn, and then click the button Start Review in the upper left corner of the page to test themselves.
 
 
 
@@ -31,7 +31,7 @@ npm install
 node flashcardServer.js
 ```
 
-## Start Point
+## Starting Point
 To access the page for the students enrolled in ECS 162. Note: replace 53119 with your own port number.
 http://server162.site:53119/login.html
 
